@@ -12,7 +12,8 @@ permission:
     "$HOME/opencode/config/opencode/**": allow
     "**/opencode/config/opencode/**": allow
     "**/skills/gran-mestre/**": allow
-    "**/reference/**": allow
+    "**/skills/bibliotecario/**": allow
+    "**/skills/unlazy/**": allow # SOBERANIA-USUARIO 2026-09-09: helenizacao R14/R74; deny-by-default intacto
   bash:
     "*": ask
     "git status *": allow

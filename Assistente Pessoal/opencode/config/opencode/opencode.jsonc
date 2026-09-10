@@ -19,60 +19,6 @@
         }
       }
     },
-    "local-reflexo": {
-      "api": "openai",
-      "name": "reflexo R42 :9086 — role:reflexo",
-      "options": {
-        "baseURL": "http://127.0.0.1:9086/v1",
-        "apiKey": "llamacpp"
-      },
-      "models": {
-        "reflexo": {
-          "name": "role:reflexo",
-          "limit": {
-            "context": 128000,
-            "output": 8192
-          },
-          "tool_call": true
-        }
-      }
-    },
-    "local-forge": {
-      "api": "openai",
-      "name": "F2/F3 CONTRATO+PLANO :9088 — role:proposer",
-      "options": {
-        "baseURL": "http://127.0.0.1:9088/v1",
-        "apiKey": "llamacpp"
-      },
-      "models": {
-        "proposer": {
-          "name": "role:proposer",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          },
-          "tool_call": true
-        }
-      }
-    },
-    "local-ternary": {
-      "api": "openai",
-      "name": "refutação A2A :9090 — role:refuter",
-      "options": {
-        "baseURL": "http://127.0.0.1:9090/v1",
-        "apiKey": "llamacpp"
-      },
-      "models": {
-        "refuter": {
-          "name": "role:refuter",
-          "limit": {
-            "context": 65536,
-            "output": 8192
-          },
-          "tool_call": false
-        }
-      }
-    },
     "local-orchestrator": {
       "api": "openai",
       "name": "ORQUESTRADOR ATIVO :8083 — role:orchestrator",
@@ -91,24 +37,6 @@
         }
       }
     },
-    "local-ternary-gemma-2-2b": {
-      "api": "openai",
-      "name": "juiz F5-F6 (refutador-agil) :9092 :9092 — role:refuter",
-      "options": {
-        "baseURL": "http://127.0.0.1:9092/v1",
-        "apiKey": "llamacpp"
-      },
-      "models": {
-        "refuter": {
-          "name": "role:refuter",
-          "limit": {
-            "context": 8192,
-            "output": 8192
-          },
-          "tool_call": false
-        }
-      }
-    },
     "local-descoberta": {
       "api": "openai",
       "name": "micro 1-bit 400 t/s :9093 :9093 — role:ingestor",
@@ -121,6 +49,96 @@
           "name": "role:ingestor",
           "limit": {
             "context": 4096,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
+    },
+    "local-ternary": {
+      "api": "openai",
+      "name": "refuter/relay :9090 — extracao GBNF 10/10 :9090 — role:refuter",
+      "options": {
+        "baseURL": "http://127.0.0.1:9090/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "refuter": {
+          "name": "role:refuter",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          },
+          "tool_call": false
+        }
+      }
+    },
+    "local-forge": {
+      "api": "openai",
+      "name": "proposer :9088 (ctx 131072 — criterio canonico R84-EXEC01) :9088 — role:proposer",
+      "options": {
+        "baseURL": "http://127.0.0.1:9088/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "proposer": {
+          "name": "role:proposer",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
+    },
+    "local-reflexo": {
+      "api": "openai",
+      "name": "reflexo/relay :9086 CPU — GBNF-conforme 2/2 :9086 — role:reflexo",
+      "options": {
+        "baseURL": "http://127.0.0.1:9086/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "reflexo": {
+          "name": "role:reflexo",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
+    },
+    "local-relay": {
+      "api": "openai",
+      "name": "relay intermediario :9092 :9092 — role:relay",
+      "options": {
+        "baseURL": "http://127.0.0.1:9092/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "relay": {
+          "name": "role:relay",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
+    },
+    "local-descoberta-qwen1.5-moe-a2.7b": {
+      "api": "openai",
+      "name": "warm :9095 (MoE legado :9095 — role:ingestor",
+      "options": {
+        "baseURL": "http://127.0.0.1:9095/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "ingestor": {
+          "name": "role:ingestor",
+          "limit": {
+            "context": 8192,
             "output": 8192
           },
           "tool_call": true
@@ -183,7 +201,8 @@
     "a2a-brainstorm": {},
     "log-summarizer": {},
     "needle-pytest-filter": {},
-    "roteador-hibrido": {}
+    "roteador-hibrido": {},
+    "unlazy": {}
   },
   "agents": [
     "gran-mestre",

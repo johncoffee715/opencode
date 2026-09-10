@@ -1,0 +1,52 @@
+{
+  "feature": "unlazy",
+  "version": "1.0.0",
+  "descricao": "Firewall do unlazy helenizado: gates executaveis com aprovacao explicita; proibido executar CHECK nao-inspecionado, instalar hook Claude, ou tratar --status como re-verificacao.",
+  "allow": {
+    "tools": [
+      "read",
+      "grep",
+      "glob",
+      "bash(node-scripts)"
+    ],
+    "paths": [
+      "/home/johncoffee/.config/opencode/skills/unlazy/**",
+      ".unlazy/**",
+      "GATES.md",
+      "~/.unlazy/**"
+    ],
+    "commands": [
+      "node <skill-dir>/scripts/gate-check.mjs --status *",
+      "node <skill-dir>/scripts/gate-check.mjs --approve * (apos inspecao)",
+      "node <skill-dir>/scripts/gate-check.mjs --reverify *",
+      "node <skill-dir>/scripts/gate-lint.mjs *",
+      "node <skill-dir>/scripts/dispatch-check.mjs open|start|seal|return|status|abandon *"
+    ],
+    "sampling": {
+      "temp": 0.2,
+      "top_k": 20,
+      "top_p": 0.95,
+      "max_tokens": 4096
+    }
+  },
+  "deny": {
+    "tools": [
+      "edit (em ledgers de terceiros sem inspecao)"
+    ],
+    "paths": [
+      "**/.env",
+      "**/*.key",
+      "**/*.pem"
+    ],
+    "behaviors": [
+      "executar CHECK: sem --status previo e leitura do comando",
+      "tratar --status como re-verificacao (usar --reverify)",
+      "instalar stop-hook Claude (install-hooks.mjs fora da skill)",
+      "remover gate impossivel silenciosamente (usar ABANDON: id motivo)",
+      "copiar numero fornecido para dentro do EXPECT: como propria prova",
+      "inventar handle de dispatch ou registrar resultado foreground como start",
+      "tratar lease OWNS: como sandbox de filesystem",
+      "compor relatorio done com gate obrigatorio unmet/abandoned"
+    ]
+  }
+}
