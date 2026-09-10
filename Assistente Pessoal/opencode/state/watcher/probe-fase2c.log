@@ -1,0 +1,26 @@
+[probe] construindo doc ~146000 tokens...
+[probe] doc pronto: 138725 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: OK
+[probe] recall NEEDLE-035: MISS
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: MISS
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 138725 tok → misses=2/5 invented=False ⇒ DEGRADADO
+[probe] construindo doc ~180000 tokens...
+[probe] doc pronto: 171582 tokens (2s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: MISS
+[probe] recall NEEDLE-035: OK
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: OK
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 171582 tok → misses=1/5 invented=False ⇒ DEGRADADO
+[probe] construindo doc ~200000 tokens...
+[probe] doc pronto: 194199 tokens (1s) — prefill na 1ª pergunta

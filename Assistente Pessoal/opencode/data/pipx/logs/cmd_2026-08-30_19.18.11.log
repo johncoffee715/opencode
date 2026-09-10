@@ -1,0 +1,28 @@
+   460.3ms (setup:1953): 2026-08-30 19:18:11
+   460.4ms (setup:1954): /home/johncoffee/.local/bin/pipx install python3.12
+   460.5ms (setup:1955): pipx version is 1.17.1
+   460.6ms (setup:1956): Default python interpreter is '/usr/bin/python3.14'
+   460.7ms (mkdir:96): creating directory /mnt/dados/Assistente Pessoal/opencode/data/pipx/.cache
+   460.9ms (setup:1970): Adding CACHEDIR.TAG to cache directory
+   467.2ms (_validate_backend_available:391): Backend resolved to uv (source: auto-path)
+   467.5ms (package_name_from_spec:517): Determined package name: python3-12
+   467.5ms (package_name_from_spec:518): Package name determined in 0.0s
+   468.4ms (create_venv:315): Creating virtual environment
+   473.9ms (__init__:58): using path uv 0.11.32 from /home/johncoffee/.local/bin/uv
+   474.1ms (run_subprocess:217): running /home/johncoffee/.local/bin/uv venv --python /usr/bin/python3.14 --allow-existing --quiet /mnt/dados/Assistente Pessoal/opencode/data/pipx/venvs/python3-12
+   490.2ms (run_subprocess:256): stdout:
+   490.3ms (run_subprocess:258): stderr:
+   490.3ms (run_subprocess:259): returncode: 0
+   490.6ms (run_subprocess:217): running /mnt/dados/Assistente Pessoal/opencode/data/pipx/venvs/python3-12/bin/python --version
+   492.5ms (run_subprocess:256): stdout: Python 3.14.7
+   492.6ms (run_subprocess:258): stderr:
+   492.7ms (run_subprocess:259): returncode: 0
+   492.9ms (_parsed_package_to_package_or_url:152): cleaned package spec: python3-12
+   493.1ms (install_package:413): Installing python3-12
+   493.3ms (run_subprocess:217): running /home/johncoffee/.local/bin/uv pip install --python /mnt/dados/Assistente Pessoal/opencode/data/pipx/venvs/python3-12/bin/python --quiet python3-12
+   813.1ms (run_subprocess:259): returncode: 1
+   813.2ms (subprocess_post_check_handle_pip_error:533): '/home/johncoffee/.local/bin/uv pip install --python /mnt/dados/Assistente Pessoal/opencode/data/pipx/venvs/python3-12/bin/python --quiet python3-12' failed
+   813.4ms (subprocess_post_check_handle_pip_error:549): Fatal error from uv prevented installation. Full uv output in file:
+    /mnt/dados/Assistente Pessoal/opencode/data/pipx/logs/cmd_2026-08-30_19.18.11_uv_errors.log
+   813.6ms (rmdir:71): removing directory /mnt/dados/Assistente Pessoal/opencode/data/pipx/venvs/python3-12
+   814.9ms (cli:2061): pipx finished.

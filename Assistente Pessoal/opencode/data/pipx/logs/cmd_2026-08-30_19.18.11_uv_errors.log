@@ -1,0 +1,8 @@
+UV STDOUT
+----------
+
+UV STDERR
+----------
+  × No solution found when resolving dependencies:
+  ╰─▶ Because python3-12 was not found in the package registry and you require
+      python3-12, we can conclude that your requirements are unsatisfiable.

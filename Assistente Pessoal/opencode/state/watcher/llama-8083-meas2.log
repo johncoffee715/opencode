@@ -1,0 +1,13 @@
+0.00.058.147 W Setting 'enable_thinking' via --chat-template-kwargs is deprecated. Use --reasoning on / --reasoning off instead.
+0.00.058.657 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.059.988 W srv  llama_server: -----------------
+0.00.059.991 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.059.992 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.059.992 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.059.992 W srv  llama_server: -----------------
+0.00.061.334 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/Ornith-1.5-9B-Q5_K_M.gguf'
+0.04.060.881 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 131072, kv_unified = 'false'
+0.04.093.393 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.04.093.441 I srv  llama_server: model loaded
+0.04.093.447 I srv  llama_server: listening on http://127.0.0.1:8083
+5.03.708.308 I srv    operator(): operator(): cleaning up before exit...

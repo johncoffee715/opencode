@@ -76,7 +76,7 @@ EOF
 
 ## Métricas da Stack ($NOW)
 \`\`\`
-$(for p in 8083 9084 9086 9088 9090 9092 9093 8097; do
+$(for p in 8083 9084 9086 9088 9090 9092 9093 9095 8097; do
     h=$(curl -sf -m 2 "http://127.0.0.1:$p/health" >/dev/null 2>&1 && echo ok || echo DOWN)
     echo "$p:$h"
   done | paste -sd' ')

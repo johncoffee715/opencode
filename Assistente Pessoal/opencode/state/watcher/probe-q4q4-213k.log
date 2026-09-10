@@ -1,0 +1,37 @@
+[probe] construindo doc ~212992 tokens...
+[probe] doc pronto: 202389 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: MISS
+[probe] recall NEEDLE-035: OK
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: OK
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 202389 tok → misses=1/5 invented=False ⇒ DEGRADADO
+[probe] construindo doc ~146000 tokens...
+[probe] doc pronto: 143578 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: MISS
+[probe] recall NEEDLE-035: OK
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: OK
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 143578 tok → misses=1/5 invented=False ⇒ DEGRADADO
+[probe] construindo doc ~180000 tokens...
+[probe] doc pronto: 176588 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: OK
+[probe] recall NEEDLE-035: OK
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: MISS
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 176588 tok → misses=1/5 invented=True ⇒ DEGRADADO
+[probe] VEREDITO: {"veredito": "LIMIAR_EM_212992", "limiar_alucinacao_ctx": 212992, "por_tamanho": {"212992": {"misses": 1, "invented": false, "degraded": true}, "146000": {"misses": 1, "invented": false, "degraded": true}, "180000": {"misses": 1, "invented": true, "degraded": true}}, "modelo": "Ornith-1.5-9B-Q5_K_M @163840 K=q5_0 V=q5_0 sem context-shift sem fa"}

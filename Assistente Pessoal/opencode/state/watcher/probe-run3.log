@@ -1,0 +1,11 @@
+[probe] alvo 100000 já concluído — skip
+[probe] construindo doc ~128000 tokens...
+[probe] doc pronto: 121527 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-025: OK
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 121527 tok → misses=0/5 invented=False ⇒ ÍNTEGRO
+[probe] construindo doc ~146000 tokens...
+[probe] doc pronto: 143642 tokens (1s) — prefill na 1ª pergunta

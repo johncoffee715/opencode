@@ -67,7 +67,6 @@ cycle() {
   check_json   "$CFG/opencode.jsonc"      >> "$out"
   check_file   "$CFG/AGENTS.md"           >> "$out"
   check_exec   "$ROOT/bin/opencode"       >> "$out"
-  check_exec   "$ROOT/bin/opencode.real"  >> "$out"
   check_repos                             >> "$out"
   check_frontmatter                       >> "$out"
 

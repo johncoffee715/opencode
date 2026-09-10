@@ -1,0 +1,2 @@
+[       7ms] ReferenceError: BABYLON is not defined
+    at http://localhost:5173/src/enemies/BaseEnemy.ts:4:15

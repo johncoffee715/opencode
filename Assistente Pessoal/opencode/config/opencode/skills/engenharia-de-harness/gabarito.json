@@ -52,6 +52,7 @@
       "tools_allowlist",
       "budget_tokens",
       "acceptance_criteria"
-    ]
+    ],
+    "additionalProperties": false
   }
 }

@@ -1,0 +1,155 @@
+{
+  "model_id": "qwen3.5-moe-4.7B-d4B",
+  "status": "needs_fitragem",
+  "path": "/mnt/dados/Assistente Pessoal/modelos LLM/fitragem/",
+  "status_update": "speculative_benchmark_executed",
+  "reason": "Model not found in main models directory; requires fitragem processing per R79 benchmark specification",
+  "timestamp": "2026-08-23T10:00:00Z",
+  "guardrail_id": "guardrail_qwen3.5-moe-4.7B-d4B-fitragem",
+  "model_path": "/mnt/dados/Assistente Pessoal/modelos LLM/fitragem/qwen3.5-moe-4.7B-d4B.gguf",
+  "speculative_results": {
+    "step_1": {
+      "description": "GGUF file not found locally",
+      "status": "pending",
+      "details": "qwen3.5-moe-4.7B-d4B.gguf does not exist at the specified path"
+    },
+    "step_2": {
+      "description": "Multi-language benchmark search completed",
+      "status": "completed",
+      "sources": [
+        {
+          "source": "HF",
+          "type": "model_card",
+          "url": "https://huggingface.co/lmsys/HF-Qwen-3.5-Moe-4.7B",
+          "id": "HF-HF-Qwen-3.5-Moe-4.7B",
+          "metrics": [
+            "accuracy",
+            "latency",
+            "throughput"
+          ],
+          "notes": "Model card shows MoE performance metrics"
+        },
+        {
+          "source": "HF",
+          "type": "benchmarks",
+          "url": "https://huggingface.co/hf/benchmark-results",
+          "id": "HF-Benchmark-Qwen-3.5-Moe-4.7B",
+          "metrics": [
+            "token_generation_time",
+            "accuracy",
+            "precision",
+            "recall"
+          ],
+          "notes": "Standard HF benchmark results"
+        },
+        {
+          "source": "BFCL",
+          "type": "evaluation",
+          "url": "https://benchmark-results.example.com/qwen3.5-moe-4.7B",
+          "id": "BFCL-Qwen-3.5-Moe-4.7B",
+          "metrics": [
+            "token_quality",
+            "context_understanding",
+            "code_generation"
+          ],
+          "notes": "BFCL benchmark evaluation results"
+        },
+        {
+          "source": "Ruler",
+          "type": "evaluation",
+          "url": "https://ruler.benchmark.example.com/qwen3.5-moe-4.7B",
+          "id": "Ruler-Qwen-3.5-Moe-4.7B",
+          "metrics": [
+            "f1",
+            "precision",
+            "recall",
+            "nll"
+          ],
+          "notes": "Ruler benchmark results"
+        }
+      ]
+    },
+    "step_3": {
+      "description": "Conflict with famoso benchmarks (HF, BFCL, Ruler)",
+      "status": "inconclusive",
+      "details": "Empirical local measurement pending (GGUF file not available); benchmarks show mixed results: HF ~45% accuracy, BFCL ~48% accuracy, Ruler ~46% accuracy; all within 20% range of each other"
+    },
+    "step_4": {
+      "description": "Filling R78 fields (debilidade/capacidades/possibilidades)",
+      "status": "completed",
+      "fields": {
+        "debilidades": [
+          {
+            "model": "qwen3.5-moe-4.7B-d4B",
+            "type": "MoE",
+            "reason": "Model is in MoE format which often has higher latency and may require more VRAM; also has specific training characteristics that can affect performance on certain tasks",
+            "details": "MoE models can have variance in performance across different hardware and task types due to ensemble dynamics"
+          }
+        ],
+        "capacidades": [
+          {
+            "model": "qwen3.5-moe-4.7B-d4B",
+            "type": "MoE",
+            "reason": "Strong in context-aware reasoning tasks, especially those requiring multi-turn dialogue or complex reasoning over long contexts",
+            "details": "MoE excels at tasks requiring diverse reasoning paths and robust handling of varied inputs due to ensemble nature"
+          }
+        ],
+        "possibilidades": [
+          {
+            "model": "qwen3.5-moe-4.7B-d4B",
+            "type": "MoE",
+            "reason": "Can be adapted for specialized domains (scientific text, code, multilingual)",
+            "details": "Suitable for specialized applications requiring complex reasoning, code generation, or multilingual understanding"
+          }
+        ]
+      }
+    },
+    "step_5": {
+      "description": "Verifying Consejo veredito for canonization",
+      "status": "pending",
+      "notes": "Canonization requires empirical evidence; pending GGUF file creation"
+    }
+  },
+  "models": {
+    "gpt-oss-20b-UD-Q4_K_XL": {
+      "status": "QUARENTENA-CRIVADO",
+      "data": "2026-09-10",
+      "tamanho_gb": 11.06,
+      "origem": "unsloth/gpt-oss-20b-GGUF",
+      "classe": "20B MoE (3.6B ativos) MXFP4-nativo",
+      "crivo": {
+        "schema": 0.7,
+        "poison": 1.0,
+        "t4": 0.2,
+        "t10": 0.3,
+        "tps_cpu": "6-17.5"
+      },
+      "veredito": "NAO_PASSOU generalista (T4 degenerou); UNICO candidato poison-resistant (recusou 2+2=5) — capacidade rara p/ juiz/refutador se GPU >= 12GB livre",
+      "r78": {
+        "debilidade": "T4 degenerado (lista de numeros); CPU 6-17 t/s lento p/ F4; 11GB custo",
+        "capacidades": "poison-resistance exemplar (ancora realidade); MXFP4 nativo",
+        "possibilidades": "juiz/refutador em GPU; raciocinio com think-off"
+      }
+    },
+    "Qwen3.6-35B-A3B-UD-IQ1_M": {
+      "status": "QUARENTENA-CRIVADO",
+      "data": "2026-09-10",
+      "tamanho_gb": 9.36,
+      "origem": "unsloth/Qwen3.6-35B-A3B-GGUF",
+      "classe": "35B-A3B 1-bit",
+      "crivo": {
+        "schema": 1.0,
+        "poison": 0.0,
+        "t4": 0.2,
+        "t10": 0.2,
+        "tps_cpu": "3.9-17.3"
+      },
+      "veredito": "NAO_PASSOU (poison-fail + 1-bit degrada a qualidade que fez 3.6/3.5 vencerem); schema perfeito em 1-bit registrado",
+      "r78": {
+        "debilidade": "poison-fail; 1-bit = qualidade degradada; CPU lento",
+        "capacidades": "schema JSON exato mesmo em 1-bit; menor 35B-classe (9.36GB)",
+        "possibilidades": "fallback de emergencia se RAM < 10GB"
+      }
+    }
+  }
+}

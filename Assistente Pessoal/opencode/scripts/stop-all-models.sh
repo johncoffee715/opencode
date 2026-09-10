@@ -8,7 +8,7 @@ exec 9>"$LOCK"
 if ! flock -n 9; then echo "já em execução — abortando"; exit 1; fi
 ROOT="/mnt/dados/Assistente Pessoal/opencode"
 ALL_PORTS=(8083 9084 9086 9088 9090 9092 9093 9095)
-PORTS=(8083 9084 9086 9088 9090 9092 9093)
+PORTS=(8083 9084 9086 9088 9090 9092 9093 9095)
 declare -A PORT_NAME=([gm]=8083 [cortex]=9084 [reflexo]=9086 [proposer]=9088 [refuter]=9090 [judge]=9092 [smol]=9093 [vlm]=9095)
 TARGETS=()
 if [ "$#" -eq 0 ]; then

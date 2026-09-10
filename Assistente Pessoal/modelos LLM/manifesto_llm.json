@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "updated": "2026-09-04T03:54:23.580930+00:00",
+  "updated": "2026-09-10T00:05:00+00:00",
   "fonte": "auditoria R52 + ctx-cost + start-stack + BENCH-03/09 IQ3 vs IQ4",
   "politica_roteamento": {
     "tipo": "hibrido-em-camadas",
@@ -68,8 +68,11 @@
     "nota_v1_2": "mantida; Granite-4.2-3B assume executor F4 no lugar do Qwen3.8-9B (ver stack_atual.substituicoes)"
   },
   "stack_atual": {
-    "gpu": "9084 RWKV7-0.4B-FP16 + 9086 LFM-1.2B + 9088 granite-4.2-3b + 9090 Ternary-8B + 9092 Gemma-2-2B + 9093 SmolLM2 (VRAM) + 8083 Qwen3.6 UD-IQ3 CPU",
-    "cpu_slots": 1,
+    "gpu": "8083 Qwen3.5 CPU(ngl0)+draft0.8B-GPU + 9084 RWKV7 + 9086 LFM + 9088 Llama-1B(ngl999) + 9090 Llama-3B + 9092 Smol-1.7B + 9093 Smol-360M (VRAM)",
+    "cpu_slots": [
+      "8083",
+      "9095"
+    ],
     "total_slots": 9,
     "substituicoes_2026_08_30": [
       "8083 Ornith-1.5-9B-Q5_K_M GPU -> Ornith-1.5-35B-A3B-IQ4_XS CPU (decisão usuário; 9B removido do SSD)",
@@ -83,7 +86,24 @@
       "8083 Ornith-1.5-35B-A3B-IQ4_XS (18G, IQ4_XS) -> Ornith-1.5-35B-A3B-AD-IQ3_S-IQ3_XXS (15.5G, IQ3_S 3.44bpw + IQ3_XXS 3.06bpw, 14.44GiB bench 14.44, pp512 15.74 tg32 3.44) CPU (decisão usuário 2026-09-03; Q4 excluído)"
     ],
     "substituicoes_2026_09_04": [
-      "8083 Ornith-1.5-35B-A3B-AD-IQ3_S-IQ3_XXS (15.5G) -> Qwen3.6-35B-A3B-UD-IQ3_XXS (13.21G, IQ3_XXS 3.0625bpw, 12.29GiB bench pp512 40.48 tg32 7.14) CPU (decisao usuario G1 2026-09-04; Ornith excluido, libera 15.5G)"
+      "8083 Ornith-1.5-35B-A3B-AD-IQ3_S-IQ3_XXS (15.5G) -> Qwen3.6-35B-A3B-UD-IQ3_XXS (13.21G, IQ3_XXS 3.0625bpw, 12.29GiB bench pp512 40.48 tg32 7.14) CPU (decisao usuario G1 2026-09-04; Ornith excluido, libera 15.5G)",
+      "8083 Qwen3.6-35B-A3B-UD-IQ3_XXS (13.21G) -> Qwen3.5-35B-A3B-UD-IQ3_XXS (13.08G) CPU (ordem usuario 09/09; mata-mata 6.0vs5.5 eixo concisao/completude; draft-accept 0.96-1.0; Qwen3.6 excluido 09/09)",
+      "9088 granite-4.2-3b -> Llama-3.2-1B-IQ4_XS CPU (MIGRA-20260904: granite deletado); 9090 Ternary-8B -> qwen2.5-coder-3b CPU (MIGRA-20260904: ternary deletado); 9092 Gemma-2-2B -> Phi-3.5-mini GPU temp0.15 (MIGRA-20260904: gemma deletado)"
+    ],
+    "substituicoes_2026_09_05": [
+      "8083 Qwen3.6 CPU(ngl0,7.14) -> hibrido ngl36 b4096/ub1024 (25.2dec/595pre, c262144, FA-off, mlock-abort); LFM GPU->CPU (26.7); deploy-B 05/09",
+      "9092 Phi-3.5-mini (IQ3_XS+IQ4_XS) DESCONTINUADO+EXCLUIDO 05/09 (KV-heavy 110MB/1k; juiz NAO 4/7+vies; relay substituivel): arquivos p/ lixeira, entrada removida do roster; slot 9092 VAGO",
+      "9088 Llama-1B -> Qwen3-1.7B CPU think-off (reverte R84-EXEC01; arquivos em reserva)",
+      "9086 LFM -> Gemma CPU relay-teste (LFM em reserva; 26.7 vs 10.8)",
+      "9090 coder-3B -> Llama-3B CPU (vence A/B GBNF 10x9; coder em reserva)",
+      "REVERT R88 9088: Qwen3-1.7B -> Llama-1B (refutacao sustenta: 131K/25.3 vs 32K/16.4+vazio; sem vantagem medida)",
+      "REVERT R88 9086: Gemma -> LFM (refutacao sustenta: 26.7 vs 10.8; LFM+GBNF 2/2 fecha o caso; Gemma volta a OFF)",
+      "KEEP R88 9090: Llama-3B (A/B 10x9 + semantica; refutacao confirma o swap)",
+      "9092 Qwen2.5-3B -> SmolLM2-1.7B CPU (vence A/B R88: canonico + velocidade + RAM; Qwen reserva)"
+    ],
+    "substituicoes_2026_09_09": [
+      "8083 Qwen3.6-35B (13.21G) -> Qwen3.5-35B (13.08G) CPU (mata-mata 6.0vs5.5; 3.6 excluido)",
+      "9088 Llama-1B CPU(25.3 t/s) -> GPU ngl999 c131072 (240.5 t/s, 10x; folga 3.03GB)"
     ]
   },
   "models": [
@@ -140,182 +160,7 @@
       }
     },
     {
-      "model_id": "LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M",
-      "slot_port": 9086,
-      "device": "GPU",
-      "topologia_arquitetura": {
-        "tipo_fundacao": "lfm2",
-        "layers": 16,
-        "attn_layers": 6,
-        "embedding_length": 2048,
-        "attn_heads": 32,
-        "kv_heads": 8,
-        "kv_heads_array": [
-          0,
-          0,
-          8,
-          0,
-          0,
-          8,
-          0,
-          0,
-          8,
-          0,
-          0,
-          8,
-          0,
-          0,
-          8,
-          0
-        ],
-        "contexto_nativo": 128000,
-        "rope_freq_base": 1000000.0,
-        "feed_forward_length": 8192,
-        "arch_detail": "lfm2 híbrida 10 conv double-gated +6 GQA — ToMoE dense-equivalent (MoE real só safetensors/vLLM)"
-      },
-      "fisica_inferencia": {
-        "quantizacao": "Q4_K_M",
-        "pesos_gb": 0.73,
-        "pesos_bytes": 730898432,
-        "ctx_ativo": 128000,
-        "cache_k": "q4_0",
-        "cache_v": "q4_0",
-        "kv_per_token_kb": 3.8,
-        "kv_total_gb_at_ctx": 0.72,
-        "tps_decode_empirical": 317.13,
-        "tps_decode_nota": "BENCH-GPU 30/08 (produção, Vulkan, FA on): prefill 3609.25 · decode 317.13 — ANTIGO CPU: 317.13",
-        "temp": 0.05,
-        "ngl": 999,
-        "threads": "GPU Vulkan0 -ngl 999",
-        "nota": " | movido p/ VRAM 2026-08-30 (decisão usuário)",
-        "flash_attn": true,
-        "mtp": "N/A",
-        "device_gpu_fa": "FA on desde 30/08 (R76)",
-        "tps_prefill_empirical": 3609.25,
-        "device": "GPU",
-        "ctx_nota": "expandido 32768→128000 em 30/08 (decisão usuário — nativo)"
-      },
-      "vocacao_grafo": "reflexo R42 · loop alta velocidade · GBNF/estrutura IFEval 88.42",
-      "derivado": {
-        "file": "LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M.gguf",
-        "slug": "lfm2.5-1.2b-thinking-tomoe",
-        "category": "reflexo",
-        "papel": "reflexo R42",
-        "ctx_ativo_efetivo": 128000,
-        "generator_version": "1.0.0"
-      },
-      "metrica_avaliativa_r78": {
-        "debilidade": "Instável para JSON/Python (imaturidade de engenharia); produção comercial; estruturas rígidas",
-        "capacidades": "Raciocínio verbal rápido (317 t/s); reflexo R42; testes acadêmicos; opinião rápida no A2A",
-        "possibilidades": "Draft model se tokenizer compatível (não é — lfm2 ≠ qwen35); geração criativa curta"
-      }
-    },
-    {
-      "model_id": "granite-4.2-3b-Q4_K_M",
-      "slot_port": 9088,
-      "device": "GPU",
-      "topologia_arquitetura": {
-        "tipo_fundacao": "granite",
-        "layers": 40,
-        "embedding_length": 2048,
-        "attn_heads": 32,
-        "kv_heads": 8,
-        "key_len_head": 64,
-        "value_len_head": 64,
-        "contexto_nativo": 131072,
-        "rope_freq_base": 1000000.0,
-        "feed_forward_length": 8192
-      },
-      "fisica_inferencia": {
-        "quantizacao": "Q4_K_M",
-        "pesos_gb": 2.08,
-        "pesos_bytes": 2244012160,
-        "ctx_ativo": 131072,
-        "cache_k": "q4_0",
-        "cache_v": "q4_0",
-        "kv_per_token_kb": 20.0,
-        "kv_total_gb_at_ctx": 2.02,
-        "tps_decode_empirical": 103.66,
-        "temp": 0.6,
-        "ngl": 999,
-        "threads": "GPU Vulkan0 -ngl 999",
-        "nota": " | movido p/ VRAM 2026-08-30 (decisão usuário)",
-        "flash_attn": true,
-        "mtp": "N/A",
-        "device_gpu_fa": "FA on desde 30/08 (R76)",
-        "tps_prefill_empirical": 1033.07,
-        "tps_decode_nota": "BENCH-GPU 30/08 (produção, Vulkan, FA on): prefill 1033.07 · decode 103.66 — ANTIGO CPU: 103.66",
-        "device": "GPU",
-        "ctx_nota": "expandido 131072→200000 em 30/08 (decisão usuário)"
-      },
-      "vocacao_grafo": "F2/F3 CONTRATO+PLANO · prosa estruturada/schema",
-      "derivado": {
-        "file": "granite-4.2-3b-Q4_K_M.gguf",
-        "slug": "granite-4.2-3b",
-        "category": "contrato-plano",
-        "papel": "F2/F3 CONTRATO+PLANO",
-        "ctx_ativo_efetivo": 200000,
-        "generator_version": "1.0.0"
-      },
-      "metrica_avaliativa_r78": {
-        "debilidade": "Refatoração limpa profissional (q4_k_m → linhas preguiçosas '# insira seu código'); pula trechos em código longo",
-        "capacidades": "Tool calling preciso (BFCL); propositor A2A; contrato/plano F2-F3; sintaxe e velocidade (103 t/s)",
-        "possibilidades": "Executor F4 para tasks curtas; geração de schema JSON com GBNF"
-      }
-    },
-    {
-      "model_id": "Ternary-Bonsai-8B-Q2_0_g64",
-      "slot_port": 9090,
-      "device": "GPU",
-      "topologia_arquitetura": {
-        "tipo_fundacao": "qwen3",
-        "layers": 36,
-        "embedding_length": 4096,
-        "attn_heads": 32,
-        "kv_heads": 8,
-        "key_len_head": 128,
-        "contexto_nativo": 65536,
-        "feed_forward_length": 12288,
-        "arch_detail": "qwen3 dense retreinado ternário Prism ML 1.58-bit {-1,0,+1}+scale FP16/128 — gguf-dump não parseia Q2_0 type 42 (fork)"
-      },
-      "fisica_inferencia": {
-        "quantizacao": "Q2_0_g64",
-        "pesos_gb": 2.31,
-        "pesos_bytes": 2310125920,
-        "ctx_ativo": 65536,
-        "cache_k": "q4_0",
-        "cache_v": "q4_0",
-        "kv_per_token_kb": 45.0,
-        "kv_total_gb_at_ctx": 3.02,
-        "tps_decode_empirical": 115.52,
-        "temp": 0.8,
-        "ngl": 999,
-        "threads": "GPU Vulkan0 -ngl 999",
-        "nota": " | movido p/ VRAM 2026-08-30 (decisão usuário)",
-        "flash_attn": true,
-        "mtp": "N/A",
-        "device_gpu_fa": "FA on desde 30/08 (R76)",
-        "tps_prefill_empirical": 827.92,
-        "tps_decode_nota": "BENCH-GPU 30/08 (produção, Vulkan, FA on): prefill 827.92 · decode 115.52 — ANTIGO CPU: 115.52",
-        "device": "GPU"
-      },
-      "vocacao_grafo": "refutação A2A · descartável R40/R41 · IFeval 81.8 BFCL 73.9",
-      "derivado": {
-        "file": "Ternary-Bonsai-8B-Q2_0_g64.gguf",
-        "slug": "ternary-bonsai-8b",
-        "category": "refutacao",
-        "papel": "refutação A2A",
-        "ctx_ativo_efetivo": 65536,
-        "generator_version": "1.0.0"
-      },
-      "metrica_avaliativa_r78": {
-        "debilidade": "Q2_0_g64 sensível a ruído; não usar para saída criativa longa",
-        "capacidades": "Refutação conceitual A2A (BFCL 73.9); profundidade 8B; estruturação Markdown/JSON; autofagia",
-        "possibilidades": "Propositor alternativo; análise de contrato spec.md"
-      }
-    },
-    {
-      "model_id": "Qwen3.6-35B-A3B-UD-IQ3_XXS",
+      "model_id": "Qwen3.5-35B-A3B-UD-IQ3_XXS",
       "slot_port": 8083,
       "device": "CPU",
       "topologia_arquitetura": {
@@ -340,21 +185,22 @@
         "cache_v": "q4_0",
         "kv_per_token_kb": 5.76,
         "kv_total_gb_at_ctx": 1.51,
-        "tps_decode_empirical": 7.14,
-        "tps_decode_nota": "SWEEP-04/09 CPU 18 threads pp512: 2048/512=45.48/7.32 · 4096/1024=44.40/7.28 · 8192/2048=42.95/7.00 · 16384/4096=41.95/6.84 — otimo 2048/512",
+        "tps_decode_empirical": 26.5,
+        "tps_decode_nota": "PRODUCAO ngl36 b4096/ub1024 c262144 (05/09). Curva: ngl20=11.2, 24=11.2, 28=17.5, 32=18.6, 36=25.6, 40=40.7. FA-off (-17% prefill), mlock-abort (ulimit 8MB).",
         "temp": 0.6,
-        "ngl": 0,
-        "threads": "auto(18)",
+        "ngl": 36,
+        "threads": "auto (R72, sem -t fixo)",
         "flash_attn": false,
-        "nota": "substitui Ornith-1.5-35B-A3B-AD-IQ3_S-IQ3_XXS 2026-09-04 (decisao usuario G1; Qwen3.6 +157% prefill +108% decode tg32, -15% pesos; mesmo ctx 262144 qwen35moe 256exp/8, KV q4_0/q4_0)",
-        "batch_ubatch": "2048/512 (crivo 04/09: 4096/1024 -2%, 8192/2048 -6%, 16384/4096 -8% — bandwidth-bound, mantido)",
-        "tps_prefill_empirical": 40.48,
-        "mtp": "N/A (arquivo sem head MTP — jashepp removeu 22/08)"
+        "nota": "hibrido ngl36 desde 05/09 (deploy-B): 70% pesos GPU + KV@262K GPU = 12.19G solo; casa 16.18G. Full ngl40=40.7 solo possivel (reserva operacional).",
+        "batch_ubatch": "4096/1024 (crivo prefill 05/09: prefill 594.8 +36%, decode 26.5 +5% vs 2048/512; 8192/2048 colapso prefill 113/decode 13)",
+        "tps_prefill_empirical": 594.8,
+        "mtp": "N/A (arquivo sem head MTP — jashepp removeu 22/08)",
+        "device": "hibrido GPU/CPU (ngl36, resto RAM)"
       },
       "vocacao_grafo": "ORQUESTRADOR ATIVO · 35B MoE · CPU · KV q4/q4 @262144",
       "derivado": {
-        "file": "Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf",
-        "slug": "qwen3.6-35b-a3b-ud-iq3_xxs",
+        "file": "Qwen3.5-35B-A3B-UD-IQ3_XXS.gguf",
+        "slug": "qwen3.5-35b-a3b-ud-iq3_xxs",
         "category": "orquestrador",
         "papel": "ORQUESTRADOR ATIVO",
         "ctx_ativo_efetivo": 262144,
@@ -363,58 +209,7 @@
       "metrica_avaliativa_r78": {
         "debilidade": "7.14 t/s CPU tg32 (2x Ornith, ainda bandwidth-bound DDR 12.29GB); thinking hibrido exige enable_thinking=false p/ resposta direta; NUNCA sincrono em loop",
         "capacidades": "Orquestracao/suprema corte; sintese macro; JSON exato sem fences; logica PT correta; tool-call exato; GBNF byte-level conforme (perna qualidade 4/4 04/09)",
-        "possibilidades": "Offload parcial (nao testado — Ornith degradava); draft (nao testado)"
-      }
-    },
-    {
-      "model_id": "Gemma-2-2B-IT-Q4_K_M",
-      "slot_port": 9092,
-      "device": "GPU",
-      "topologia_arquitetura": {
-        "tipo_fundacao": "gemma2",
-        "layers": 26,
-        "embedding_length": 2304,
-        "attn_heads": 8,
-        "kv_heads": 4,
-        "key_len_head": 256,
-        "value_len_head": 256,
-        "contexto_nativo": 8192,
-        "rope_freq_base": 10000.0,
-        "feed_forward_length": 9216,
-        "arch_detail": "gemma2 2B"
-      },
-      "fisica_inferencia": {
-        "quantizacao": "Q4_K_M",
-        "pesos_gb": 1.59,
-        "pesos_bytes": 1708582752,
-        "ctx_ativo": 8192,
-        "cache_k": "q4_0",
-        "cache_v": "q4_0",
-        "kv_per_token_kb": 18.0,
-        "kv_total_gb_at_ctx": 0.15,
-        "tps_decode_empirical": 152.0,
-        "temp": 0.8,
-        "ngl": 999,
-        "threads": "GPU Vulkan0 -ngl 999",
-        "flash_attn": true,
-        "mtp": "N/A",
-        "device_gpu_fa": "FA on",
-        "tps_prefill_empirical": 1600.0,
-        "device": "GPU"
-      },
-      "vocacao_grafo": "juiz F5-F6 (refutador-agil) :9092",
-      "derivado": {
-        "file": "Gemma-2-2B-IT-Q4_K_M.gguf",
-        "slug": "gemma-2-2b",
-        "category": "judge",
-        "papel": "juiz",
-        "ctx_ativo_efetivo": 8192,
-        "generator_version": "1.0.0"
-      },
-      "metrica_avaliativa_r78": {
-        "debilidade": "2B, contexto curto 8K, não usar para geração longa",
-        "capacidades": "Juiz F5-F6, validação, veredito categórico",
-        "possibilidades": "Refutação leve"
+        "possibilidades": "Offload parcial (nao testado); draft SIMPLES ATIVO 09/09 (Qwen3.5-0.8B GPU, n-max 8, p-min 0.75, accept 0.96-1.0)"
       }
     },
     {
@@ -463,6 +258,247 @@
         "debilidade": "360M, raciocínio fraco",
         "capacidades": "Micro-classifier ultra-rápido",
         "possibilidades": "Filtro talâmico"
+      }
+    },
+    {
+      "model_id": "Llama-3.2-3B-Instruct-UD-IQ3_XXS",
+      "slot_port": 9090,
+      "device": "CPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "llama",
+        "layers": 28,
+        "embedding_length": 3072,
+        "attn_heads": 24,
+        "kv_heads": 8,
+        "key_len_head": 128,
+        "value_len_head": 128,
+        "contexto_nativo": 131072,
+        "rope_freq_base": 500000.0,
+        "feed_forward_length": 8192,
+        "arch_detail": "Llama-3.2-3B UD-IQ3_XXS"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "UD-IQ3_XXS",
+        "pesos_gb": 1.37,
+        "pesos_bytes": 1370147264,
+        "ctx_ativo": 32768,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 28.0,
+        "kv_total_gb_at_ctx": 0.94,
+        "tps_decode_empirical": 12.2,
+        "tps_decode_nota": "CPU 12.2 medido 05/09",
+        "temp": 0.6,
+        "ngl": 0,
+        "threads": "auto",
+        "flash_attn": false,
+        "mtp": "N/A",
+        "device": "CPU",
+        "nota": "SUBST-20260905 vence A/B GBNF 10/10 vs coder 9/10 (05/09)"
+      },
+      "vocacao_grafo": "refuter/relay :9090 — extracao GBNF 10/10",
+      "derivado": {
+        "file": "Llama-3.2-3B-Instruct-UD-IQ3_XXS.gguf",
+        "slug": "llama-3.2-3b",
+        "category": "refutacao",
+        "papel": "refuter",
+        "ctx_ativo_efetivo": 32768,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "Fabrica fatos/evidencias (juiz 1/3); nunca veredito sem GBNF",
+        "capacidades": "Extracao-relay GBNF 10/10 (melhor semantica que coder); PT limpo",
+        "possibilidades": "Refutacao leve com GBNF"
+      }
+    },
+    {
+      "model_id": "Llama-3.2-1B-Instruct-IQ4_XS",
+      "slot_port": 9088,
+      "device": "GPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "llama",
+        "layers": 16,
+        "embedding_length": 2048,
+        "attn_heads": 32,
+        "kv_heads": 8,
+        "key_len_head": 64,
+        "value_len_head": 64,
+        "contexto_nativo": 131072,
+        "rope_freq_base": 500000.0,
+        "feed_forward_length": 8192,
+        "arch_detail": "Llama-3.2-1B IQ4_XS"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "IQ4_XS",
+        "pesos_gb": 0.71,
+        "pesos_bytes": 743141504,
+        "ctx_ativo": 131072,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 8.0,
+        "kv_total_gb_at_ctx": 1.07,
+        "tps_decode_empirical": 240.5,
+        "tps_decode_nota": "GPU 240.5 medido 09/09 (vs 25.3 CPU = 10x); ctx 131072 MANTIDO na GPU",
+        "temp": 0.6,
+        "ngl": 999,
+        "threads": "auto",
+        "flash_attn": true,
+        "mtp": "N/A",
+        "device": "GPU",
+        "nota": "GPU 09/09 (ordem usuario): ngl999 Vulkan0, folga 3.03GB >= guarda 1GB; KV@131K GPU ~2.2GB"
+      },
+      "vocacao_grafo": "proposer :9088 (ctx 131072 — criterio canonico R84-EXEC01)",
+      "derivado": {
+        "file": "Llama-3.2-1B-Instruct-IQ4_XS.gguf",
+        "slug": "llama-3.2-1b",
+        "category": "contrato-plano",
+        "papel": "proposer",
+        "ctx_ativo_efetivo": 131072,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "Raciocinio 1B limitado; GBNF-conformidade NAO testada (GAP); juiz nao testado",
+        "capacidades": "Proposer 131K; CPU 25.3; PT direto",
+        "possibilidades": "Relay com GBNF (GAP aberto)"
+      }
+    },
+    {
+      "model_id": "LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M",
+      "slot_port": 9086,
+      "device": "CPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "lfm2",
+        "layers": 16,
+        "embedding_length": 2048,
+        "attn_heads": 32,
+        "kv_heads": 8,
+        "contexto_nativo": 128000,
+        "rope_freq_base": 1000000.0,
+        "feed_forward_length": 8192,
+        "arch_detail": "lfm2 hibrida ToMoE"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "Q4_K_M",
+        "pesos_gb": 0.73,
+        "pesos_bytes": 730898432,
+        "ctx_ativo": 128000,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 3.8,
+        "kv_total_gb_at_ctx": 0.49,
+        "tps_decode_empirical": 26.7,
+        "tps_decode_nota": "CPU 26.7/22.8 (12x abaixo dos 317 GPU); GBNF-relay 2/2 CONFORME 05/09",
+        "temp": 0.05,
+        "ngl": 0,
+        "threads": "auto",
+        "flash_attn": false,
+        "mtp": "N/A",
+        "device": "CPU",
+        "nota": "RESTAURADO 05/09 pos-refutacao R88 (reverte SUBST-Gemma sem lastro)"
+      },
+      "vocacao_grafo": "reflexo/relay :9086 CPU — GBNF-conforme 2/2",
+      "derivado": {
+        "file": "LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M.gguf",
+        "slug": "lfm2.5-1.2b-thinking-tomoe",
+        "category": "reflexo",
+        "papel": "reflexo R42 degradado / relay",
+        "ctx_ativo_efetivo": 128000,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "Loops R42 de volume 12x mais caros no CPU; JSON livre nao testado",
+        "capacidades": "Relay-extracao GBNF 2/2 deterministico; CPU 26.7",
+        "possibilidades": "Reflexo eventual (nao volume)"
+      }
+    },
+    {
+      "model_id": "SmolLM2-1.7B-Instruct-Q4_K_M",
+      "slot_port": 9092,
+      "device": "CPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "smollm2",
+        "embedding_length": 2048,
+        "contexto_nativo": 32768,
+        "arch_detail": "SmolLM2-1.7B Q4_K_M"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "Q4_K_M",
+        "pesos_gb": 1.06,
+        "pesos_bytes": 1055609536,
+        "ctx_ativo": 32768,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 0.0,
+        "kv_total_gb_at_ctx": 0.0,
+        "tps_decode_empirical": 17.3,
+        "tps_decode_nota": "CPU 17.3; crivo R83 PASSOU_CATEGORICO; A/B GBNF 10/10 empata Qwen2.5-3B",
+        "temp": 0.6,
+        "ngl": 0,
+        "threads": "auto",
+        "flash_attn": false,
+        "mtp": "N/A",
+        "device": "CPU",
+        "nota": "VENCE A/B R88 05/09 (canonico PASSOU vs NAO + 1.75x t/s + metade RAM); KV a medir por delta"
+      },
+      "vocacao_grafo": "relay intermediario :9092",
+      "derivado": {
+        "file": "smollm2-1.7b-instruct-q4_k_m.gguf",
+        "slug": "smollm2-1.7b",
+        "category": "relay",
+        "papel": "relay",
+        "ctx_ativo_efetivo": 32768,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "Raciocinio 1.7B limitado; juiz nao testado",
+        "capacidades": "Crivo canonico PASSOU; GBNF 10/10; CPU 17.3; PT coerente",
+        "possibilidades": "Micro-reforcado"
+      }
+    },
+    {
+      "model_id": "Qwen1.5-MoE-A2.7B-Q3_K_M",
+      "slot_port": 9095,
+      "device": "CPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "qwen1_5_moe",
+        "layers": 24,
+        "contexto_nativo": 8192,
+        "expert_count": 60,
+        "expert_used_count": 4,
+        "arch_detail": "Qwen1.5-MoE A2.7B (14B total/2.7B ativos, 60 experts/4 ativos)"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "Q3_K_M",
+        "pesos_gb": 6.93,
+        "pesos_bytes": 7437745440,
+        "ctx_ativo": 8192,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 1.15,
+        "kv_total_gb_at_ctx": 0.01,
+        "tps_decode_empirical": 4.0,
+        "tps_decode_nota": "CPU warm; GPU impossivel (7.44GB pesos > 3.03GB folga 09/09)",
+        "temp": 0.6,
+        "ngl": 0,
+        "threads": "auto",
+        "flash_attn": false,
+        "mtp": "N/A",
+        "device": "CPU",
+        "nota": "WARM :9095; GPU bloqueada por aritmetica VRAM (pesos 6.93GB > folga 3.03GB)"
+      },
+      "vocacao_grafo": "warm :9095 (MoE legado; reserva de experimentos)",
+      "derivado": {
+        "file": "Qwen1.5-MoE-A2.7B-Q3_K_M.gguf",
+        "slug": "qwen1.5-moe-a2.7b",
+        "category": "warm",
+        "papel": "warm",
+        "ctx_ativo_efetivo": 8192,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "legado 2024, ctx 8K, Q3_K_M",
+        "capacidades": "MoE barato p/ experimentos warm",
+        "possibilidades": "GPU se VRAM liberar ~8GB"
       }
     }
   ],

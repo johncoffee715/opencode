@@ -9,7 +9,11 @@
       },
       "sentimento": {
         "type": "string",
-        "enum": ["positivo", "negativo", "neutro"]
+        "enum": [
+          "positivo",
+          "negativo",
+          "neutro"
+        ]
       },
       "prova": {
         "type": "string",
@@ -20,8 +24,14 @@
         "maxLength": 8
       }
     },
-    "required": ["text", "sentimento", "prova", "checksum"],
-    "minProperties": 4
+    "required": [
+      "text",
+      "sentimento",
+      "prova",
+      "checksum"
+    ],
+    "minProperties": 4,
+    "additionalProperties": false
   },
   "deny": {
     "type": "object",

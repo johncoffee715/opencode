@@ -1,0 +1,13 @@
+body {
+    background-image: var(--fundo-aleatorio-atual, none);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Deixa as camadas visuais transparentes para exibir o fundo */
+.app-container, .workspace, .workspace-split, .workspace-tabs,
+.workspace-tab-container, .view-content, .markdown-source-view {
+    background-color: transparent !important;
+}

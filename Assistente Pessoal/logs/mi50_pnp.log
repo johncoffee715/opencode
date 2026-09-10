@@ -1,0 +1,39 @@
+[2026-07-12 18:55:51] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-12 18:55:51] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260712_185551.bin
+[2026-07-12 18:55:51] nenhuma ocorrência útil encontrada.
+[2026-07-12 18:55:51] use --force OU crie parser real da pp_table.
+[2026-07-12 20:35:39] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-12 20:35:39] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260712_203539.bin
+[2026-07-12 20:35:39] nenhuma ocorrência útil encontrada.
+[2026-07-12 20:35:39] use --force OU crie parser real da pp_table.
+[2026-07-13 08:31:04] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-13 08:31:04] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260713_083104.bin
+[2026-07-13 08:31:04] nenhuma ocorrência útil encontrada.
+[2026-07-13 08:31:04] use --force OU crie parser real da pp_table.
+[2026-07-13 09:14:10] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-13 09:14:11] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260713_091410.bin
+[2026-07-13 09:14:11] nenhuma ocorrência útil encontrada.
+[2026-07-13 09:14:11] use --force OU crie parser real da pp_table.
+[2026-07-13 14:49:53] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-13 14:49:53] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260713_144953.bin
+[2026-07-13 14:49:53] nenhuma ocorrência útil encontrada.
+[2026-07-13 14:49:53] use --force OU crie parser real da pp_table.
+[2026-07-13 16:02:45] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-13 16:02:45] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260713_160245.bin
+[2026-07-13 16:02:45] nenhuma ocorrência útil encontrada.
+[2026-07-13 16:02:45] use --force OU crie parser real da pp_table.
+[2026-07-13 16:08:33] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-13 16:08:33] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260713_160833.bin
+[2026-07-13 16:08:33] patch persistente salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/patched/mi50_350w_tdc300a.bin
+[2026-07-13 16:08:34] patch aplicado runtime.
+[2026-07-13 16:08:34] OK power=350W tdc=300A mode=heuristic replacements=6
+[2026-07-14 04:01:46] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-14 04:01:46] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260714_040146.bin
+[2026-07-14 04:01:46] reutilizando patch persistente: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/patched/mi50_350w_tdc300a.bin
+[2026-07-14 04:01:46] patch aplicado runtime.
+[2026-07-14 04:01:46] OK power=350W tdc=300A mode=persistent replacements=-1
+[2026-07-14 04:04:45] pp_table detectada: /sys/bus/pci/devices/0000:05:00.0/drm/card1/device/pp_table
+[2026-07-14 04:04:45] backup salvo: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/backups/pp_table_20260714_040445.bin
+[2026-07-14 04:04:45] reutilizando patch persistente: /mnt/dados/Assistente Pessoal/gpu-fw/mi50/patched/mi50_350w_tdc300a.bin
+[2026-07-14 04:04:45] patch aplicado runtime.
+[2026-07-14 04:04:45] OK power=350W tdc=300A mode=persistent replacements=-1

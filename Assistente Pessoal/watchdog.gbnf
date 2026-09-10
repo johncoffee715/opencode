@@ -1,0 +1,82 @@
+watchdog_config = {
+    "watchdog": {
+        "enabled": bool,
+        "check_interval_seconds": int >= 30,
+        "log_file": str,
+        "pid_file": str
+    },
+    "disk_monitoring": {
+        "warning_threshold_percent": int 0-100,
+        "critical_threshold_percent": int 0-100,
+        "emergency_threshold_percent": int 0-100,
+        "mount_points": [str],
+        "min_free_gb": float >= 1
+    },
+    "snapshot_policies": {
+        "max_snapshots_per_dir": int >= 1,
+        "max_snapshot_age_days": int >= 1,
+        "snapshot_dirs": [str],
+        "cleanup_on_violation": bool,
+        "preserve_newest": bool
+    },
+    "database_policies": {
+        "max_sqlite_size_mb": int >= 1,
+        "vacuum_threshold_mb": int >= 1,
+        "wal_cleanup_days": int >= 0,
+        "db_paths": [str]
+    },
+    "cache_policies": {
+        "max_cache_age_days": int >= 1,
+        "cache_dirs": [str],
+        "cleanup_on_critical": bool
+    },
+    "git_policies": {
+        "auto_gc_days": int >= 1,
+        "git_dirs": [str],
+        "gc_aggressive": bool,
+        "prune_now": bool
+    },
+    "alerts": {
+        "enabled": bool,
+        "methods": ["log", "file", "email", "webhook"],
+        "alert_file": str,
+        "notify_on": [str]
+    },
+    "actions": {
+        "auto_cleanup": bool,
+        "require_confirmation": bool,
+        "dry_run": bool
+    }
+}
+
+disk_usage = {
+    "path": str,
+    "total_gb": float,
+    "used_gb": float,
+    "free_gb": float,
+    "percent": float 0-100
+}
+
+alert = {
+    "timestamp": str ISO8601,
+    "level": "WARNING" | "CRITICAL" | "EMERGENCY" | "SNAPSHOT_REMOVED" | "LARGE_FILE",
+    "message": str,
+    "disk_info": disk_usage
+}
+
+snapshot = {
+    "id": str,
+    "path": str,
+    "size_bytes": int,
+    "created_at": str,
+    "modified_at": str
+}
+
+cleanup_result = {
+    "timestamp": str,
+    "action": str,
+    "path": str,
+    "size_freed": int,
+    "success": bool,
+    "error": str?
+}

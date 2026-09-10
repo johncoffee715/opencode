@@ -1,7 +1,7 @@
 ---
 description: "HEMISFÉRIO ESQUERDO — EXECUTOR F4 (ferro). Executa tasks de código com TDD, commits atômicos e evidência fresca (R29). Roteado ao role:proposer (:9088) — executor contexto-longo, RULER 67/55, BFCL 52.41 (R71). Use para QUALQUER task de implementação, code-gen, debug, refactor, testes — Fase 4 do pipeline, e para tasks 'general' do runtime."
 mode: subagent
-model: local-executor/proposer
+model: local-forge/proposer
 temperature: 0.3
 tools:
   write: true

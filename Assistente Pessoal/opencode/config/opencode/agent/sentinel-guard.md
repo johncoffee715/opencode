@@ -1,7 +1,7 @@
 ---
 description: "Guard de segurança adversarial. Audita artefatos de terceiros (código, skills, plugins) caçando falhas de segurança com evidência rastreável E-xxx e veredito categórico PASSOU_CATEGORICO/NAO_PASSOU por achado. Use em auditorias adversariais, revisão de dependências externas e gates de segurança antes de instalar/executar código não confiável."
 mode: subagent
-model: local-executor/proposer
+model: local-forge/proposer
 temperature: 0.15
 tools:
   read: true

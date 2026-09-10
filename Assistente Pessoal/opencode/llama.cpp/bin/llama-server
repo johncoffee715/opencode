@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# llama-server wrapper — seta LD_LIBRARY_PATH para as libs da árvore portátil
+BIN_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+export LD_LIBRARY_PATH="$BIN_DIR:${LD_LIBRARY_PATH:-}"
+exec "$BIN_DIR/llama-server.real" "$@"

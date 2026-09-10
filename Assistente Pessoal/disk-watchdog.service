@@ -1,0 +1,17 @@
+[Unit]
+Description=Disk Watchdog Monitor - Automatic Disk Space Management
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 "/mnt/dados/Assistente Pessoal/disk-watchdog.py"
+Restart=always
+RestartSec=60
+User=johncoffee
+WorkingDirectory=/mnt/dados/Assistente Pessoal
+StandardOutput=append:/tmp/disk-watchdog.log
+StandardError=append:/tmp/disk-watchdog.log
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

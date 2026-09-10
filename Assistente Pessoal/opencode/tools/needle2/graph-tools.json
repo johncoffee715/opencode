@@ -1,0 +1,24 @@
+[
+  {
+    "name": "triage_route",
+    "description": "Classify the user request and route it to the correct phase of the orchestration graph",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "phase": {"type":"string","enum":["direct","f1-discovery","f4-execution","escalate-cloud"],"description":"direct=simple local command; f1-discovery=needs brainstorm/planning; f4-execution=coding task with clear scope; escalate-cloud=too complex for local models"},
+        "reason": {"type":"string","description":"short justification"}
+      },
+      "required":["phase"]
+    }
+  },
+  {
+    "name": "run_shell",
+    "description": "Execute a bash command locally to inspect state or run tests",
+    "parameters": {"type":"object","properties":{"command":{"type":"string","description":"full bash command including arguments and file paths"}},"required":["command"]}
+  },
+  {
+    "name": "delegate_task",
+    "description": "Spawn a fresh subagent for a bounded coding task",
+    "parameters": {"type":"object","properties":{"agent":{"type":"string","enum":["explore","build","debugger","librarian","code-reviewer"],"description":"subagent type"},"task":{"type":"string","description":"precise task description with file paths"}},"required":["agent","task"]}
+  }
+]

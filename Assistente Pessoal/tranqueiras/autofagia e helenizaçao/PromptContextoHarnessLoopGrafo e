@@ -1,3 +1,4 @@
+sem nenhuma intervençao do user e totalmente procedural,
 Use features compativeis, MIX, DEV LOOP, HEFESTO, A2A, SWARM, no path
 /mnt/dados/Assistente Pessoal/projetos/doom/ e crie um clone do jogo
 doom64 usando tree.js/css/java script/html5/playwright/ aqui vao algumas
@@ -14,7 +15,6 @@ jogavel, use assets leves pra que rode sem travar no navegador,
 use as skills de design disponiveis e se necessario vasculhe a
 internet para apoio tecnico conforme oferta e demanda do projeto.
 
-
 o que e saas, crm, landpage,
 
 
@@ -24,11 +24,8 @@ SSE (Server-Sent Events) ou Chunked Transfer Encoding para entregar essa funcion
 
 
 
+epych13, h12d-8d, outras opcoes de motherboard sp3 epyc
 
-https://www.youtube.com/watch?v=wR_cLfRLBDs
-
-
-usar o obsidian como rag
 
 
 
@@ -227,3 +224,130 @@ Cada formato atua em uma camada de defesa diferente e como eles se complementam:
                   ▼                          │                     │
              update state                    ▼                     ▼
                                       CIRCUIT BREAKER          FALLBACK
+
+
+
+
+
+
+
+
+
+
+
+vamos iniciar possiveis substituiçoes guiadas por suas refutaçoes especulativas:
+Substituição do Llama-1B :
+| Substituição      | Parâmetros | VRAM (Q4) | Contexto | Por quê                                                     |
+| ----------------- | ---------- | --------- | -------- | ----------------------------------------------------------- |
+| **Qwen 2.5 1.5B** | 1.5B       | ~1G       | 32K      | Melhor qualidade que Llama-1B, menor footprint de KV cache  |
+| **Gemma 3 1B**    | 1B         | ~0.7G     | 32K      | Ainda mais leve, ideal para edge/IoT                        |
+| **Llama 3.2 1B**  | 1B         | ~0.7G     | 128K     | Mesmo tamanho, contexto 128K (4x maior)                     |
+
+
+Substituição do Llama-3B + Smol-1.7B:
+| Substituição     | Parâmetros | VRAM (Q4) | Contexto | Destaque                                                    |
+| ---------------- | ---------- | --------- | -------- | ----------------------------------------------------------- |
+| **Qwen 2.5 3B**  | 3B         | ~2G       | 128K     | Lidera em código no bucket sub-4B; 128K contexto            |
+| **Phi-3.5 Mini** | 3.8B       | ~2.5G     | 128K     | Melhor raciocínio geral e matemática do grupo               |
+| **Gemma 3 4B**   | 4B         | ~2.5G     | 128K     | Multimodal, melhor sub-5B com visão                         |
+| **Qwen 2.5 7B**  | 7B         | ~4.5G     | 128K     | Se quiser subir de nível: melhor 7B do mercado, Apache 2.0  |
+
+Substituição do Smol-360M:
+| Substituição      | Parâmetros | VRAM (Q4) | Contexto | Por quê                            |
+| ----------------- | ---------- | --------- | -------- | ---------------------------------- |
+| **Qwen 2.5 0.5B ou Qwen3-0.6B** | 0.5B       | ~0.4G     | 32K      | Qualidade superior, mesmo tamanho  |
+
+Substituição do Qwen3.6-35B → Qwen2.5-32B ou Qwen3-32B
+
+
+lista de LLM disponiveis para testes:
+
+| Modelo       | Ativos | Total | Publisher | Licença    | Contexto | Destaque                                                     |
+| ------------ | ------ | ----- | --------- | ---------- | -------- | ------------------------------------------------------------ |
+| **ZAYA1-8B** | 760M   | 8.4B  | ZAYA      | Apache 2.0 | 128K     | Hybrid Mamba + CCA + MoD + EDA. Apenas 9% ativos. On-device. |
+
+| Modelo                  | Ativos | Total | Publisher   | Licença       | Contexto  | Destaque                                                                  |
+| ----------------------- | ------ | ----- | ----------- | ------------- | --------- | ------------------------------------------------------------------------- |
+| **Mellum 2 12B-A2.5B**  | 2.5B   | 12B   | JetBrains   | Apache 2.0    | —         | Code MoE. 64 experts top-8, RLVR, 6 checkpoints publicados. LCB v6: 69.9% |
+| **Qwen3.5-35B-A3B**     | 3B     | 35B   | Alibaba     | Apache 2.0    | 128K      | Sweet spot local. RTX 4090 friendly. ~120 tok/s @ Q4                      |
+| **GLM-4.7-Flash**       | 3B     | 30B   | Zhipu AI    | MIT           | 200K      | MLA MoE. SWE-bench 59.2, AIME25 91.6, GPQA 75.2                           |
+| **Kimi-Linear-48B-A3B** | 3B     | 48B   | Moonshot AI | MIT           | 1M        | MoE híbrido: 3 camadas KDA (linear) + 1 MLA global. 5.7T tokens           |
+| **Nemotron 3 Nano**     | 3.5B   | 30B   | NVIDIA      | Nemotron OML  | 1M        | Mamba/MoE híbrido. RULER 86.3% @ 1M contexto                              |
+| **GPT-OSS-20B**         | 3.6B   | 21B   | OpenAI      | Apache 2.0    | 128K      | AIME 96%, cabe em 16GB. Modelo de raciocínio                              |
+| **Gemma 4 26B-A4B**     | 4B     | 26B   | Google      | Gemma License | 128K-256K | Multimodal nativo. ~16GB em Q4. Sem encoder separado                      |
+
+| Modelo                | Ativos | Total | Publisher | Licença      | Contexto  | Destaque                                                     |
+| --------------------- | ------ | ----- | --------- | ------------ | --------- | ------------------------------------------------------------ |
+| **GPT-OSS-120B**      | 5.1B   | 117B  | OpenAI    | Apache 2.0   | 128K      | GPQA 80.9, Codeforces 2622, AIME 96.6%                       |
+| **Mistral Small 4**   | 6B     | 119B  | Mistral   | Apache 2.0   | 256K      | Unified instruct/reasoning/coding. MTP embutido              |
+| **MiniMax M2.7**      | 10B    | 230B  | MiniMax   | MIT          | ~200K     | 256 experts, 8 ativos (4.3% ratio). Agentic workflows        |
+| **Qwen3.5-122B-A10B** | 10B    | 122B  | Alibaba   | Apache 2.0   | 256K      | 201 idiomas, multimodal. Bate GPT-5-mini                     |
+| **Step-3.5-Flash**    | 11B    | 196B  | StepFun   | Apache 2.0   | 262K      | SWE-bench 74.4%, 350 tok/s. MTP-3 ativo                      |
+| **Jamba 1.6 Mini**    | 12B    | 52B   | AI21 Labs | Jamba OML    | 256K      | Mamba + Transformer + MoE. 2.5x velocidade                   |
+| **Nemotron 3 Super**  | 12B    | 120B  | NVIDIA    | Nemotron OML | 1M        | Hybrid reasoning. AIME 2025, Terminal Bench                  |
+| **GLM-4.5-Air**       | 12B    | 106B  | Zhipu AI  | MIT          | 128K      | MATH-500 98.1%, MMLU-Pro 81.4                                |
+| **DeepSeek-V4-Flash** | 13B    | 284B  | DeepSeek  | MIT          | 1M native | Hybrid CSA+HCA. 27% FLOPs vs V3.2                            |
+| **Mixtral 8x7B**      | ~13B   | ~26B  | Mistral   | Apache 2.0   | 32K       | **Pioneiro** do sparse MoE open-source. 8 experts, 2 ativos  |
+
+| Modelo                | Ativos | Total | Publisher | Licença       | Contexto | Destaque                                                  |
+| --------------------- | ------ | ----- | --------- | ------------- | -------- | --------------------------------------------------------- |
+| **Llama 4 Scout**     | 17B    | 109B  | Meta      | Llama License | 128K-10M | Coding, reasoning. Multimodal nativo                      |
+| **Llama 4 Maverick**  | 17B    | 400B  | Meta      | Llama License | 1M       | Melhor MoE da Meta. 128 routed + 1 shared expert          |
+| **Qwen3.5-397B-A17B** | 17B    | 397B  | Alibaba   | Apache 2.0    | 128K+    | Flagship. 512 experts, 10 ativos. Configurable reasoning  |
+| **DeepSeek-Coder-V2** | 21B    | 236B  | DeepSeek  | MIT           | 128K     | Especialista código + matemática                          |
+| **Qwen3-235B-A22B**   | 22B    | 235B  | Alibaba   | Apache 2.0    | 256K     | Thinking mode. 256K contexto nativo                       |
+| **Qwen3-Coder-480B**  | 35B    | 480B  | Alibaba   | Apache 2.0    | 256K-1M  | Agentic coding. Repo-scale. Maior MoE código open-source  |
+
+| Modelo                         | Base                 | Tipo         | Destaque                                                                          |
+| ------------------------------ | -------------------- | ------------ | --------------------------------------------------------------------------------- |
+| **WizardLM 2**                 | Mixtral 8x22B        | SFT + RLHF   | Um dos primeiros fine-tunes MoE de alta qualidade. Melhorou instruções complexas  |
+| **Nous-Hermes 2 Mixtral 8x7B** | Mixtral 8x7B         | SFT          | Foco em creative writing e roleplay                                               |
+| **OpenHermes 2.5 Mixtral**     | Mixtral 8x7B         | SFT          | Dataset 1M+ instruções. Excelente chat geral                                      |
+| **Dolphin Mixtral**            | Mixtral 8x7B / 8x22B | SFT          | Uncensored. Popular para pesquisa sem filtros                                     |
+| **NousCoder-14B**              | Qwen3-14B            | Pure RL      | Fine-tune puro-RL (+7.08 pts LCB v6, sem SFT)                                     |
+| **OmniCoder-9B**               | Qwen3.5-9B           | LoRA agentic | +61% relativo Terminal-Bench vs base                                              |
+
+| Modelo Oficial    | Quants Populares        | Autores                      |
+| ----------------- | ----------------------- | ---------------------------- |
+| Qwen3.5-35B-A3B   | Q4\_K\_M, Q5\_K\_M, FP8 | Unsloth, bartowski, TheBloke |
+| Qwen3.5-122B-A10B | Q4\_K\_M                | Comunidade HF (~70GB Q4)     |
+| Gemma 4 26B-A4B   | QAT, Dynamic Q4         | Unsloth, Google QAT          |
+| Mistral Small 4   | Q4\_K\_M                | Comunidade (~64-72GB Q4)     |
+| GPT-OSS-20B/120B  | Q4, Q5                  | Unsloth, OpenAI oficial      |
+
+| VRAM          | Modelos Recomendados                | Ativos    | Est. Tokens/s (RTX 4090) |
+| ------------- | ----------------------------------- | --------- | ------------------------ |
+| **8-12 GB**   | ZAYA1-8B, GPT-OSS-20B               | 760M-3.6B | 80-120                   |
+| **16-20 GB**  | Gemma 4 26B-A4B, Qwen3.5-35B-A3B    | 3-4B      | 60-100                   |
+| **24 GB**     | Qwen3.5-35B-A3B, Mixtral 8x7B       | 3-13B     | 40-80                    |
+| **48-64 GB**  | Mistral Small 4, Qwen3.5-122B-A10B  | 6-10B     | 30-50                    |
+| **64-80 GB**  | Nemotron 3 Super, Step-3.5-Flash    | 11-12B    | 20-40                    |
+| **96-128 GB** | DeepSeek-V4-Flash, Llama 4 Maverick | 13-17B    | 15-30                    |
+
+
+
+
+JetBrains Mellum2 (12B)
+OLMoE-1B-7B possivel cpu se for rapido
+EMO (AllenAI)
+DeepSeek-MoE-16B
+OpenMoE-8B
+L3.1-MOE-4X8B-Dark-Reasoning (25B)
+GroveMoE & Ling-lite-1.5
+Gemma-The-Writer-N-Restless-Quill-10B
+Mini-MoE-2x7B (Community Merges)
+JetMoE-8B
+Qwen1.5-MoE-A2.7B
+DeepSeek-MoE-16B
+MoE Comunitários (Mergekit)
+ZAYA1-8B
+
+
+
+
+possiveis estrategias mediante testes:
+Substituição da Camada Leve (Sub-3B): Trocar a redundância dos
+modelos densos menores por uma MoE leve como
+OLMoE-1B-7B ou JetMoE-8B para unificar chamadas rápidas.
+
+Fusão Local (Mergekit MoE): Explorar a montagem de um MoE customizado unificando os pesos dos modelos menores que você já utiliza.(nao conheço)

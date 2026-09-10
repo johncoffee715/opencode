@@ -1,0 +1,69 @@
+{
+  "watchdog": {
+    "enabled": true,
+    "check_interval_seconds": 300,
+    "log_file": "/var/log/disk-watchdog.log",
+    "pid_file": "/tmp/disk-watchdog.pid"
+  },
+  "disk_monitoring": {
+    "warning_threshold_percent": 75,
+    "critical_threshold_percent": 85,
+    "emergency_threshold_percent": 95,
+    "mount_points": [
+      "/mnt/dados"
+    ]
+  },
+  "snapshot_policies": {
+    "max_snapshots_per_dir": 2,
+    "max_snapshot_age_days": 7,
+    "snapshot_dirs": [
+      "/mnt/dados/Assistente Pessoal/opencode/data/opencode/snapshot"
+    ],
+    "cleanup_on_violation": true,
+    "preserve_newest": true
+  },
+  "database_policies": {
+    "max_sqlite_size_mb": 1024,
+    "vacuum_threshold_mb": 512,
+    "wal_cleanup_days": 1,
+    "db_paths": [
+      "/mnt/dados/Assistente Pessoal/opencode/data/opencode/opencode.db"
+    ]
+  },
+  "cache_policies": {
+    "max_cache_age_days": 7,
+    "cache_dirs": [
+      "/mnt/dados/Assistente Pessoal/opencode/cache"
+    ],
+    "cleanup_on_critical": true
+  },
+  "git_policies": {
+    "auto_gc_days": 7,
+    "git_dirs": [
+      "/mnt/dados"
+    ],
+    "gc_aggressive": false,
+    "prune_now": true,
+    "enabled": false
+  },
+  "alerts": {
+    "enabled": true,
+    "methods": [
+      "log",
+      "file"
+    ],
+    "alert_file": "/tmp/disk-alerts.json",
+    "notify_on": [
+      "warning",
+      "critical",
+      "emergency",
+      "cleanup_performed",
+      "snapshot_removed"
+    ]
+  },
+  "actions": {
+    "auto_cleanup": true,
+    "require_confirmation": false,
+    "dry_run": false
+  }
+}

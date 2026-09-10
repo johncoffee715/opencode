@@ -1,0 +1,17 @@
+[
+  {
+    "name": "run_shell_command",
+    "description": "Execute a bash command on the host to inspect files or run tests",
+    "parameters": {"type":"object","properties":{"command":{"type":"string","description":"the bash command to run"}},"required":["command"]}
+  },
+  {
+    "name": "read_file",
+    "description": "Read a file from disk given its relative path",
+    "parameters": {"type":"object","properties":{"path":{"type":"string","description":"file path"}},"required":["path"]}
+  },
+  {
+    "name": "route_to_subagent",
+    "description": "Delegate the task to a specialized subagent of the orchestration graph",
+    "parameters": {"type":"object","properties":{"agent":{"type":"string","enum":["explore","build","debugger","librarian","code-reviewer"],"description":"target subagent"},"task":{"type":"string","description":"what must be done"}},"required":["agent","task"]}
+  }
+]

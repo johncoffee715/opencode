@@ -1,0 +1,9 @@
+[    1129ms] ReferenceError: BABYLON is not defined
+    at http://localhost:5173/src/main.ts:9:16
+[   72293ms] [LOG] BJS - [23:40:32]: Babylon.js v9.22.2 - WebGL2 @ http://localhost:5173/node_modules/.vite/deps/chunk-J4DZ2XK7.js?v=f5de0ad8:44
+[   72469ms] TypeError: stateManager.isPlaying is not a function
+    at http://localhost:5173/src/main-loop.ts:15:24
+    at _Engine._renderFrame (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3170:7)
+    at _Engine._processFrame (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3153:16)
+    at _Engine._renderLoop (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3161:10)
+    at _boundRenderFunction (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3668:53)

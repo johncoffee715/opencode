@@ -74,6 +74,7 @@ def chamar_slot(papel: str, messages: list, grammar: str | None = None) -> dict:
         "messages": messages,
         "temperature": cfg["temp"],
         "max_tokens": cfg["max_tokens"],
+        "cache_prompt": True,
     }
     if grammar:
         payload["grammar"] = grammar

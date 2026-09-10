@@ -1,0 +1,12 @@
+[     381ms] [LOG] BJS - [23:41:59]: Babylon.js v9.22.2 - WebGL2 @ http://localhost:5173/node_modules/.vite/deps/chunk-J4DZ2XK7.js?v=f5de0ad8:44
+[     792ms] TypeError: walls is not iterable
+    at resolveCapsuleWall (http://localhost:5173/src/world/Collision.ts:8:19)
+    at Player.update (http://localhost:5173/src/player/Player.ts:20:22)
+    at Object.update (http://localhost:5173/src/main.ts:59:12)
+    at http://localhost:5173/src/main-loop.ts:16:22
+    at _Engine._renderFrame (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3170:7)
+    at _Engine._processFrame (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3153:16)
+    at _Engine._renderLoop (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3161:10)
+    at _boundRenderFunction (http://localhost:5173/node_modules/.vite/deps/chunk-HHYKT5FN.js?v=f5de0ad8:3668:53)
+[  172517ms] [LOG] BJS - [23:44:51]: Babylon.js v9.22.2 - WebGL2 @ http://localhost:5173/node_modules/.vite/deps/chunk-J4DZ2XK7.js?v=f5de0ad8:44
+[  229952ms] [LOG] BJS - [23:45:48]: Babylon.js v9.22.2 - WebGL2 @ http://localhost:5173/node_modules/.vite/deps/chunk-J4DZ2XK7.js?v=f5de0ad8:44

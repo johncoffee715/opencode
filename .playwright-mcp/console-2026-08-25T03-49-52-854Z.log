@@ -1,0 +1,3 @@
+[    1800ms] ReferenceError: BABYLON is not defined
+    at http://localhost:5173/src/enemies/BaseEnemy.ts:4:15
+[  166599ms] [LOG] BJS - [00:52:39]: Babylon.js v9.22.2 - WebGL2 @ http://localhost:5173/node_modules/.vite/deps/chunk-J4DZ2XK7.js?v=f5de0ad8:44

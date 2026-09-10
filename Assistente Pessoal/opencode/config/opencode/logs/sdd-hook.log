@@ -1,0 +1,9 @@
+[2026-08-28T12:21:03.993240] [sdd-talamus-filter] Stdin: 74 chars | Action: pass | Reason: normal_input
+[2026-08-28T12:24:02.685120] [sdd-talamus-filter] Cortex indisponível: timed out
+[2026-08-28T12:24:02.686167] [sdd-talamus-filter] intent=RAW_LOGS action=CORTEX_DOWN_FAILOPEN tokens=4 cortex=DOWN
+[2026-08-28T12:24:57.562238] [sdd-talamus-filter] Cortex indisponível: timed out
+[2026-08-28T12:24:57.563233] [sdd-talamus-filter] intent=RAW_LOGS action=CORTEX_DOWN_FAILOPEN tokens=4 cortex=DOWN
+[2026-08-28T12:26:08.868973] [sdd-talamus-filter] Cortex indisponível: timed out
+[2026-08-28T12:26:08.869928] [sdd-talamus-filter] intent=RAW_LOGS action=CORTEX_DOWN_FAILOPEN tokens=4 cortex=DOWN
+[2026-08-28T12:27:39.886162] [sdd-talamus-filter] intent=RAW_LOGS action=CORTEX_DISTILLED tokens=4 cortex=UP
+[2026-08-28T14:51:04.692518] [sdd-talamus-filter] intent=RAG_DOCUMENTS action=CORTEX_DISTILLED tokens=4 cortex=UP

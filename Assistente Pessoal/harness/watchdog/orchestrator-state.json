@@ -1,7 +1,7 @@
 {
  "status": "up",
- "modelo": "Qwen3.6-35B-A3B-UD-IQ3_XXS",
+ "modelo": "Qwen3.5-35B-A3B-UD-IQ3_XXS",
  "ctx": 262144,
- "model_path": "/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf",
- "ts": "2026-09-04T04:03:00.326163+00:00"
+ "model_path": "/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.5-35B-A3B-UD-IQ3_XXS.gguf",
+ "ts": "2026-09-10T10:29:46.631859+00:00"
 }

@@ -10,7 +10,7 @@ ROOT="/mnt/dados/Assistente Pessoal/opencode"
 is_stack_up() {
   # Toggle = ALL: verifica LLMs reais (health do start-stack.sh: 8083 9084 9086 9088 9090)
   # 9093/9095 não têm launch definido; needle (8097/9091) é pgrep, não /health
-  local ports=(8083 9084 9086 9088 9090 9092 9093)
+  local ports=(8083 9084 9086 9088 9090 9092 9093 9095)
   local ok=0
   for p in "${ports[@]}"; do
     if curl -sf -m 2 "http://127.0.0.1:$p/health" >/dev/null 2>&1; then

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VSCode Portable
+Comment=Visual Studio Code — instalação portátil (árvore /mnt/dados)
+GenericName=Text Editor
+Exec="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/vscode" --user-data-dir="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/data" --extensions-dir="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/extensions" %F
+Icon=/mnt/dados/Assistente Pessoal/opencode/data/pixmaps/vscode-portable.png
+Path=/mnt/dados/Assistente Pessoal/programas de apoio/vscode
+Terminal=false
+StartupNotify=true
+StartupWMClass=code
+Categories=Development;IDE;TextEditor;
+MimeType=text/plain;text/x-chdr;text/x-csrc;text/x-c++src;text/x-c++hdr;text/x-c++hpp;text/x-java;text/x-python;application/json;text/x-markdown;
+Keywords=vscode;editor;ide;código;
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=Nova Janela
+Exec="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/vscode" --new-window --user-data-dir="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/data" --extensions-dir="/mnt/dados/Assistente Pessoal/programas de apoio/vscode/extensions"
+Icon=/mnt/dados/Assistente Pessoal/opencode/data/pixmaps/vscode-portable.png

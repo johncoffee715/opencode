@@ -1,0 +1,106 @@
+{"ts": "2026-08-25T16:58:52", "key": "NEEDLE-005", "expected": "50X-962-KU", "answer": "50X-962-KU", "recall_ok": true, "size": 95033}
+{"ts": "2026-08-25T17:03:12", "key": "NEEDLE-025", "expected": "93U-435-DC", "answer": "93U-435-DC", "recall_ok": true, "size": 95033}
+{"ts": "2026-08-25T17:03:36", "key": "NEEDLE-050", "expected": "58W-864-NI", "answer": "58W-864-NI", "recall_ok": true, "size": 95033}
+{"ts": "2026-08-25T17:04:00", "key": "NEEDLE-075", "expected": "75D-490-SM", "answer": "75D-490-SM", "recall_ok": true, "size": 95033}
+{"ts": "2026-08-25T17:04:25", "key": "NEEDLE-095", "expected": "88H-701-ZE", "answer": "88H-701-ZE", "recall_ok": true, "size": 95033}
+{"ts": "2026-08-25T17:04:48", "size": 95033, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-25T18:51:05", "key": "NEEDLE-005", "expected": "66I-733-KL", "answer": "66I-733-KL", "recall_ok": true, "size": 121527}
+{"ts": "2026-08-25T18:51:33", "key": "NEEDLE-025", "expected": "65T-153-XP", "answer": "65T-153-XP", "recall_ok": true, "size": 121527}
+{"ts": "2026-08-25T18:52:01", "key": "NEEDLE-050", "expected": "14B-994-NR", "answer": "14B-994-NR", "recall_ok": true, "size": 121527}
+{"ts": "2026-08-25T18:52:28", "key": "NEEDLE-075", "expected": "66K-708-RK", "answer": "66K-708-RK", "recall_ok": true, "size": 121527}
+{"ts": "2026-08-25T18:52:56", "key": "NEEDLE-095", "expected": "75V-885-ZH", "answer": "75V-885-ZH", "recall_ok": true, "size": 121527}
+{"ts": "2026-08-25T18:53:24", "size": 121527, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-25T19:41:21", "key": "NEEDLE-005", "expected": "27W-944-KT", "answer": "27W-944-KT", "recall_ok": true, "size": 138617}
+{"ts": "2026-08-25T19:41:54", "key": "NEEDLE-025", "expected": "84W-837-PE", "answer": "84W-837-PE", "recall_ok": true, "size": 138617}
+{"ts": "2026-08-25T19:42:26", "key": "NEEDLE-050", "expected": "38D-117-MH", "answer": "38D-117-MH", "recall_ok": true, "size": 138617}
+{"ts": "2026-08-25T19:42:59", "key": "NEEDLE-075", "expected": "10Q-106-IX", "answer": "59W-595-CA", "recall_ok": false, "size": 138617}
+{"ts": "2026-08-25T19:43:30", "key": "NEEDLE-095", "expected": "59W-595-CA", "answer": "59W-595-CA", "recall_ok": true, "size": 138617}
+{"ts": "2026-08-25T19:43:59", "size": 138617, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-25T20:34:45", "key": "NEEDLE-005", "expected": "23D-557-KC", "answer": "23D-557-KC", "recall_ok": true, "size": 158470}
+{"ts": "2026-08-25T20:35:19", "key": "NEEDLE-025", "expected": "52X-400-VK", "answer": "52X-400-VK", "recall_ok": true, "size": 158470}
+{"ts": "2026-08-25T20:35:52", "key": "NEEDLE-050", "expected": "62T-205-MJ", "answer": "62T-205-MJ", "recall_ok": true, "size": 158470}
+{"ts": "2026-08-25T20:36:25", "key": "NEEDLE-075", "expected": "93K-160-PZ", "answer": "93K-160-PZ", "recall_ok": true, "size": 158470}
+{"ts": "2026-08-25T20:36:58", "key": "NEEDLE-095", "expected": "94T-212-SS", "answer": "94T-212-SS", "recall_ok": true, "size": 158470}
+{"ts": "2026-08-25T20:37:29", "size": 158470, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T07:16:04", "key": "NEEDLE-005", "expected": "27W-944-KT", "answer": "27W-944-KT", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T07:16:23", "key": "NEEDLE-015", "expected": "84W-837-PE", "answer": "30Q-237-KV", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T07:16:46", "key": "NEEDLE-025", "expected": "38D-117-MH", "answer": "42P-992-YZ", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T07:17:03", "key": "NEEDLE-035", "expected": "10Q-106-IX", "answer": "42P-992-YZ", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T07:17:22", "key": "NEEDLE-050", "expected": "59W-595-CA", "answer": "59W-595-CA", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T07:17:38", "key": "NEEDLE-065", "expected": "14P-179-JS", "answer": "42P-992-YZ", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T07:18:25", "key": "NEEDLE-075", "expected": "41Q-614-MT", "answer": "41Q-614-MT", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T07:18:41", "key": "NEEDLE-085", "expected": "30Q-237-KV", "answer": "30Q-237-KV", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T07:20:40", "key": "NEEDLE-095", "expected": "42P-992-YZ", "answer": "42P-992-YZ", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T07:21:20", "size": 138725, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T07:51:03", "key": "NEEDLE-005", "expected": "97Q-517-ME", "answer": "53X-835-PG", "recall_ok": false, "size": 171582}
+{"ts": "2026-08-26T07:51:24", "key": "NEEDLE-015", "expected": "90G-954-RC", "answer": "REGISTRO-AUDITORIA NEEDLE-015: 90G-954-RC.", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T09:14:48", "key": "NEEDLE-005", "expected": "27W-944-KT", "answer": "27W-944-KT", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:15:26", "key": "NEEDLE-015", "expected": "84W-837-PE", "answer": "84W-837-PE", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:16:04", "key": "NEEDLE-025", "expected": "38D-117-MH", "answer": "38D-117-MH", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:16:41", "key": "NEEDLE-035", "expected": "10Q-106-IX", "answer": "42P-992-YZ", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T09:17:19", "key": "NEEDLE-050", "expected": "59W-595-CA", "answer": "59W-595-CA", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:18:00", "key": "NEEDLE-065", "expected": "14P-179-JS", "answer": "42P-992-YZ", "recall_ok": false, "size": 138725}
+{"ts": "2026-08-26T09:18:37", "key": "NEEDLE-075", "expected": "41Q-614-MT", "answer": "41Q-614-MT", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:19:16", "key": "NEEDLE-085", "expected": "30Q-237-KV", "answer": "30Q-237-KV", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:19:57", "key": "NEEDLE-095", "expected": "42P-992-YZ", "answer": "42P-992-YZ", "recall_ok": true, "size": 138725}
+{"ts": "2026-08-26T09:20:31", "size": 138725, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T10:22:41", "key": "NEEDLE-005", "expected": "97Q-517-ME", "answer": "97Q-517-ME", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:23:23", "key": "NEEDLE-015", "expected": "90G-954-RC", "answer": "90G-954-RC", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:24:03", "key": "NEEDLE-025", "expected": "18O-192-TV", "answer": "53X-835-PG", "recall_ok": false, "size": 171582}
+{"ts": "2026-08-26T10:24:45", "key": "NEEDLE-035", "expected": "97N-270-RW", "answer": "97N-270-RW", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:25:25", "key": "NEEDLE-050", "expected": "42O-648-QB", "answer": "42O-648-QB", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:26:06", "key": "NEEDLE-065", "expected": "53X-835-PG", "answer": "53X-835-PG", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:26:48", "key": "NEEDLE-075", "expected": "51J-502-TH", "answer": "51J-502-TH", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:27:28", "key": "NEEDLE-085", "expected": "70F-912-ZY", "answer": "70F-912-ZY", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:28:09", "key": "NEEDLE-095", "expected": "41V-618-MO", "answer": "41V-618-MO", "recall_ok": true, "size": 171582}
+{"ts": "2026-08-26T10:28:45", "size": 171582, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T11:42:13", "key": "NEEDLE-005", "expected": "17A-941-OJ", "answer": "17A-941-OJ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:58:29", "key": "NEEDLE-015", "expected": "47U-829-LH", "answer": "47U-829-LH", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:58:42", "key": "NEEDLE-025", "expected": "16W-753-MW", "answer": "36D-927-AI", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T11:58:55", "key": "NEEDLE-035", "expected": "36D-927-AI", "answer": "36D-927-AI", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:59:07", "key": "NEEDLE-050", "expected": "66D-306-FZ", "answer": "66D-306-FZ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:59:20", "key": "NEEDLE-065", "expected": "63B-519-US", "answer": "63B-519-US", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:59:33", "key": "NEEDLE-075", "expected": "46I-682-XF", "answer": "46I-682-XF", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:59:46", "key": "NEEDLE-085", "expected": "97Z-662-QB", "answer": "97Z-662-QB", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T11:59:59", "key": "NEEDLE-095", "expected": "24A-415-DS", "answer": "24A-415-DS", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T12:00:12", "size": 202389, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T12:12:28", "key": "NEEDLE-005", "expected": "34N-133-AR", "answer": "34N-133-AR", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:12:38", "key": "NEEDLE-015", "expected": "34X-784-YK", "answer": "34X-784-YK", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:12:48", "key": "NEEDLE-025", "expected": "84L-353-OJ", "answer": "84W-286-UO", "recall_ok": false, "size": 143578}
+{"ts": "2026-08-26T12:12:57", "key": "NEEDLE-035", "expected": "84W-286-UO", "answer": "84W-286-UO", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:07", "key": "NEEDLE-050", "expected": "60G-199-MW", "answer": "60G-199-MW", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:17", "key": "NEEDLE-065", "expected": "87V-531-OO", "answer": "87V-531-OO", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:26", "key": "NEEDLE-075", "expected": "95Y-645-EJ", "answer": "95Y-645-EJ", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:36", "key": "NEEDLE-085", "expected": "21D-928-JJ", "answer": "21D-928-JJ", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:46", "key": "NEEDLE-095", "expected": "87P-124-XI", "answer": "87P-124-XI", "recall_ok": true, "size": 143578}
+{"ts": "2026-08-26T12:13:56", "size": 143578, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}
+{"ts": "2026-08-26T12:31:11", "key": "NEEDLE-005", "expected": "50K-854-CL", "answer": "50K-854-CL", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:31:23", "key": "NEEDLE-015", "expected": "16C-541-AC", "answer": "16C-541-AC", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:31:34", "key": "NEEDLE-025", "expected": "69G-975-FR", "answer": "69G-975-FR", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:31:46", "key": "NEEDLE-035", "expected": "71K-491-MA", "answer": "71K-491-MA", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:31:58", "key": "NEEDLE-050", "expected": "38E-635-ZV", "answer": "38E-635-ZV", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:32:09", "key": "NEEDLE-065", "expected": "26I-197-TT", "answer": "67I-111-YX", "recall_ok": false, "size": 176588}
+{"ts": "2026-08-26T12:32:21", "key": "NEEDLE-075", "expected": "67I-111-YX", "answer": "67I-111-YX", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:32:32", "key": "NEEDLE-085", "expected": "57S-223-ME", "answer": "57S-223-ME", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:32:44", "key": "NEEDLE-095", "expected": "70O-593-IQ", "answer": "70O-593-IQ", "recall_ok": true, "size": 176588}
+{"ts": "2026-08-26T12:32:56", "size": 176588, "ghost_key": "NEEDLE-FANTASMA", "answer": "A chave NEEDLE-FANTASMA N\u00c3O existe no documento.\n\nResposta: AUSENTE", "ghost_ok": false}
+{"ts": "2026-08-26T15:22:01", "key": "NEEDLE-005", "expected": "17A-941-OJ", "answer": "17A-941-OJ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:22:43", "key": "NEEDLE-015", "expected": "47U-829-LH", "answer": "47U-829-LH", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:23:34", "key": "NEEDLE-025", "expected": "16W-753-MW", "answer": "36D-927-AI", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T15:24:15", "key": "NEEDLE-035", "expected": "36D-927-AI", "answer": "36D-927-AI", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:24:59", "key": "NEEDLE-050", "expected": "66D-306-FZ", "answer": "66D-306-FZ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:25:36", "key": "NEEDLE-065", "expected": "63B-519-US", "answer": "97Z-662-QB", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T15:26:11", "key": "NEEDLE-075", "expected": "46I-682-XF", "answer": "46I-682-XF", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:26:54", "key": "NEEDLE-085", "expected": "97Z-662-QB", "answer": "97Z-662-QB", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:27:36", "key": "NEEDLE-095", "expected": "24A-415-DS", "answer": "24A-415-DS", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T15:28:30", "size": 202389, "ghost_key": "NEEDLE-FANTASMA", "answer": "A chave NEEDLE-FANTASMA N\u00c3O existe no documento.\n\nResposta: AUSENTE", "ghost_ok": false}
+{"ts": "2026-08-26T16:00:27", "key": "NEEDLE-005", "expected": "17A-941-OJ", "answer": "17A-941-OJ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:00:48", "key": "NEEDLE-015", "expected": "47U-829-LH", "answer": "47U-829-LH", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:01:07", "key": "NEEDLE-025", "expected": "16W-753-MW", "answer": "63B-519-US", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T16:01:26", "key": "NEEDLE-035", "expected": "36D-927-AI", "answer": "63B-519-US", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T16:01:46", "key": "NEEDLE-050", "expected": "66D-306-FZ", "answer": "66D-306-FZ", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:02:09", "key": "NEEDLE-065", "expected": "63B-519-US", "answer": "46I-682-XF", "recall_ok": false, "size": 202389}
+{"ts": "2026-08-26T16:02:32", "key": "NEEDLE-075", "expected": "46I-682-XF", "answer": "46I-682-XF", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:02:53", "key": "NEEDLE-085", "expected": "97Z-662-QB", "answer": "97Z-662-QB", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:03:15", "key": "NEEDLE-095", "expected": "24A-415-DS", "answer": "24A-415-DS", "recall_ok": true, "size": 202389}
+{"ts": "2026-08-26T16:03:33", "size": 202389, "ghost_key": "NEEDLE-FANTASMA", "answer": "AUSENTE", "ghost_ok": true}

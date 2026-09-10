@@ -12,6 +12,7 @@ Origin: helenizado: tranqueiras/autofagia e helenizaçao (hefesto_llama_bridge.p
 hefesto_automation.py, hefesto_pipeline.py) — unificado 2026-08-31.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -184,6 +185,8 @@ class ConstrainedGenerate:
         self.max_tokens = max_tokens
         self.max_retries = max_retries
         self.fallback = fallback
+        self.max_repeticoes_identicas = 2  # corta loop antes do teto (doc linha-defesa P3)
+        self._hist_hashes = []
 
     def run(self, prompt: str, context: str = "") -> tuple:
         last_error = "sem resposta do motor"
@@ -202,6 +205,12 @@ class ConstrainedGenerate:
                 if not text or not text.strip():
                     last_error = "resposta vazia do motor"
                     continue
+                _h = hashlib.sha256(text.encode("utf-8", "ignore")).hexdigest()[:16]
+                self._hist_hashes.append(_h)
+                if (len(self._hist_hashes) >= self.max_repeticoes_identicas
+                        and len(set(self._hist_hashes[-self.max_repeticoes_identicas:])) == 1):
+                    last_error = "loop detectado (saídas idênticas repetidas)"
+                    break
                 if _WATCHDOG_CHECK is not None:
                     try:
                         import time as _time
@@ -224,6 +233,21 @@ class ConstrainedGenerate:
         raise RuntimeError("constrained_generate: " + str(self.max_retries) + " falhas — último erro: " + last_error)
 
 
+def teste_consistencia_confianca(saida):
+    """Camada 4b — cruzamento status × confiança (doc linha-defesa P4).
+    Puro (sem I/O): retorna mensagem de erro se inconsistente, senão None."""
+    try:
+        if isinstance(saida, dict):
+            status, conf = saida.get("status"), saida.get("confianca", 1.0)
+        else:
+            status, conf = getattr(saida, "status", None), getattr(saida, "confianca", 1.0)
+    except Exception:
+        return None
+    if status == "sucesso" and isinstance(conf, (int, float)) and not isinstance(conf, bool) and conf < 0.5:
+        return "status='sucesso' mas confianca < 0.5 — inconsistente, provável status alucinado"
+    return None
+
+
 def llama_cpp_completions(base_url: str, api_key: str = "llamacpp", timeout: int = 60):
     """Cliente para llama.cpp server.
 
@@ -240,14 +264,15 @@ def llama_cpp_completions(base_url: str, api_key: str = "llamacpp", timeout: int
                 prompt += ("<|system|>\\n" if role == "system" else "<|user|>\\n") + m.get("content", "") + "\\n"
             prompt += "<|assistant|>\\n"
             payload = {"prompt": prompt, "grammar": grammar, "temperature": temperature,
-                       "max_tokens": max_tokens, "cache_prompt": False}
+                       "max_tokens": max_tokens, "cache_prompt": True}
             root = base_url.rstrip("/")
             if root.endswith("/v1"):
                 root = root[:-3]
             url = root + "/completion"
         else:
             payload = {"model": "local", "messages": messages, "temperature": temperature,
-                       "max_tokens": max_tokens, "chat_template_kwargs": {"enable_thinking": False}}
+                       "max_tokens": max_tokens, "cache_prompt": True,
+                       "chat_template_kwargs": {"enable_thinking": False}}
             if stop:
                 payload["stop"] = stop
             url = base_url.rstrip("/") + "/chat/completions"

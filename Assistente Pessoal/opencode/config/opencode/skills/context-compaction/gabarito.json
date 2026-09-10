@@ -9,12 +9,27 @@
     },
     "output_format": {
       "type": "string",
-      "enum": ["structured", "concise", "summary", "brief"],
+      "enum": [
+        "structured",
+        "concise",
+        "summary",
+        "brief"
+      ],
       "default": "summary"
     },
     "language": {
       "type": "string",
-      "enum": ["en", "pt", "es", "zh", "ja", "ko", "ru", "fr", "it"],
+      "enum": [
+        "en",
+        "pt",
+        "es",
+        "zh",
+        "ja",
+        "ko",
+        "ru",
+        "fr",
+        "it"
+      ],
       "default": "en"
     },
     "entities": {
@@ -23,7 +38,15 @@
     },
     "entities_type": {
       "type": "string",
-      "enum": ["person", "location", "organization", "concept", "date", "number", "file"],
+      "enum": [
+        "person",
+        "location",
+        "organization",
+        "concept",
+        "date",
+        "number",
+        "file"
+      ],
       "default": "concept"
     },
     "relationships": {
@@ -31,5 +54,12 @@
       "default": true
     }
   },
-  "required": ["context_length", "output_format", "language", "entities", "relationships"]
+  "required": [
+    "context_length",
+    "output_format",
+    "language",
+    "entities",
+    "relationships"
+  ],
+  "additionalProperties": false
 }

@@ -1,0 +1,18 @@
+0.00.021.705 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.022.735 W srv  llama_server: -----------------
+0.00.022.738 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.022.739 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.022.739 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.022.739 W srv  llama_server: -----------------
+0.00.024.015 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf'
+0.00.024.062 E gguf_init_from_file: failed to open GGUF file '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf' (No such file or directory)
+0.00.024.108 E llama_model_load: error loading model: llama_model_loader: failed to load model from /mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf
+0.00.024.112 E llama_model_load_from_file_impl: failed to load model
+0.00.024.132 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model
+0.00.024.140 E gguf_init_from_file: failed to open GGUF file '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf' (No such file or directory)
+0.00.024.146 E llama_model_load: error loading model: llama_model_loader: failed to load model from /mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf
+0.00.024.147 E llama_model_load_from_file_impl: failed to load model
+0.00.024.148 E cmn  common_init_: failed to load model '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf'
+0.00.024.150 E srv    load_model: failed to load model, '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen3.8-9B-Q5_K_M.gguf'
+0.00.024.150 I srv    operator(): operator(): cleaning up before exit...
+0.00.025.457 E srv  llama_server: exiting due to model loading error

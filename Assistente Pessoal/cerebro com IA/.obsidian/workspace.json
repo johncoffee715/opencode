@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "83f84a57d0c3e877",
+    "type": "split",
+    "children": [
+      {
+        "id": "f7c3d61137f5500f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f8eac8f95e93acb6",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ead35b0b2aaa65b5",
+    "type": "split",
+    "children": [
+      {
+        "id": "60a2c5690742c8e4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "265f7209632e1336",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "0424fbf90b2ecd92",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": true,
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "d7199ccbd831a601",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c2cf48033148135d",
+    "type": "split",
+    "children": [
+      {
+        "id": "c100ed0e3f1105af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4543cbbba28e7c35",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "1b30c3e2e2f83916",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "844f7ea598395d3d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "77fc34b767519136",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "5a1fd284b3569689",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "265f7209632e1336",
+  "lastOpenFiles": [
+    "textos, pdf e esquemas/historicos/chats chatgpt.com/Corrija Linha de Defesa.md",
+    "textos, pdf e esquemas/historicos/chats gemini/blindar suas possiveis falhas atraves de .md .py .json .gbnf.md",
+    "textos, pdf e esquemas/historicos/chats Kimi/CPU MoE LLM 列表.md",
+    "Templates/Mudar Fundo",
+    "Templates",
+    "ImagensFundo/maromba grego 6.png",
+    "ImagensFundo/maromba grego 5.png",
+    "ImagensFundo/maromba grego 4.png",
+    "ImagensFundo/maromba grego 3.png",
+    "ImagensFundo/maromba grego 2.png",
+    "ImagensFundo/maromba grego 1.png",
+    "ImagensFundo/maromba grego 0.png",
+    "ImagensFundo/maromba grego .png",
+    "ImagensFundo",
+    "Mudar Fundo",
+    "textos, pdf e esquemas/motorola/Moto E4 Plus/Data Sheet/Data Sheet MT6328 (PM).md",
+    "textos, pdf e esquemas/samsung/gsm/Samsung GT-S7580/GT-S7582-COVER-1.md"
+  ]
+}

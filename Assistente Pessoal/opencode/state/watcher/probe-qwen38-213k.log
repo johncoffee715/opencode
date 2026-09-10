@@ -1,0 +1,13 @@
+[probe] construindo doc ~212992 tokens...
+[probe] doc pronto: 202389 tokens (1s) — prefill na 1ª pergunta
+[probe] prefill concluído; recall NEEDLE-005: OK
+[probe] recall NEEDLE-015: OK
+[probe] recall NEEDLE-025: MISS
+[probe] recall NEEDLE-035: MISS
+[probe] recall NEEDLE-050: OK
+[probe] recall NEEDLE-065: MISS
+[probe] recall NEEDLE-075: OK
+[probe] recall NEEDLE-085: OK
+[probe] recall NEEDLE-095: OK
+[probe] === 202389 tok → misses=3/5 invented=False ⇒ DEGRADADO
+[probe] VEREDITO: {"veredito": "LIMIAR_EM_212992", "limiar_alucinacao_ctx": 212992, "por_tamanho": {"212992": {"misses": 3, "invented": false, "degraded": true}}, "modelo": "Ornith-1.5-9B-Q5_K_M @163840 K=q5_0 V=q5_0 sem context-shift sem fa"}

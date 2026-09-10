@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-08-28T12:14:43.437459",
+  "total_features": 28,
+  "breakdown": {
+    "skills": 7,
+    "agents": 4,
+    "hooks": 2,
+    "plugins": 3,
+    "scripts": 12
+  },
+  "issues": [],
+  "healthy": true
+}

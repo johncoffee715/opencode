@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+  <bookmark href="https://opencode.ai/go" added="2026-08-26T14:20:22.716000Z" modified="2026-09-04T15:06:00.221000Z" visited="2026-09-04T15:06:00.221000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="chromium" exec="/usr/bin/chromium %u" modified="2026-08-26T14:20:22.716000Z" count="1"/>
+        <bookmark:application name="firefox" exec="/usr/lib/firefox/firefox %u" modified="2026-09-04T15:06:00.221000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="http://127.0.0.1:4096/" added="2026-08-26T21:42:35.329000Z" modified="2026-08-26T21:42:35.329000Z" visited="2026-08-26T21:42:35.329000Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="chromium" exec="/usr/bin/chromium %u" modified="2026-08-26T21:42:35.329000Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

@@ -61,9 +61,9 @@ compute_ornith_ctx() {
 ORNITH_CTX=$(compute_ornith_ctx)
 echo "[8083] ctx dinâmico = $ORNITH_CTX (rocm-smi)"
 # ══ SEÇÃO GERADA por sync-llm-stack.py · FONTE: manifesto_llm.json (não editar à mão) ══
-# CPU 8083 · orquestrador · Qwen3.6-35B-A3B-UD-IQ3_XXS · ORQUESTRADOR (CPU, ctx fixo, threads auto)
-launch 8083 "Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf" \
-  -c 262144 -np 1 -b 2048 -ub 512 -ngl 0 \
+# HIBRIDO 8083 · orquestrador · Qwen3.5-35B-A3B-UD-IQ3_XXS · ORQUESTRADOR (ngl 36, b 4096/ub 1024)
+launch 8083 "Qwen3.5-35B-A3B-UD-IQ3_XXS.gguf" \
+  -c 262144 -np 1 -b 4096 -ub 1024 -ngl 36 -dev Vulkan0 \
   --cache-type-k q4_0 --cache-type-v q4_0 \
   --jinja --temp 0.6 --top-p 0.95 --top-k 20 \
   --chat-template-kwargs '{"enable_thinking": false}'
@@ -73,29 +73,34 @@ launch 9084 "RWKV7-G1d-0.4B-Instruct-FP16.gguf" \
   -c 1048576 -np 1 -b 512 -ngl 999 -dev Vulkan0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja
 
-# GPU 9086 · reflexo · LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M (FA on)
+# CPU 9086 · reflexo · LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M
 launch 9086 "LFM2.5-1.2B-Thinking-ToMoE-Q4_K_M.gguf" \
-  -c 128000 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
+  -c 128000 -np 1 --flash-attn on -b 512 -ngl 0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.05
 
-# GPU 9088 · contrato-plano · granite-4.2-3b-Q4_K_M (FA on)
-launch 9088 "granite-4.2-3b-Q4_K_M.gguf" \
+# GPU 9088 · contrato-plano · Llama-3.2-1B-Instruct-IQ4_XS (FA on)
+launch 9088 "Llama-3.2-1B-Instruct-IQ4_XS.gguf" \
   -c 131072 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
 
-# GPU 9090 · refutacao · Ternary-Bonsai-8B-Q2_0_g64 (FA on)
-launch 9090 "Ternary-Bonsai-8B-Q2_0_g64.gguf" \
-  -c 65536 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
-  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.8
+# CPU 9090 · refutacao · Llama-3.2-3B-Instruct-UD-IQ3_XXS
+launch 9090 "Llama-3.2-3B-Instruct-UD-IQ3_XXS.gguf" \
+  -c 32768 -np 1 --flash-attn on -b 512 -ngl 0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
 
-# GPU 9092 · refutacao · Gemma-2-2B-IT-Q4_K_M (FA on)
-launch 9092 "Gemma-2-2B-IT-Q4_K_M.gguf" \
-  -c 8192 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
-  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.8
+# CPU 9092 · relay · SmolLM2-1.7B-Instruct-Q4_K_M
+launch 9092 "smollm2-1.7b-instruct-q4_k_m.gguf" \
+  -c 32768 -np 1 --flash-attn on -b 512 -ngl 0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
 
 # GPU 9093 · descoberta · SmolLM2-360M-Instruct-Q8_0 (FA on)
 launch 9093 "SmolLM2-360M-Instruct-Q8_0.gguf" \
   -c 4096 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
+
+# CPU 9095 · descoberta · Qwen1.5-MoE-A2.7B-Q3_K_M
+launch 9095 "Qwen1.5-MoE-A2.7B-Q3_K_M.gguf" \
+  -c 8192 -np 1 --flash-attn on -b 512 -ngl 0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
 
 # ── CPU · F0 TRIAGEM L0 · Needle 2 (Cactus) · 28MB RAM · confidence-gated ──

@@ -82,6 +82,7 @@ PROVIDER_KEYS = {
     "tool-leve": "local-tool",
     "prosa": "local-prose",
     "refutacao": "local-ternary",
+    "relay": "local-relay",
     "descoberta": "local-descoberta",
 }
 
@@ -94,6 +95,7 @@ ROLE_KEYS = {
     "reflexo": "reflexo",             # refutação de alta velocidade (acerto-e-erro R42)
     "contrato-plano": "proposer",     # sintaxe precisa, tool calling, código pragmático
     "refutacao": "refuter",           # base conceitual profunda, auditar/refutar com dados
+    "relay": "relay",                   # roteamento intermediário (rápido + estruturado)
     "forja": "forja",                   # validação de schema byte-level + tool calling (Needle-2)
     "executor": "proposer",           # (legado) mesmo role do contrato-plano
     "tool-leve": "ingestor",          # (legado) mesmo role do talamus-cortex
@@ -250,15 +252,21 @@ def _norm(s):
 
 def find_gguf(model_id):
     files = sorted(p.name for p in MODELS_DIR.glob("*.gguf") if p.is_file())
+    for _sub in ("filtragem", "fitragem"):
+        _d = MODELS_DIR / _sub
+        if _d.is_dir():
+            files += sorted(_sub + "/" + p.name for p in _d.glob("*.gguf") if p.is_file())
     if not files:
         log(f"AVISO: {MODELS_DIR} não tem .gguf — arquivo inferido {model_id}.gguf")
         return model_id + ".gguf"
     tgt = _norm(model_id)
     for f in files:
-        if _norm(f[:-5]) == tgt:
+        base = f.split("/")[-1]
+        if _norm(base[:-5]) == tgt:
             return f
     for f in files:
-        b = _norm(f[:-5])
+        base = f.split("/")[-1]
+        b = _norm(base[:-5])
         if b.startswith(tgt) or tgt.startswith(b):
             return f
     log(f"AVISO: nenhum .gguf corresponde a '{model_id}' — usados: {files}")
@@ -301,14 +309,16 @@ def categoria(voc):
         return "reflexo"
     if "executor" in voc:
         return "executor"
-    if "contrato" in voc:
+    if any(t in voc for t in ("contrato", "proposer", "plano")):
         return "contrato-plano"
     if "tool" in voc:
         return "tool-leve"
     if "prosa" in voc:
         return "prosa"
-    if "refuta" in voc:
+    if any(t in voc for t in ("refuta", "refuter")):
         return "refutacao"
+    if "relay" in voc:
+        return "relay"
     if "descoberta" in voc:
         return "descoberta"
     return "descoberta"
@@ -361,6 +371,9 @@ def derived_models(src):
             "tool_call": cat not in ("talamus-cortex", "refutacao"),
             "output": 4096 if cat == "talamus-cortex" else 8192,
             "tps": fi.get("tps_decode_empirical"),
+            "ngl": fi.get("ngl", 0),
+            "batch_ub": fi.get("batch_ubatch", ""),
+            "think_off": bool(fi.get("think_off", False)),
         }
         if cat == "talamus-cortex":
             cortex = row
@@ -551,11 +564,16 @@ def build_start_section(rows):
             lines.append("  --jinja --temp 0.6 --top-p 0.95 --top-k 20 \\")
             lines.append('  --chat-template-kwargs \'{"enable_thinking": false}\'')
         elif r["slot"] == "8083":
-            # ORQUESTRADOR CPU — 35B MoE (não cabe na VRAM; ctx fixo por RAM)
-            # threads AUTO (18 físicos) — t36 degrada decode 7.9→2.8 t/s (bandwidth-bound, R72 empírico 30/08)
-            lines.append(f'# CPU {r["slot"]} · {r["cat"]} · {r["mid"]} · ORQUESTRADOR (CPU, ctx fixo, threads auto)')
+            # ORQUESTRADOR — 35B MoE. ngl/batch via manifesto (fisica_inferencia.ngl/batch_ubatch);
+            # fallback = CPU puro (ngl 0, b2048/512). Hibrido validado 05/09: ngl36 b4096/ub1024.
+            ngl = int(r.get("ngl") or 0)
+            mb = re.search(r"(\d+)\s*/\s*(\d+)", str(r.get("batch_ub") or ""))
+            b, ub = (mb.group(1), mb.group(2)) if mb else ("2048", "512")
+            dev = " -dev Vulkan0" if ngl > 0 else ""
+            tag = "HIBRIDO" if ngl > 0 else "CPU"
+            lines.append(f'# {tag} {r["slot"]} · {r["cat"]} · {r["mid"]} · ORQUESTRADOR (ngl {ngl}, b {b}/ub {ub})')
             lines.append(f'launch {r["slot"]} "{r["file"]}" \\')
-            lines.append(f"  -c {r['ctx']} -np 1 -b 2048 -ub 512 -ngl 0 \\")
+            lines.append(f"  -c {r['ctx']} -np 1 -b {b} -ub {ub} -ngl {ngl}{dev} \\")
             lines.append("  --cache-type-k q4_0 --cache-type-v q4_0 \\")
             lines.append("  --jinja --temp 0.6 --top-p 0.95 --top-k 20 \\")
             lines.append('  --chat-template-kwargs \'{"enable_thinking": false}\'')
@@ -583,7 +601,9 @@ def build_start_section(rows):
             lines.append(f'# CPU {r["slot"]} · {r["cat"]} · {r["mid"]}')
             lines.append(f'launch {r["slot"]} "{r["file"]}" \\')
             lines.append(f"  -c {r['ctx']} -np 1 --flash-attn on -b 512 -ngl 0 \\")
-            lines.append(f"  --cache-type-k q4_0 --cache-type-v q4_0{t}")
+            lines.append(f"  --cache-type-k q4_0 --cache-type-v q4_0 --jinja{t}")
+        if r.get("think_off"):
+            lines.append('  --chat-template-kwargs \'{"enable_thinking": false}\'')
         lines.append("")
     return "\n".join(lines).rstrip() + "\n\n"
 

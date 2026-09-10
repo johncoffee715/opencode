@@ -1,0 +1,16 @@
+[
+  {
+    "name": "tdd_failure",
+    "description": "Extract one failing pytest test from a pre-filtered log",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file": {"type": "string", "description": "file path of the failure", "maxLength": 80},
+        "line": {"type": "integer", "description": "line number"},
+        "exception_type": {"type": "string", "description": "exception class name", "maxLength": 40},
+        "message": {"type": "string", "description": "short error message", "maxLength": 90}
+      },
+      "required": ["file", "line", "exception_type"]
+    }
+  }
+]
