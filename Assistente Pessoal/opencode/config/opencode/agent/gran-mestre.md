@@ -12,9 +12,7 @@ permission:
     "$HOME/opencode/config/opencode/**": allow
     "**/opencode/config/opencode/**": allow
     "**/skills/gran-mestre/**": allow
-    "**/skills/bibliotecario/**": allow
-    "**/skills/unlazy/**": allow # SOBERANIA-USUARIO 2026-09-09: helenizacao R14/R74; deny-by-default intacto
-    "**/skills/_template-feature/**": allow # scaffolding R77 (template de features)
+    "**/skills/**": allow # R91 (promulgada 2026-09-10): scaffolding/helenizacao de skills autorizado por categoria; deny-by-default intacto fora de skills/
   bash:
     "*": ask
     "git status *": allow

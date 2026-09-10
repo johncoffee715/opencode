@@ -1162,3 +1162,341 @@ em **memorial comparativo** (append-only, comparável entre rodadas/versões/mod
 <Exemplo canônico (2026-08-31)>
 - granite-4.2-3b :9088 cravado: Etapa A taxa de alucinação ~0%; Etapa B determinismo 100% (temp0),
   stop vs length saudável; memorial registrado.
+
+# ═══ REGRA GLOBAL R84 — ESCOLHA AUTOMATIZADA POR AUDITORIA DO LLM IDEAL POR NÓ DO GRAFO — promulgado 2026-09-04 ═══
+
+**Regra**: a escolha do LLM que ocupa cada nó do grafo (orquestrador, ingestor, reflexo, proposer,
+refuter, juiz, micro — e papéis futuros) é AUTOMATIZADA POR AUDITORIA, nunca por opinião, conveniência
+ou velocidade isolada. O Gran-Mestre executa a auditoria (cloud-direct enquanto o transporte degradar,
+senão executor) e só canoniza o vencedor por nó.
+
+<Critérios (todos medidos, nada nominal)>
+1. **R78 do candidato**: debilidade (bloqueio) · capacidades (critério primário) · possibilidades (fallback).
+2. **Vetor de custo**: pesos GB em disco · KV KB/tok e MB/1k tok (header GGUF ou delta VRAM medido) ·
+   decode t/s CPU e GPU (timings do servidor) · ctx honesto (nativo; YaRN/extrapolação declarada como risco).
+3. **Crivo R83 por papel**: o candidato deve PASSAR nas sondas da função do nó (juiz emite veredito
+   categórico; refuter não fabrica fatos; proposer obedece schema) — velocidade sem disciplina é
+   DESCLASSIFICADA (canônico 04/09: Qwen3.5-0.8B 208 t/s sem responder = lixo rápido).
+
+<Disjuntores por nó (falha = NAO_PASSOU automático, sem compensação por t/s)>
+- juiz: 0 vereditos errados em 3 sondas (ground truth conhecido) · refuter: 0 fatos fabricados ·
+  proposer: JSON/schema exato via chat · ingestor: ctx ≥1M sem perda · micro: latência imperceptível.
+
+<Política de device (revisável por auditoria)>
+- GPU: nós de velocidade crítica, barra 150+ t/s decode (teto MI50 16GB medido 04/09; barra cai se o
+  hardware mudar) · CPU: papéis de profundidade (orquestração, refutação pesada) · híbrido (offload
+  parcial MoE) só com curva ngl×t/s medida e guarda VRAM ≥1GB.
+
+<Memorial>
+- Cada auditoria faz append em `harness/logs/llm-crivo-memorial.jsonl` + linha `[Gate]` no pipeline
+  CONTEXT.md; re-auditoria obrigatória ao entrar candidato novo ou mudar métrica/fluxo (R28 trajectory).
+
+---
+
+# ═══ REGRA GLOBAL R85 — PADRÃO DE EXCELÊNCIA UNIVERSAL: QUARTETO (.md .json .py .gbnf) + TOOL-CALL COM GRAMÁTICA OBRIGATÓRIA — promulgado 2026-09-05 (ampliado) ═══
+
+**Regra**: TODO tool-call do Executor-F4 (e de qualquer executor pesado — Wave1, FORJA, A2A) DEVE
+carregar `grammar` com o schema da chamada — **independente da condição do LLM, seja burro ou
+inteligente**. Sem grammar = sem ignição. Vias: `/completion` (GBNF nativo no motor) ou chat+GBNF
+(campo `grammar` na requisição, igual ao `hefesto_llama_bridge.py` já faz). E, além do executor:
+**TODA feature do ecossistema recebe a otimização do quarteto** — o quarteto é o padrão de
+excelência e a garantia de execução precisa, sem brechas para falhas sistêmicas.
+
+<Mecanismo (por que funciona)>
+- Tokens fora da regra = probabilidade zero ANTES do softmax (logit bias infinito negativo):
+  o modelo é FISICAMENTE impedido de quebrar o schema — gagueira morfológica (`"acaoa"`,
+  `"usuario"`, fence quebrada) vira evento impossível, não improvável.
+- A gramática é derivada do schema da chamada (fonte única R77/R81: gabarito.json → Pydantic →
+  JSON Schema → GBNF em runtime); .gbnf manual = legado/fallback.
+- Pós-call: parse estrito do retorno; 3 falhas = exceção no Python, NUNCA loop no LLM (R81/R82).
+
+<Escopo universal — o quarteto obrigatório (atualização 2026-09-05)>
+- Não só o Executor-F4: TODA feature (skill, subagent, hook, plugin, MCP, LSP, script, watcher,
+  motor, gabarito) NASCE e OPERA no quarteto — sem peça faltando, sem "versão simples":
+  - **.md** — ontologia/persona/instrução (o que a feature É e REJEITA ser; system prompt imutável).
+  - **.json** — firewall-fonte (contrato allow/deny; FONTE ÚNICA que transpila p/ Pydantic/GBNF — R77).
+  - **.py** — motor determinístico (validação `model_validate_json`, anti-loop max_retries=3 + fallback — R81/R82).
+  - **.gbnf** — barreira física no amostrador (gerada em runtime; nunca fonte manual).
+- **Sem quarteto completo = sem ignição em produção** (fail-closed): peça faltando é brecha
+  sistêmica, não simplificação.
+- Cada peça fecha uma classe de falha: deriva semântica (.md) · violação de escopo (.json) ·
+  loop/validação (.py) · sintaxe (.gbnf). As 4 juntas = superfície zero para falha sistêmica.
+- A inteligência do LLM é IRRELEVANTE para o padrão: burro ou inteligente, mesmas 4 peças.
+  Capacidade do modelo escolhe PAPEL (R84), nunca dispensa trilho.
+- Enforcement: auditoria R83 rejeita feature sem quarteto; gate R28 cobra veredito por peça
+  (ontologiaConforme · firewallConforme · motorConforme · gramaticaConforme).
+
+<Enforcement (executor)>
+- Cliente executor que emitir tool-call sem `grammar` está em violação — o erro peg-500 do
+  runtime é o sintoma canônico da violação (output livre onde a gramática era exigida).
+- Validação: conformidade byte-level do schema (chaves exatas, tipos exatos), não "parece JSON".
+
+<Exceção documentada>
+- Somente o :8083 (orquestrador) dispensa grammar em tool-calls: tool-call exato + GBNF-conforme
+  provados 4/4 em crivo (perna qualidade 04/09). Sem grammar, só o :8083 aguenta Wave1.
+
+<Exemplo canônico (2026-09-05)>
+- Incidente doom Wave1 (peg-native 500, slot :9092 morto + fallback): GBNF 4/4 conformes
+  (Llama-1B :9088 2/2, coder-3B :9090 2/2 — chaves byte-exatas, modelo até normaliza valor
+  p/ caber na regra); coder-3B livre 0/3 NAO_PASSOU (gagueira morfológica). Com grammar,
+  :9088 e :9090 viram executores confiáveis; sem grammar, só o :8083.
+
+---
+
+# ═══ REGRA GLOBAL R86 — RAG CEREBRAL COGNITIVO (OBSIDIAN COMO MEMÓRIA DE LONGO PRAZO + 4 PROPRIEDADES) — promulgado 2026-09-05 ═══
+
+**Regra**: o vault Obsidian é o **RAG cerebral cognitivo** do ecossistema — memória de longo prazo
+com 4 propriedades ativas (self-scaffolding · self-healing · self-learning · self-ameliorative),
+aplicadas ao llama.cpp e ao opencode, sempre no quarteto R85 (.md .json .py .gbnf). Fonte
+helenizada: `tranquileiras/autofagia e helenização/rag_cerebral_cognitivo_regra_universal.md`
+(v2.0, arquitetura-validada — arquivo do usuário, referência viva, nunca movido).
+
+<As 4 propriedades (com amarração de slot e cadência)>
+- **Self-scaffolding** — nota nova cria o próprio andaime (tags+links no frontmatter, validados
+  contra taxonomia e índice; nunca link para nota inexistente). Motor: slot rápido
+  (:9093 Smol / :9086-CPU) + GBNF por tarefa + debounce 10s em fila SQLite. GBNF garante
+  sintaxe; validação pós-inferência garante semântica (R85: trilho ≠ juízo).
+- **Self-healing** — varredura semanal (systemd timer + cgroups: CPUQuota 30%, MemoryMax 2G):
+  órfãos, tags obsoletas, notas desconectadas. Correção SUGERIDA, nunca aplicada
+  (`status: revisar_healing`) — decisão final humana (R18/G4). NUNCA fundir notas
+  automaticamente (contextos distintos colidem).
+- **Self-learning** — lacunas (`#pesquisar`, `status: incompleto`, `???`) viram expansão em
+  nota-filha/bloco colapsível com metadado de origem; NUNCA sobrescreve nota humana.
+  Busca local primeiro (vault/FAISS), remota só se habilitada. Motor: :8083 (síntese).
+- **Self-ameliorative** — revisita notas antigas (>6 meses, ≤5/dia): `valido|obsoleto|
+  sugestao_taxonomia|confianca` via GBNF; obsoleto preserva insight original como contexto
+  histórico; crítica = perguntas orientadoras, NUNCA reescrita (o modelo não viveu teu
+  aprendizado posterior).
+
+<Adaptações helenizadas (onde o doc-fonte divergia do harness — R8/R43)>
+- **Qdrant MANTIDO** (:6333, skill bibliotecario): o doc rejeita Qdrant por peso, mas ele JÁ
+  existe e funciona — catálogo-primeiro proíbe reconstruir (R8). FAISS/SQLite = fallback
+  para coleções novas, não substituição.
+- **Slots por tarefa** (doc §3.3 confirmada pelo nosso crivo): scaffolding→rápidos (:9093,
+  :9086-CPU); síntese/crítica→:8083. Juízo final sempre humano/G4 — GBNF prende sintaxe,
+  nunca confere sabedoria (canônico 05/09: Gemma 4/4 conforme + vereditos errados).
+- **Grammar por requisição**, nunca `--grammar-file` global no slot (nossos slots servem
+  múltiplas tasks; R85).
+- **Anti-patterns do doc viram lei**: sem fusão/exclusão/sobrescrita automática (R18);
+  sem JSON no corpo do .md (frontmatter); sem inferência sem debounce/fila (DDoS próprio);
+  sem escrita sem Git antes de lote; sem confiança cega na semântica (schemas controlados).
+- **Métricas §8 do doc como gates R28** do RAG: scaffolding <3s/nota · links quebrados <1% ·
+  tags inválidas 0% · healer <30% CPU e <2GB · aprovação humana >80%.
+
+<Enforcement>
+- Features RAG nascem no quarteto R85 ou não ignitam; cada propriedade passa por auditoria
+  R83 antes de operar no vault real; memorial no `llm-crivo-memorial.jsonl`.
+- Trilho (GBNF) é condição necessária, nunca suficiente — veredito humano fecha o loop.
+
+---
+
+# ═══ REGRA GLOBAL R88 — REFUTAÇÃO PRÉ-EXECUÇÃO UNIVERSAL (FATOS · DADOS · IRREFUTÁVEL, INCLUSIVE CONTRA O USUÁRIO) — promulgado 2026-09-05 ═══
+
+**Regra**: NENHUMA ordem executa cega — o orquestrador refuta qualquer feature/LLM/A2A/decisão
+**E o usuário**, com base em fatos, dados, argumentos plausíveis e irrefutáveis, **ANTES de
+executar**. Refutação não é discordância: é o A2A aplicado à ordem em si, com número na mesa.
+
+<Procedimento obrigatório (antes de executar)>
+1. **Fatos**: o que está medido (timings, VRAM, vereditos, memorial) sobre cada alternativa.
+2. **Dados**: tabela lado a lado, mesma métrica, mesma condição — nunca nominal vs medido.
+3. **Argumento irrefutável**: a conclusão que os números impõem, com o custo da ordem escrito
+   por extenso (ex.: "perde 8× de janela", "troca 25,3 por 16,4 sem vantagem medida").
+4. **Veredito**: refutação SUSTENTA → NÃO executa (apresenta veredito + alternativa + registra);
+   refutação CAI → executa e carimba o custo no manifesto.
+5. **Soberania preservada**: usuário reitera a ordem explicitamente após veredito → executa
+   sob risco registrado (R39: decisão explícita e direta). Obediência cega sem refutação = violação.
+
+<Escopo>
+- Vale para swaps, canonizações, deleções, restarts, promoções, roteamentos — qualquer mutação
+  de estado do ecossistema. Rotina já-verificada (health, sync --check, leitura) não exige refutação.
+- Omissão de refutação em 1 ciclo = violação registrada no decision-log pelo próprio orquestrador
+  (autodenúncia, sem autoabsolvição).
+
+<Exemplo canônico (2026-09-05)>
+- Ordem ":9088 Llama-1B→Qwen3-1.7B" executada cega → refutação devida posterior SUSTENTOU:
+  131K/25,3 vs 32K/16,4+vazio-sem-think-off, zero vantagem medida → REVERTIDO; :9086 idem
+  (26,7 vs 10,8 + LFM+GBNF 2/2). :9090 MANTIDO (A/B 10×9 confirmou o swap). Custo da lição:
+  2 restarts evitáveis.
+
+---
+
+# ═══ REGRA GLOBAL R87 — SCOUT COMUNITÁRIO + DOUTRINA SMALL-FIRST ("FAZER + POR -") — promulgado 2026-09-05 ═══
+
+**Regra**: o orquestrador PODE e DEVE averiguar e estudar LLMs **oficiais e não-oficiais da
+comunidade** (HuggingFace, GGUFs comunitários — unsloth, bartowski, quants independentes, MoEs
+modificadas, destilações) para **composição e upgrade contínuo da stack local**, otimizando
+sempre o saldo de hardware — com viés estrutural por **LLMs pequenos, de sub-0,1M em diante
+(estado da arte em LLMs pequenos)**. Gênio faz + por -: enxame proporcional de especialistas
+pequenos derruba o que generalista gordo não derruba (FILOSOFIA DE ENXAME).
+
+<Vetor de seleção (tudo medido, nada nominal — R84/R45)>
+- Todo candidato (oficial OU comunitário) é ranqueado por: **ctx honesto** (nativo; YaRN =
+  risco declarado) · **custo de pesos** (GB em disco/VRAM) · **kB/1k** (KV por mil tokens —
+  a métrica que decide se o ctx cabe) · **t/s CPU e GPU** (timings do servidor, single e multi).
+- Não-oficial NÃO é desqualificação: entra em `fitragem/` (quarentena) e só sai de lá por
+  crivo R83 + auditoria R84 + veredito do Conselho R75 — o mesmo portão dos oficiais.
+- Benchmark externo de modelo comunitário (likes/downloads/posts/vídeos — R80) é APOIO;
+  empírico local prevalece (R45). Divergência >20% = investigação, não canonização.
+
+<Demandas de ctx por agente (o ctx escolhe o modelo, nunca o contrário)>
+| Agente | Demanda ctx | Por quê | Ocupante/exemplo |
+|---|---|---|---|
+| ingestor | ≥1M | logs massivos sem perda, O(1) | RWKV7-0.4B (1048576) |
+| orquestrador | 262144 | síntese macro + histórico A2A | Qwen3.6-35B |
+| proposer | 131072+ | contrato/plano inteiro na janela | Llama-1B (131072) |
+| executor | 132K+ ideal | código + diff + testes sem truncar | coder-3B (32768 ⚠️ abaixo do ideal — suplente mapeado) |
+| reflexo | 128000 | loops R42 c/ GBNF | LFM-1.2B |
+| juiz | 8192 | veredito curto e categórico | VAGO (só :8083 dispensa) |
+| micro | 4096 | classificação/extração pontual | SmolLM2-360M |
+
+<Escada small-first (preencher de baixo para cima)>
+- **sub-0,1M**: micro-classificadores, regex-GBNF, FSM determinística — antes de gastar 1 token de LLM, pergunta se regra resolve.
+- **0,1–0,5B**: SmolLM2-360M, RWKV7-0.4B — filtro talâmico, ingestão, micro-tarefas (o grueso do volume).
+- **0,5–4B**: 0.8B, 1B–3B, Gemma/Phi/coder — papéis com vocação (proposer, refuter, relay).
+- **7B–14B**: síntese e crítica pesada (futuro; hoje o :8083 acumula).
+- **30B+**: orquestração/suprema corte (um só — recurso único R2).
+- Só escala de tier quando o crivo PROVA que o tier atual não passa no disjuntor do nó (R84) — nunca por "modelo maior parece melhor".
+
+<Exemplar canônico — RWKV7-0.4B (imbatível no custo-benefício)>
+- 0,91GB · ctx 1M · kB/1k ~0 (state fixo, não escala) · 86,8 t/s GPU / 14–20 CPU.
+- Há modelos melhores que ele em cada requisito isolado (t/s, raciocínio, janela) — e nenhum
+  melhor nele em **tudo ao mesmo tempo por 0,9GB**. É a prova viva do +por-: peneira grossa
+  insubstituível até prova em contrário (R78).
+
+<Estratégia de substituição por alavancagem CPU/GPU (intermediários e primário)>
+- **Intermediários primeiro**: 0,5–4B cabem inteiros na VRAM — proposer/refuter/relay migram
+  CPU→GPU quando o disjuntor de t/s do nó exigir (F4 ≥100, R65) E a guarda pós-mudança ficar
+  ≥1GB. Caminho inverso (GPU→CPU) quando a VRAM apertar, por prioridade: orquestrador >
+  ingestor > resto. Pequeno no CPU continua rápido (0.8B: 27,7; Smol: 48,4) — downgrade
+  de device raramente mata o papel.
+- **Primário (35B)**: sempre híbrido com curva ngl×t/s medida + batch junto (protocolo 05/09:
+  pontos 20→40; ótimo = joelho antes da guarda <1GB — canônico: ngl36). Full-GPU só se
+  couber com ctx operacional + casa mínima; CPU puro só se a GPU evaporar.
+- **Rito de troca**: manifesto + `--apply` + restart só do slot + smoke + memorial (R27/R84).
+  NUNCA dois moves simultâneos (isola a causa se degradar).
+- **Reserva fria**: destronado vai para `fitragem/` até o sucessor estabilizar — lixeira só
+  após veredito de descontinuidade (canônico 05/09: Phi).
+
+<Otimização estrita via quarteto (prefill · decode · batch · KV · quant)>
+- **.md** — declara por papel a métrica-rainha (decode p/ executor interativo; prefill p/
+  orquestrador de janela longa; latência p/ micro) + sampling oficial R61.
+- **.json** — firewall declara as flags ótimas do slot (batch/ubatch, KV, quant, ngl, FA):
+  todas crivadas, nenhuma default silencioso (R66/R76).
+- **.py** — harness de sweep: mede prefill+decode+VRAM por config, compara, canoniza o
+  vencedor, grava memorial. Ordem: batch+ngl (estrutura) → KV/quant (precisão, ΔPPL) →
+  FA/MTP (motor). Lei do colapso: batch maior degrada em bandwidth-bound (R76, 05/09: b8192).
+- **.gbnf** — economia de decode (output contido no schema = menos tokens; max_tokens do
+  schema = trava física) + economia de prefill (`cache_prompt` em prefixo repetido).
+
+<Afinidade de threads — CPU pinning (parametrizar, nunca impor)>
+- Afinidade vive no manifesto (`fisica_inferencia.threads/pin`); default = scheduler do SO (R72).
+- Pin (`taskset`/`numactl`/cpuset) SOMENTE quando crivo provar contenção (decode cai sob
+  carga paralela e recupera com isolamento).
+- Neste hardware (Xeon 18C/36T single-socket, sem NUMA inter-socket): pinning isola vizinhos
+  ruidosos, não cria banda nova — ganho esperado pequeno; medir antes (R62).
+- Pin diz ONDE, nunca QUANTOS a menos: `-t` fixo arbitrário continua proibido (R72).
+
+<Enforcement>
+- Scout contínuo (R80 multi-idioma, todas as línguas, MoEs comunitárias com evidência) →
+  quarentena `fitragem/` → R79/R83 → auditoria R84 → sync R27 → memorial.
+- Métricas de todo candidato (kB/1k, t/s CPU/GPU, ctx honesto) entram na tabela de saldo;
+  descoberta fresca sincroniza nos 5 pontos (R78-sync). Sem linha na tabela = sem existência operacional.
+
+---
+
+# ═══ REGRA GLOBAL R90 — BIBLIOTECA DE CANAIS DE APOIO COGNITIVO DO BIBLIOTECÁRIO — promulgado 2026-09-05 ═══
+
+**Regra**: o Bibliotecário mantém uma **biblioteca viva de canais de apoio cognitivo**
+(`skills/bibliotecario/biblioteca-canais.md`), separada por seções (YouTube por missão ·
+infra/SO · GitHub/HF · docs/FAQ), que **reforça o RAG cerebral cognitivo (R86)** nos
+4 selfs (self-healing · self-scaffolding · self-learning · self-ameliorative). O
+Bibliotecário CONSULTA a biblioteca antes de vasculhar a internet; canais novos entram
+por survey→classificação→append→log, **sempre agregando, nunca recomeçando**.
+
+<Seções e etiquetas>
+- Cada canal carrega etiqueta(s) de self: `[S-ca]` scaffolding · `[H-e]` healing ·
+  `[L-e]` learning · `[A-m]` ameliorative. Descarte exige motivo escrito (não re-survey
+  sem mudança de grade).
+- Núcleo (LLMs locais/serving) · suporte (infra/SO) · repos (código/modelos c/ quarentena
+  R87) · docs (regras vivas + conflitos registrados).
+
+<Protocolo de agregação (obrigatório)>
+1. Survey (títulos recentes, yt-dlp flat) → 2. classifica → 3. append → 4. decision-log →
+5. usa nos 4 selfs e no scout R87.
+
+<Credenciais>
+- NUNCA pedidas nem guardadas pelo orquestrador. Conteúdo público basta para survey;
+  members-only/paywall = gap registrado (não ignorado, não burlado).
+
+<Exemplo canônico (2026-09-05)>
+- 15 canais + 5 vídeos levantados: 10 ATIVOS (venelin_valkov p/ refutação local-llama.cpp,
+  nichonauta c/ 7 transcritos, The-Stack-ai p/ serving…), 8 descartados c/ motivo
+  (SaaS/hype, off-mission, formato incompatível). Shortlist R87 saiu daqui
+  (MoE-350M-GGUF, Gemma-4-E2B).
+
+---
+
+# ═══ REGRA GLOBAL R89 — MODO AUTÔNOMO DE EXECUÇÃO (AGE SEM INTERVENÇÃO QUANDO ATIVO) — promulgado 2026-09-05 ═══
+
+**Regra**: existe um **modo autônomo** (skill `modo-autonomo`, estado em
+`opencode/state/modo-autonomo.json`, default `false` fail-closed) em que o orquestrador
+**age sem intervenção do usuário**: gates auto-aprovados com registro, retry/escalação
+automáticos, amadurecimento em loop (R16) até done. **Pausa SÓ por**: conclusão com
+evidência · intervenção do usuário (qualquer mensagem) · circuit-breaker OPEN (parqueia
+a task, pipeline segue) · operação irreversível (pede humano sempre).
+
+<Ativação e soberania>
+- Ativação SOMENTE por ordem explícita ("ativa modo autônomo" + escopo); nada se
+  auto-ativa. Desativação: ordem, conclusão geral ou intervenção contrária.
+- R88 continua valendo no modo autônomo: refuta antes, mas o veredito vira ação
+  imediata sem perguntar (sustenta→não executa+registra; cai→executa).
+- Transporte morto 3× = rota cloud-direct (R6), nunca 4ª tentativa; "aprovação por
+  cansaço" continua proibida (R40).
+
+<Linhas que o modo NUNCA cruza sozinho>
+- `rm -rf` · `trash --empty` · `git reset --hard` (só via R18 + humano) · matar o
+  :8083 (substrato próprio = suicídio de sessão) · sudo/senha · edições fora de
+  governança/skills sem R88 prévia. Ver `gabarito.json` da skill (allow/deny).
+
+<Observabilidade>
+- Toda decisão autônoma: `[Authorize] auto` + `[RunID]` no CONTEXT e decision-log;
+  relatórios carimbam `modo: autonomo ON/OFF`.
+
+<Exemplo canônico (2026-09-05)>
+- Transporte Hefesto cancelou 3× → modo executaria HF-A/B cloud-direct sem perguntar
+  (foi o que ocorreu manualmente: hash-cut + consistência + 73→11 gabaritos + 15 testes).
+
+---
+
+# ═══ REGRA GLOBAL R91 — EXCEÇÃO DE ESCRITA PARA SKILLS HELENIZADAS (SCAFFOLDING AUTORIZADO POR CATEGORIA) — promulgado 2026-09-10 ═══
+
+**Regra**: o Gran-Mestre PODE escrever/editar diretamente em `skills/<nome>/**` quando a escrita for
+**helenização/scaffolding de skill** (R14/R74/R77) — sem precisar de exceção linha-a-linha por skill.
+O deny-by-default do `agent/gran-mestre.md` permanece para TODO o resto (código produtivo, config de
+runtime, agentes, hooks, plugins — esses continuam negados e delegados).
+
+<Alcance>
+- **ALLOW**: `**/skills/**` — criar/atualizar SKILL.md, tríplice/quarteto R77 (conceito/gabarito/
+  mecânica/schema), references/, templates/, LICENSE, e registrar a skill no `opencode.jsonc`
+  (bloco `skills`, objeto `{}` — nunca array).
+- **CONTINUA DENY**: `agent/*.md` (exceto as exceções já promulgadas), `hooks/`, `plugins/`,
+  `opencode.jsonc` fora do bloco `skills`, código produtivo de projetos, e qualquer path fora de
+  `~/.config/opencode/skills/**`.
+- **Registro de skill nova no opencode.jsonc**: permitido SOMENTE o bloco `skills` (append de
+  `"nome": {}`), com validação JSON pós-edit (strip comments preservando URLs) e verificação de
+  que hooks/permission/agents ficaram intactos (diff de campos críticos).
+
+<Prova de necessidade (por que existe)>
+- 2026-09-09/10: helenizações bibliotecario (biblioteca R90) e unlazy exigiram exceção cirúrgica
+  linha-a-linha aplicada pelo usuário (soberania 3x) — atrito desnecessário para trabalho de
+  scaffolding legítimo. Esta regra elimina o atrito SEM abrir o código produtivo.
+
+<Guardrails>
+- Toda escrita sob R91 carrega provenance no artefato (frontmatter origin/source_commit/license).
+- Skill nova = quarteto R85 completo ou não ignita (fail-closed).
+- Auditoria R83 pós-forja (testes reais, smoke) antes de declarar done.
+- Abuso (usar R91 para tocar código produtivo) = violação registrada + revogação da regra.
+
+<Exemplo canônico (2026-09-10)>
+- unlazy helenizado com exceção individual; R91 generaliza o padrão: próxima skill (ex.: do
+  scout R87) nasce sem gate humano de permissão — só os gates de qualidade (R28/R83).
