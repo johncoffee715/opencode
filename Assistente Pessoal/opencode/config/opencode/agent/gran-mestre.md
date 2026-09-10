@@ -14,6 +14,7 @@ permission:
     "**/skills/gran-mestre/**": allow
     "**/skills/bibliotecario/**": allow
     "**/skills/unlazy/**": allow # SOBERANIA-USUARIO 2026-09-09: helenizacao R14/R74; deny-by-default intacto
+    "**/skills/_template-feature/**": allow # scaffolding R77 (template de features)
   bash:
     "*": ask
     "git status *": allow
