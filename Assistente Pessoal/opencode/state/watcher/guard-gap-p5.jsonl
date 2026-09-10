@@ -7624,3 +7624,20 @@
 {"ts":"2026-09-10T10:25:49.940Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_6695cef5264b4a7f82c4b5ad","action":"after"}
 {"ts":"2026-09-10T10:26:01.706Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_9909ad21dc1f4f35a70342e2","action":"after"}
 {"ts":"2026-09-10T10:28:40.721Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_eedef9ea97ca4f03a13ed005","action":"after"}
+{"ts":"2026-09-10T10:29:57.070Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_22ddd3c8d7c94d1d92b8ea9e","action":"after"}
+{"ts":"2026-09-10T10:30:07.233Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_40350aeda052429bb38bda82","cmd":"cd /mnt/dados && git log --oneline -1; echo \"===REGISTRO-FINAL===\"; cat >> /home/johncoffee/.config/opencode/harness/decision-log.jsonl <<'EOF'\n{\"ts\": \"2026-09-10T07:30:00Z\", \"evento\": \"R92-git-megafi","action":"allow-gov","why":"escopo governado (harness/global/sandbox)"}
+{"ts":"2026-09-10T10:30:07.251Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_40350aeda052429bb38bda82","action":"after"}
+{"ts":"2026-09-10T10:32:03.371Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_24331fdbd30c4817abc7e195","action":"after"}
+{"ts":"2026-09-10T10:32:09.777Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_de8d95e79f634b69b0fb8fb3","action":"after"}
+{"ts":"2026-09-10T10:36:54.247Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_8d43705c824f49c19066ae9e","action":"after"}
+{"ts":"2026-09-10T10:36:57.380Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_67a78dc3ae1548bd9d70f3e8","action":"after"}
+{"ts":"2026-09-10T10:37:02.902Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_da5ab92d80e2447f89837fe8","action":"after"}
+{"ts":"2026-09-10T10:37:17.659Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_401ffcbf8ab4457a84f3a719","action":"after"}
+{"ts":"2026-09-10T10:38:42.447Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_56c60ea2e2354540b8381155","action":"after"}
+{"ts":"2026-09-10T10:38:45.878Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_9150603441f5482181ecfda3","action":"after"}
+{"ts":"2026-09-10T10:39:08.835Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_2d30643893ad40b191fb5101","action":"after"}
+{"ts":"2026-09-10T10:39:16.017Z","tool":"bash","sessionID":"ses_f891ac454ffezb5UEjS7nnKbgZ","callID":"call_0800551ccc8a4594a7ba9b10","action":"after"}
+{"ts":"2026-09-10T10:41:13.173Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_5421413d511148a4b8f282a2","action":"after"}
+{"ts":"2026-09-10T10:43:16.906Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_477a07a2bc804a4d91103aee","action":"after"}
+{"ts":"2026-09-10T10:45:26.322Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_01a08aea49f772708bc89e83dd91c90b","action":"after"}
+{"ts":"2026-09-10T10:45:30.249Z","tool":"bash","sessionID":"ses_f798bbe28ffeTL7y8B1CMftwny","callID":"call_01a08aec27b475e08163172c65072fa4","cmd":"cd /mnt/dados && git add -A && git commit -m \"chore: fechar ciclo pendências (R92 git + biblioteca R90 + unlazy + R91 + watchdog)\" 2>&1 | tail -n 2; echo \"===ULTIMA-BITNET-CONFIRMADA===\"; cat >> /home","action":"allow-gov","why":"escopo governado (harness/global/sandbox)"}
