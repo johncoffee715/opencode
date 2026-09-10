@@ -1,0 +1,482 @@
+The Institute of Foundation Models is an
+AI research arm of MBZUAI, a
+university in Abu
+Dhabi, which has quietly been
+building
+labs in Paris
+and Silicon Valley.
+They just released
+something pretty impressive.
+K2 Horizon is a collection of six
+open-source models,
+from a tiny 0.9
+billion parameters
+to a
+375
+billion expert mix, each
+with Apache 2 weights,
+training data,
+checkpoints, and
+code.  Today in this
+video we test
+three sizes that you
+can realistically
+run on a single
+GPU
+.  0.9 billion, as you
+see here, 7
+billion, and then 32
+billion.  There is also a
+3.7 billion version,
+which I will talk about in a
+separate video because I
+want to do a
+detailed review, because I
+think it is the perfect
+balance for everyone.
+But in any case,
+the purpose of this video is not
+only to introduce you
+to this laboratory,
+which, by the way, is not that
+new.  They
+renamed it or
+rebranded it in some way
+.  Additionally, we
+are going to
+install these three
+models ourselves.  We will run
+two or three tests to
+see what
+their exact goal is, whether they are
+serious models,
+or whether they still have
+problems.  We will
+check it out.  This is Fahad
+Mirza and I welcome you
+to the channel.
+I recently started a
+free
+weekly
+AI newsletter that you
+can subscribe to
+at fahadmirza.substack.com.  This is
+my terminal where I'm
+working in Ubuntu, and this is my
+graphics card with 96GB of
+video memory.  I'm
+going to start
+uploading all
+three models from Hugging
+Face.  If you're looking for a
+place to rent a GPU at a
+good price,
+there's a link to Vast Compute
+in the video description.  By
+the way, interesting fact:
+they named it K2, after
+the mountain that seems to be the
+second highest in the
+world.  She is in
+Pakistan.  And this, by
+the way, is not a new word.
+If you go to
+my channel, just
+search for
+"K2."  Gimme released K2
+a while ago.
+Then
+other K2s appeared, like this one, and the
+list goes on and
+on.  There have
+been many
+different K2s in the last 2–3 years.  In any
+case.  So, while
+the model
+is loading,
+let me
+show you a quick
+comparison of these
+models so you
+can understand what they are
+.  So,
+look at this
+paragraph.  He tells
+you the whole story.  So,
+side-by-
+side comparison.  The first thing you'll
+notice is that the
+context window
+grows significantly.    The
+0.9 billion model
+is limited to 128K, but the
+7 and 32
+billion versions reach
+512K in raw tests,
+and they are similar in many ways
+.  Every size
+has its time.  The
+0.9 billion version
+actually leads in the
+MB 2026 math test and in the
+BFCL tool challenge, which is
+quite impressive for
+such a small
+model.  The 7
+billion model is a
+champion in suite bench and
+terminal bench.  As
+for the bench box,
+this is real
+software development and
+agent work in the
+terminal, and the
+32 billion model is significantly
+ahead of the GPQA diamond.
+This is graduate-
+level scientific reasoning
+.  So, 82
+versus 27. The point is
+to choose a size
+based on what
+you're actually doing.
+0.9 billion—for
+peripherals or very
+small tasks.  7
+billion—for
+local
+programming on the
+workstation.  32
+billion—when
+you need serious
+computing power.  So, these are the
+use cases for these
+models.  Models are
+loaded.  Now here's what
+I'm going to
+do.  I will
+run these models one
+by one.  I will run the same
+programming test for
+each model and we
+will check the result
+.  The model
+is served through
+vllm, and you can see that
+it consumes
+about—I'll show you
+, and you
+can ignore these warnings.  This is the
+first stage model.
+So, it consumes
+about 65 GB
+of video memory.  And this is the
+vllm command you
+will need to
+use.  So, the
+32 billion model
+is served with KV
+cache.  Let me
+show you the
+video memory consumption.  So,
+it consumes a little
+over 92 GB
+of video memory.  Okay,
+now I'll do a test.
+This is the first
+programming challenge, a
+simple but challenging
+test where
+there are no graphs or
+benchmarks, just
+build it from scratch and
+prove that it
+really works.
+Let's see if
+this 32
+billion parameter model can
+create a standalone
+HTML file to simulate the
+rotation of a
+doner kebab skewer in front of a
+gas vertical
+grill.  So I'll
+go back and
+use this in the
+Hermes agent, where I'm already
+using it with the
+current model.
+Okay, this is something you
+might
+encounter as well.  At this
+point I'm
+only using
+32k. So I
+need to
+restart this with a
+context of about
+65k tokens.
+Let me do this.
+And now the model is working
+on it.  Let's wait
+until she finishes
+and we'll check the
+result.  So,
+after more than half an
+hour, the model
+finished working and
+created this HTML file.
+Hmm, just
+looking at this,
+the quality doesn't look
+like what you'd expect
+from a model with 30
+or more.  If
+you look at the train of
+thought, and I
+looked at it, it's
+normal.  That is, it is
+not something incredible or
+world-class.  But
+not bad either.  It's
+not bad at all, but
+then again, there's
+nothing special
+that I can say makes
+it better than, say,
+Coin or, you know, there are
+many others, as you
+can
+imagine.
+Anyway, you know what?  Everything
+is known in
+comparison.
+Let me
+open this.  And
+sorry, one more thing.
+I specifically asked to
+save this to a file.  And
+it didn't work.  So
+this is a problem even though
+tool calling is
+enabled.  So, I
+just...I saved it
+manually in this file.
+Let me open
+it.  And you see,
+nothing happened.
+So it has errors.
+It simply doesn't work
+.  Honestly, straight up,
+without editing, I'm
+showing you everything as it is.
+But this is only the first
+stage.  So, you know what?  I wo
+n't be too harsh
+.  Since this is the first
+stage, this is not a final
+checkpoint, but
+I will just do a
+quick multilingual
+test.  So, for the
+multilingual test,
+I'll use this
+prompt, where I ask you
+to translate sentences
+into all these languages.  And one more
+point, I
+suspect what happened
+in the first case:
+despite the fact that this is not the
+final version, they
+also need
+to work on the
+processing of the
+tools.  The model
+performs this
+multilingual test, and
+honestly, why
+even release a
+checkpoint that
+isn't final?  And here is the
+model's answer.  I
+would say again that this is an
+average answer.  Hmm
+, decent quality
+for major languages
+like English,
+Spanish, Russian,
+French, Polish,
+Czech, and others.  But
+if you look at
+low-
+resource languages ​​like
+Bengali, Swahili,
+Tamil, Punjabi,
+and many others,
+even from
+Southeast Asia, it all
+falls apart:
+it's a meaningless
+jumble of scripts with
+untranslated
+English words sprinkled in.
+Even if it's not the
+final version,
+since it's
+been released, it should
+be close to
+final.  So, I'll
+just scroll on
+.  So it really
+doesn't make a good
+impression.  Now I'm
+also curious about her train of
+thought, as you can
+see here.  So,
+the model openly
+wavered within itself
+sentence by sentence,
+quite noticeably
+struggling and
+correcting itself in
+real time in more
+complex languages.
+So, I think there is
+real
+uncertainty, and that's a
+good thing.  One thing I can
+admit is that
+she's not hallucinating
+for sure, and that's a good thing.
+But again, for a
+model with 32 billion
+parameters, that's not
+good enough.
+So we'll
+stop there.  I'm just
+going to check the
+7 billion version.
+Let's see how it goes.
+This is a 7
+billion parameter model
+that consumes
+about 16.76 gigabytes of
+memory, and here is the
+command I will
+use.
+Again, as I
+said, the
+instrumental
+parser doesn't work with either
+VLLM or SD 9. So they
+really need to
+work on that.  But
+anyway, here's
+why I'm going to use this
+Python script to
+generate the
+same HTML file with the
+exact same
+query.  The model
+is serviced.
+VRAM consumption with KV
+cache.  I gave her
+as many resources
+as I could.
+Let's run this script
+now.  The model
+returned a response,
+and here is the file it
+created.  In
+any case, let's
+look at it
+together.  I'll just
+drag it right in front of
+you.  Here,
+please.  So, if it
+was a doner kebab, I would
+n't eat it.  So that's a
+7 billion
+parameter model for you.
+Okay, not very good.
+So let's now
+do a very quick
+multilingual test.
+The model produced a
+result, and if you are on the
+team developing
+this model, I would
+advise you not to
+result.
+Look at this.    There
+are no words.  I won't
+say anything here
+.  The only thing I will say is that
+I spent a ton of
+money on this server
+with 96GB of VRAM just to
+get 32GB of
+memory, but that
+happens.  As you can see, both 32
+billion and 7
+billion are complete
+waste.  Let's try the
+0.9 billion version.
+This model consumes
+only 2 gigabytes of VRAM
+without any KV cache.
+Now let's check with the
+KV cache.  That's how much
+she consumes.  Okay,
+let's start with the
+since this file is already
+ready.  I'll just
+run it with the same
+query, same
+result.  And the
+same languages.  More or less the
+same story again
+.  Without wasting much time
+, I will show you one
+very interesting thing.
+Look at this.  This is a
+translation into Urdu.
+I don't know why AWS and
+everything else is
+breaking through here.
+So look, we just
+saw in
+real time what
+the performance of
+this model is.  And it's not
+just a basic
+pre-trained
+model.  In their
+blog, they clearly
+state that K2 Horizon
+has undergone pre-training,
+SFT, model fusion
+, RL, and specialized
+agent training.    A
+complete pipeline of
+post-training
+learning, just like in
+any other modern
+instructional model
+.  So, whatever,
+maybe I'm doing something
+wrong.  If you are from this
+team, let me
+know.  I'm willing
+to check
+the results again, but
+for now, what I know and
+what I tested live
+without
+editing—that's it.
+Share your
+thoughts in the comments.    That's
+all I can
+say.  Thank you for
+your support.

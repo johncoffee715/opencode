@@ -34,3 +34,20 @@ harness/watchdog/orchestrator-metrics.state
 /logs
 /opencode
 Assistente Pessoal/cerebro com IA/textos, pdf e esquemas/**/*.pdf
+
+# R92-prevencao: binarios/arcivos gigantes nunca versionados (lição 4.71GB de blobs no histórico)
+**/*.so
+**/*.node
+**/*.a
+**/*.o
+**/*.7z
+**/*.zip
+**/*.tar
+**/*.tar.gz
+**/*.iso
+**/*.img
+**/*.mp4
+**/*.mkv
+**/*.psd
+cerebro com IA/textos, pdf e esquemas/**/*.rar
+cerebro com IA/textos, pdf e esquemas/**/*.7z

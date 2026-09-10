@@ -1,0 +1,268 @@
+El día de hoy vamos a probar y comparar
+un mismo modelo de lenguaje con y sin
+especulative de coding, es decir, sin un
+modelo borrador que prediga los tokens
+más rápidamente. Y estas pruebas las
+estaremos haciendo con el objetivo de
+ver si realmente el especulative de
+coding hace perder calidad. La
+decodificación especulativa lo que hace
+es tener un modelo grande, el modelo
+original, en conjunto con alguna especie
+de modelo borrador como lo puede ser un
+MTP, para que con ello la predicción de
+los siguientes token sea con el modelo
+borrador y el grande solo vaya aceptando
+o rechazando, al mismo tiempo que cuando
+rechace, entonces sí, el modelo grande
+intenta predecir ese siguiente token que
+el modelo pequeñito falló. Si esto
+comúnmente funciona de manera adecuada,
+ganaríamos bastante velocidad y
+teóricamente se supone que no
+perderíamos inteligencia porque el
+modelo grande es el que está aceptando o
+corrigiendo. Pero una cosa es que lo que
+predica el modelo borrador también
+pudiera ser correcto y otra cosa es que
+realmente esa sea la mejor respuesta, el
+mejor siguiente token. Así que pues para
+no quedarnos ni con una idea ni con la
+otra, mejor vamos a probar, vamos a
+comparar para ver si notamos alguna
+diferencia de calidad y no que
+únicamente según nosotros sea diferencia
+de velocidad. Esperemos si no haya
+diferencia de calidad, si no pues es
+algo a tener en cuenta. Yo he descargado
+ya este Gema 4E2B bajo la estrategia QAT
+de Google para ser cuantizado a 4 bits
+sin perder calidad. Lo tenemos con todo
+IM Pro para visión. Y aquí tenemos
+también el MTP en Q4 para predecir los
+siguientes tokens. El que sea mayor o
+menor precisión del MTP no significa que
+las respuestas van a ser mejores o
+peores, significa que va a ser más
+rápido o más lento, dependiendo de su
+tamaño y qué tan rápido funciona la
+predicción de siguientes tokens, pero
+también de qué tan de manera correcta
+predice esos siguientes tokens, porque
+si son incorrectos, el modelo grande los
+rechazaría. Ya hice yo las pruebas con
+MTP, así que ahora las vamos a ejecutar
+sin MTP para ver la diferencia. quito la
+carga del modelo borrador y quito las
+dos líneas referentes a lo mismo.
+Eliminamos esto y pues claramente una
+primera diferencia va a ser que va a
+consumir menos memoria porque solo va a
+ser el modelo y el mm prog, así como la
+KVK y no también el modelo borrador y la
+KVK del modelo borrador. Nos está
+consumiendo en esta ocasión 3.4 GB y
+cuando lo cargamos en conjunto con el
+MTP ocupa 3.6, seis. No es mucha
+diferencia en este modelo pequeñito,
+pero de todos modos es una diferencia
+apreciable. Hay en otros casos donde la
+diferencia es aún mayor. Otro lugar
+donde lo vamos a notar y esperemos y sea
+el único es en la velocidad de
+generación de tokens, porque se supone
+que en inteligencia no lo deberíamos de
+notar. De cualquier forma, aunque el
+modelo no tenga MTP para predecir los
+siguientes tokens, la velocidad debería
+de ser bastante buena, pues simplemente
+porque el modelo es muy pequeñito y de
+solo 2 billions de parámetros activos.
+Vamos a comenzar generando una respuesta
+simplemente para ver cuántos tokens por
+segundo nos está dando. Y en esta
+ocasión estamos prácticamente a 130
+tokens por segundo, poco menos de eso,
+exactamente 128.38
+tokens por segundo. Luego de esta
+respuesta en conjunto con su cadena de
+razonamiento. Mientras se generan las
+respuestas con este modelo sin el MTP,
+vamos a estar viendo cómo eran las
+respuestas con el MTP. Así que para ello
+me voy a ir a las respuestas anteriores
+y por aquí por ejemplo tenemos la
+respuesta de ese mismo Gema 4E2B pero
+con MTP que había generado 186 tokens
+por segundo y esta respuesta para el
+desarrollo de una landing page. Vamos a
+visualizarla y en esta ocasión esto es
+lo que nos había hecho. Una respuesta,
+la verdad que no buena, sinceramente,
+aunque por lo menos algo con sentido
+había generado, pero realmente esto no
+es muy funcional que digamos. Esto fue
+con MTP, recordemos, exactamente el
+mismo modelo, mismos ajustes y todo. Si
+nos vamos a la respuesta más reciente,
+que es este mismo modelo, exactamente
+igual, pero sin modelo borrador,
+generando solo 125 tokens por segundo,
+aún así es bastante rápido. Y vamos a
+ver la respuesta, ¿qué tanta calidad
+tiene? Y en esta ocasión sí creo yo que
+tiene mayor calidad. No es 100% algo ya
+completamente usable en lo más mínimo,
+pero creo que tiene más contenido y
+mejor organizado, a excepción de el hero
+que está aquí junto el botón con lo
+demás. Lo demás creo que está bastante
+bien, hasta tiene la animación correcta
+que hizo con JavaScript, siendo que en
+el otro caso no fue así. Así que en esta
+primera prueba parece que sí, quitando
+el MTP se obtuvo mejor respuesta, pero
+también pudo ser coincidencia. Por eso
+vamos a seguir probando. Vamos a ver
+ahora la calculadora que habíamos hecho
+con este modelo y su MTP. Había generado
+185 tokens por segundo nuevamente y esta
+es la calculadora, la cual cuando la
+habíamos probado, pues funcionaba
+correctamente. No había problema
+realmente con esto. Era bastante buena,
+bastante funcional. Sinceramente creo
+que ningún problema aparente, así que
+todo bien. Ahora vamos a ver sin el MTP
+126 tokens por segundo y esta es la
+respuesta. Bastante similar, solo en
+este caso con otro estilo, con otro
+diseño. Algo que acabo de darme cuenta
+es que tenemos doble vez el botón de
+limpiar pantalla y que de hecho el
+símbolo de igual no está funcionando
+aquí. Precisamente en esta prueba sin
+MTP funcionó peor. Sencillamente pues
+por ser otra respuesta a otra semilla,
+no tanto como tal por que el MTP aumente
+la inteligencia o algo así, eso solo
+aumenta velocidad. ¿De acuerdo? Entonces
+vamos mitad y mitad. Una respuesta fue
+mejor, la otra fue peor. Ahora vamos a
+ver el reloj analógico. Primero ahora
+sin MTP. En esta ocasión vamos a ver
+primero sin MTP. Y esto es lo que nos
+generó que en este caso, si bien los
+segundos no tiene sentido lo rápido que
+se mueve, es la primera vez que en este
+modelo vemos que realmente pinta el
+reloj de forma correcta. Vamos a
+intentar cambiar de tema al modo oscuro.
+Y sí, en esta ocasión parece que la
+respuesta fue mejor comparado con MTP,
+que lo vamos a ver a continuación. Aquí
+tenemos la respuesta con MTP 193 tokens
+por segundo y esto es lo que nos había
+generado. Y si bien aparentemente hay
+más detalle, lo cierto es que nada está
+bien pintado. Ni los distintas bolitas,
+circulitos indicando cada hora, ni las
+manecillas correctamente bien puestas.
+Cambiamos de tema y por lo menos esto
+también funciona. El otro no es
+perfecto, pero creo que sí está mejor
+acabado. Y por último, la simulación de
+fluidos. Nuevamente, primero sin MTP y
+en esta ocasión esto es lo que tenemos
+por aquí. Vamos a ver si podemos hacer
+que algo cambie. Pongo la gravedad con
+distintos valores y de momento no noto
+diferencia, la verdad. Ahora vemos que
+están cayendo hacia el otro lado. Puedo
+cambiar el número de partículas, puedo
+poner tantas como quiera o poquitas, qué
+sé yo. Y vemos pues que realmente esto
+es funcional. Esto en este caso, siendo
+se supone una especie de agua y cuando
+intento dar clic o algo así, pues
+sinceramente lo que pues sencillamente
+lo que sucede es que creo nuevas
+partículas más que eso. La verdad es que
+no está sucediendo, simplemente yo hago
+nuevas. Okay, si nos pasamos al tipo
+arena, pues la verdad es que ni siquiera
+cambió nada, se comportó exactamente
+igual. Le damos en limpiar, pausar y
+pues, okay, eso es lo que obtuvimos sin
+MTP. Vamos a ver ahora con MTP 188
+tokens por segundo. Y esto es lo que nos
+había generado, que en esta ocasión no
+es que haya gravedad hacia abajo o algo
+así, por lo menos inicialmente. Aquí
+podemos cambiar valores. Y con esto sí
+vemos que aparentemente empiezan a caer,
+o por lo menos eso parece. Hay otras que
+siguen rebotando, pero después todas
+terminan cayendo o algo así. Podemos
+cambiar el número de partículas, podemos
+cambiar el radio de interacción para
+cuando yo intento mover todas. Y esta es
+la respuesta en esta ocasión con MTP
+intentamos cambiar al modo arena y así
+es como según se comporta con arena. No
+noto, la verdad mucha diferencia, pero
+pues así es como terminó funcionando.
+Muy bien, vamos a intentar hacer un
+resumen. Al menos en mi caso, en este
+momento no estoy 100% de acuerdo en que
+de una de las dos formas funcionó mejor.
+Lo que sí 100% noté claramente es que
+con MTP mejoró la velocidad con ese
+modelo borrador para hacer especulative
+de coding. A cambio de 200 MB
+adicionales de V RAM, estuve generando
+muchos más tokens por segundo. Esto 100%
+fue consistente en absolutamente todos
+los casos y en cuanto a inteligencia, a
+veces parecía mejor sin MTP y otras
+veces con MTP. En eso no sé realmente si
+una de las dos formas me está dando más
+inteligencia. Lo que sí es que más
+velocidad sí lo está dando. Entonces,
+¿qué concluiría yo? Pues sencillamente
+que el MTP cambió un poco el
+comportamiento del modelo, no tanto su
+inteligencia, su calidad total, sino que
+al ser ya un modelo borrador el que
+predice los siguientes tokens y el
+grande solo aceptar o rechazar, puede
+ser que en algunos casos el siguiente
+token a escribir sí sea uno que el
+modelo grande claramente va a aceptar,
+pero que a lo mejor de otra forma no
+hubiese sido una respuesta tan típica.
+Es decir, son solo respuestas que puede
+dar el modelo. Sin embargo, quizá
+algunas de ellas algunos comportamientos
+sin el MTP fuera poco común que las
+viéramos en el sentido de a lo mejor es
+un token suficientemente probable, pero
+no tanto como si únicamente el modelo
+grande hubiese decidido. Ese es mi
+resumen. En velocidad, claro que se
+nota. En inteligencia lo noto diferente,
+no necesariamente más inteligente. Lo
+mejor es probar en nuestro caso con el
+modelo que estaremos usando para ver si
+realmente merece o no la pena, porque
+además contar con MTP o con alguna
+especie de modelo borrador no significa
+en todos los casos que mejore la
+velocidad. Tenemos que lograr los
+ajustes correctos para que
+verdaderamente eso suceda. Y en este
+caso, eso sí fue algo 100% consistente y
+con verdadera diferencia del cargarlo
+con MTP o sin ello. Si quieres seguir
+viendo este tipo de videos, simplemente
+da like y suscríbete.

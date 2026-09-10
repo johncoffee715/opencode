@@ -1,0 +1,291 @@
+En los videos previos estuvimos viendo
+como con modelos de lenguaje de pesos
+abiertos podemos hacer especulative
+decoding para acelerar la velocidad de
+los mismos manteniendo la calidad. Todo
+esto a partir de distintos modelos
+borrador y vimos que, por ejemplo, el no
+usar borrador como tal, sino simplemente
+el contexto, no solo es que nos daba
+velocidades hasta por cinco o más, sino
+que nos venía de lujo para lo que
+comúnmente comentamos de los modelos de
+lenguaje, que cuando les falta
+inteligencia, simplemente tenemos que
+iterar. Es decir, un modelo de lenguaje
+más grande e inteligente con un único
+prompt puede llegar más lejos, pero
+ninguno hace todo a la primera como debe
+de ser. Si no, los programadores
+llegaran a su espacio de trabajo,
+escriben un prompt y se la pasan
+dormidos las 8 horas. Entonces, vamos a
+aprovechar n que nos mejoró mucho la
+velocidad para intentar, por ejemplo,
+hacer eso que tanto decimos, iterar. En
+esta ocasión dejando principalmente el
+modelo, que él intente descubrir los
+fallos y todo ello, dado que tenemos
+tokens ilimitados y a muy buenas
+velocidades. Claramente cuando nos
+referimos a iterar, no es simplemente el
+modelo por sí solo, no es te
+equivocaste, no es continúa, no es
+corrige, sino nosotros mismos en lo que
+se le atraganta al modelo ayudarlo. Pero
+hoy vamos a intentar aprovechar
+simplemente las mega velocidades de
+tokens gratis para ver si realmente
+podemos hacer algo mejor. Aquí nosotros
+en un vídeo previo habíamos probado con
+un prompt bastante bien elaborado el
+solicitar a estos modelos de lenguaje
+desarrollar un videojuego sin librerías
+externas utilizando únicamente HTML, CSS
+y JavaScript. Un juego simple que a lo
+mejor Opus puede hacer sin problema,
+pero que en un one shot, un modelo más
+chiquito, no puede. Y precisamente aquí,
+pues si bien parece ser que todo
+funciona, al momento de que doy clic no
+pasa nada. Entonces, por aquí le voy a
+decir, analiza los fallos del proyecto y
+escríbelo completo y corregido. Presiono
+intro y vamos a ver qué es lo que
+sucede. Dado que estamos únicamente con
+ngram, únicamente cuando escriba cosas
+similares a lo anterior, es cuando se
+van a acelerar la generación de tokens.
+En este momento estamos funcionando
+quizá hasta poquito peor que sin ningún
+tipo de especulative de coding, con lo
+cual pudiéramos combinar, por ejemplo,
+MTP con todo y NGAM. Aquí va a empezar a
+ser el código corregido y pues vemos
+cómo empezamos a tener un aumento de
+velocidad en ratos más que viendo que se
+generan tokens, viendo que se generan
+bloques, varias líneas de una sola vez.
+Si revisamos por acá en los logs cada
+tres últimos segundos, vemos que ya
+estamos arriba de 100 tokens por
+segundo. Esto cuando son fragmentos de
+código o bueno, de texto que llega a
+escribir exactamente igual que la vez
+anterior. Cuando cambia algo, pues no
+sube tanto la velocidad. Ahí, por
+ejemplo, tuvimos un pico de 277 tokens
+por segundo, luego 97, luego 39. Así que
+simplemente donde está haciendo cambios,
+pues es donde seguimos a velocidad
+normal y donde no hace cambios, pues es
+como si el código ya estuviese escrito,
+porque literalmente ya está escrito.
+Aquí ya terminó, teóricamente encontró
+errores y según él los corrigió. Vamos a
+ver realmente qué fue lo que sucedió. Y
+en este caso, pues a pesar de que según
+él dice que corrigió, aún ni siquiera
+podemos comenzar. Entonces en esta
+ocasión más bien vamos a ayudarle
+nosotros. Ya vimos que por sí solo un
+modelo de lenguaje a veces según él
+encuentra errores, según él corrige y a
+lo mejor modificó cosas que únicamente
+empeoraron el proyecto y que para colmo
+sigue nuestro fallo original. Este era
+el código que teníamos originalmente y
+al momento de que lo abro en el
+navegador y doy en iniciar misión no
+pasa nada. Sin embargo, ¿qué sucede en
+consola? Y pues vemos por aquí que hay
+algunos errores curiosos, así que
+simplemente daré únicamente clic una vez
+y lo que aparece aquí se lo voy a pasar
+al modelo. Copio, voy a editar el
+mensaje que acabábamos de mandar y le
+doy en enviar. Claramente esto tampoco
+hace falta hacerlo de esta forma tan
+manual porque de por sí dentro de un
+agente le podemos dar la posibilidad de
+que el modelo pruebe la aplicación, use
+el navegador o lo que sea y pues que por
+sí solo vaya iterando, no hace falta
+estar nosotros en medio, simplemente lo
+estamos haciendo así pues para notar qué
+tal funciona de esta forma en conjunto
+con cuánto ganamos de velocidad con
+cosas como n gram. Y pues quizás no
+convence tanto que la generación de
+código sea tan rápido. Si el problema
+aquí para iterar es el razonamiento y el
+razonamiento no se parece en cosas que
+están en el contexto. ¿Por qué aquí
+importa el razonamiento? Pues porque
+ocupa mucho razonamiento para
+identificar errores y tratar de
+corregirlos. Así que parecía que eso de
+ngram era buena opción, pero quizás no
+tanto. Cuando escribe el código, sí, ya
+va más rápido, sin embargo, el problema
+es lo previo. Nuevamente, si revisamos
+por acá, tenemos aumentos hasta más de
+200 tokens por segundo. 195, 220,
+273.
+No sé qué tan bueno sea esto. No sé si
+compense tanto, la verdad. De momento,
+de promedio, marca como si estuviésemos
+arriba de 80 tokens por segundo, con lo
+cual mejor que originalmente sí, pero ¿y
+qué tal contra otro tipo de especulative
+de coding que siempre acelera, no
+únicamente cuando hay cosas similares?
+Aquí ya terminó. 86.64
+tokens por segundo. Copio, pego y guardo
+y recargo la página. De momento sin
+errores en consola, le doy en iniciar
+misión. Y ahora tenemos otro error.
+Volvamos a probar. Copio y pego ese
+nuevo error y otra vez esperamos. Cadena
+de razonamiento a unos pocos 40 tokens
+por segundo, pero al escribir código
+pues unas megavelocidades básicamente.
+De hecho, en esta ocasión, dado que casi
+no hizo cadena de razonamiento, pues el
+promedio de generación de tokens va a
+ser mayor, porque casi todos los tokens
+de esta respuesta es de donde sí se
+acelera. Arriba de 200 tokens por
+segundo en promedio, con lo cual
+significa que hay valores mucho más
+altos. De hecho, por acá vemos hasta 306
+tokens por segundo y prácticamente
+siempre arriba de 100 o 200. Aquí hubo
+una parte que sí bajó, seguramente parte
+que cambió de código. Todo lo demás que
+es prácticamente lo mismo, pues siendo
+bastante rápido. Vuelvo a probar, doy en
+iniciar misión y genial, ya no aparece
+error, simplemente sigue sin funcionar
+el botón. Hagamos una última prueba,
+pero ahora de hecho no con ngram, con mt
+error en consola, pero al dar clic en
+iniciar misión no pasa nada. Presiono
+intro y veamos qué tal. Vemos que la
+cadena de razonamiento también es lenta,
+sin embargo, aquí a tener en cuenta pues
+que ya tenemos mucha ventana de
+contexto, muchos tokens de contexto. Aún
+así, creo que de todos modos la
+generación de tokens en el razonamiento
+es mayor y en este caso es porque
+directamente en el razonamiento también
+está haciendo código y de hecho cada vez
+va a ir a más velocidad, básicamente
+porque creo que está repitiendo el mismo
+código, con lo cual no tiene sentido.
+Aquí tenemos dos opciones, darle en
+detener o darle en saltar para que
+termine a la fuerza la cadena de
+razonamiento y comience a dar la
+respuesta final. Sin embargo, dado que
+ya repitió tanto esto, a lo mejor
+también lo repiten la respuesta final.
+Vamos a probar. Y aquí pues no,
+afortunadamente se saltó sin problemas
+eso. Sin embargo, vemos que por más que
+podamos acelerar velocidad de generación
+de tokens con MTP o similares, pues no
+es lo mismo que NGAM. Cuando queremos
+hacer cosas muy similares a las que hay
+en contexto, Negram es una mejora
+gratuita debido a que prácticamente no
+requiere nada de memoria, pues usa el
+mismo contexto como borrador y que
+genera velocidades extremadamente más
+altas. Aquí podemos decir que estamos a
+una sexta parte del pico que nos generó
+hace rato, que fueron 300 tokens por
+segundo. Vamos a probar una última cosa
+y en este caso es la combinación de
+ambos métodos de speculative decoding.
+Copio los parámetros para hacer
+especulative decoding a partir de MTP en
+el archivo que tenemos que hace
+especulative decoding también con ngram.
+Los pego aquí debajo, guardo, ejecuto
+ese archivo pun de ngram y veamos qué
+invento raro conseguimos por aquí. Voy a
+dar en regenerar la respuesta. Estamos
+consumiendo 10 GB de V RAM a pesar de
+dos métodos de especulative de coding.
+Sin embargo, algo que creo que estoy
+notando es que el procesamiento de
+tokens que hay en el contexto tarda un
+poco más, teniendo en cuenta que aquí
+tiene que comenzar a partir de una
+megaconversación anterior con códigos
+muy extensos, varias veces escritos. Y
+veamos aquí qué tal. Y pues si bien
+aparentemente ayuda el y el mt, parece
+que combinados no necesariamente son lo
+mejor, aunque revisemos más. Creo que
+hace rato más veces estábamos cerca de
+arriba de 200 tokens por segundo y hubo
+picos hasta 300. Sin embargo, aquí la
+ventaja está que cuando no hace código
+similar a lo que ya había, sino que
+tiene que hacer modificaciones, de igual
+forma seguimos teniendo velocidades
+interesantes comparado con cuando nada
+de especulative de coding ayuda. En
+resumen, ¿qué puedo decir de por aquí?
+Que la ventaja de los modelos de
+lenguaje de pesos abiertos pequeñitos es
+que siempre los vamos a tener
+disponibles e ilimitados. Sin embargo,
+claramente no son igual de inteligentes
+que modelos en línea, pero si tenemos
+posibilidad de iterar rápidamente y si
+no le dejamos toda la responsabilidad al
+modelo de dichas iteraciones, podemos
+trabajar bastante bien simplemente desde
+un comienzo, no poniéndole tareas tan
+largas. Es decir, que arme el proyecto
+completo de una sola vez, no sé si sea
+lo mejor. De esta forma, más paso a
+paso, nos evitamos tantos errores
+acumulados y de todos modos, los errores
+que tenga, si es que no los logra
+corregir por sí solo, tenemos que
+ayudar, pero esto en modelos pequeños y
+en modelos grandes, solo que en modelos
+pequeños pues claramente puede pasar un
+poco más. Vamos a ver cómo nos quedamos
+con el código final. Doy clic y seguimos
+en las mismas básicamente. Por lo menos
+vimos que con ngram, solo con ng, no
+mtp, podemos llegar a tener velocidades
+bastante sorprendentes que nos pueden
+gustar, arriba casi que de 200 tokens
+por segundo, siendo que originalmente
+este modelo genera como 50 o poquito
+menos. Así que imaginemos en una GPU más
+potente o un modelo que funcione más
+rápido con otra ventaja. Nram funciona
+en cualquier modelo. ¿Por qué? Porque no
+es una función que debe de tener,
+simplemente es el mismo contexto
+utilizándolo para predecir los
+siguientes tokens. Pero lo estamos
+usando en un chat. Esto también funciona
+en un agente. Sí, porque ¿qué hace
+comúnmente un agente? Indicar qué líneas
+de código va a reemplazar y después
+escribir por qué contenido lo va a
+reemplazar. Y comúnmente va a ser
+prácticamente lo mismo. A lo mejor
+simplemente pone un punto, una coma, un
+paréntesis. Si quieres seguir viendo
+este tipo de videos, simplemente da like
+y suscríbete.

@@ -1080,89 +1080,12 @@ no decision-log + reference. Fonte externa é APOIO — empírico local e veredi
 
 ---
 
-# ═══ REGRA GLOBAL R81 — PADRÃO DE GERAÇÃO RESTRITA UNIVERSAL (CONSTRAINED DECODING) PARA TODO LLM — promulgado 2026-08-31 ═══
-
-**Regra**: o padrão de **Geração Restrita + Pipeline de Validação Determinístico** é EXIGIDO para
-**QUALQUER LLM do ecossistema, independentemente das capacidades cognitivas** (pequeno OU grande):
-todo output estruturado (JSON, tool call, schema, extração) produzido por LLM local deve ser envelopado
-em arquitetura de controle — o LLM é **motor de preenchimento de estados**, nunca gerador livre de sintaxe.
-
-<Stack de controle obrigatório (5 camadas)>
-1. **Definição de Tipos** — Python/Pydantic (ou JSON Schema): esquema rígido; o modelo só pode responder o que está tipado.
-2. **Geração Restrita** — GBNF no motor (llama.cpp) ou FSM (Outlines/Instructor): tokens fora da regra = probabilidade zero (logit bias infinito negativo) ANTES do softmax; o modelo é FISICAMENTE impedido de alucinar sintaxe. Fonte única: gabarito.json (R77) → Pydantic → JSON Schema → GBNF em runtime (`LlamaGrammar.from_json_schema`); .gbnf manual = legado/fallback, nunca fonte nova.
-3. **Controle de Estado** — .md (system prompts com tags XML separando instrução de dado) + .json (few-shot perfeito 3–5 interações Input→Output).
-4. **Motor de Inferência estrito** — temp=0.0 para determinismo (f(x)=y), stop_tokens brutos (ex.: `["\n\n","```","<|eot_id|>"]`), max_tokens calculado do schema (trava física — modelo bate no muro rápido, economiza VRAM/tempo).
-5. **Validação e Correção anti-loop** — Pydantic `model_validate_json` + retry com parse do erro re-injetado; `max_retries=3` (3 falhas = exceção no Python, NUNCA loop no LLM); fallback default obrigatório (JSON vazio/log), jamais realimentar falha em loop.
-
-<Aplicação>
-- Vale para TODOS os slots e TODAS as features (hefesto/forja, roteador-hibrido, needle, sdd, extractors, tool calling de qualquer subagente) — independente do modelo (Ornith-35B, granite-4.2-3b, ternary-8B, gemma-2B, lfm, rwkv).
-- O gabarito R77 (.json) é a FONTE ÚNICA que transpila para Pydantic e GBNF — sem camadas duplicadas.
-- Ferramental de referência: `skills/hefesto/tooling/hefesto_llama_bridge.py` (bridge + GBNF runtime) · `skills/hefesto/reference/constrained-decoding-doutrina.md` (doutrina completa) · `llama_cpp_config.json` (flags estritas).
-- Exceção documentada: respostas livres/criativas (F1/F2 brainstorm, prosa R61 criativo) NÃO exigem GBNF — mas qualquer output que será consumido por máquina (JSON/tool call/schema) SIM.
-- **Previsibilidade de LLM não vem do prompt ("seja cuidadoso") — vem da barreira física no amostrador + validação determinística + anti-loop de máquina (R43: scaffolding estrutural em vez de pedido).**
-
-<Exemplo canônico (2026-08-31)>
-- Hefesto upgrade: doutrina registrada em skills/hefesto/reference/constrained-decoding-doutrina.md + decision-log HEFESTO-CONSTRAINED-DECODING-2026-08-31; bridge já existente (hefesto_llama_bridge.py + hefesto_deep_spec.gbnf + hefesto_feature.gbnf) recebe o stack como motor padrão; pipeline FORJA passa a usar tool calling estruturado byte-level com schema 100% conforme (R29/R28).
-
----
-
-# ═══ REGRA GLOBAL R82 — ESTRANGULAMENTO DE FEATURES VIA TRÍPLICE (.md .json .py .gbnf) — promulgado 2026-08-31 ═══
-
-**Regra**: TODA feature gerada ou helenizada através do Hefesto (skill, subagent, hook, plugin, MCP, LSP,
-script, watcher, gabarito, motor) **DEVE ser estrangulada via a tríplice/quadrúplice como estratégia
-anti-loop, anti-alucinação e coesão ativa**:
-- **.md** — ontologia/persona/instrução (system prompt imutável; tags XML separando instrução de dado).
-- **.json** — gabarito/firewall (definição-fonte R77; esquema rígido; allow/deny; transpilável para Pydantic/GBNF).
-- **.py** — mecânica de ignição/validação (motor determinístico; Pydantic `model_validate_json`; anti-loop max_retries=3 + fallback).
-- **.gbnf** — barreira física no amostrador (gerada em runtime de Pydantic/JSON Schema; nunca fonte nova manual).
-
-<Aplicação>
-- Vale para QUALQUER feature nova ou helenizada (R74/R77/R81) — independente do modelo que a executa.
-- Estrangulamento = o LLM da feature é envelopado: não gera livre, preenche estados dentro do contrato
-  da tríplice; qualquer desvio é cortado na camada física (GBNF) ou determinística (Python).
-- Coesão ativa: os 4 artefatos referenciam-se (fonte única no .json); mudança no contrato propaga para
-  Pydantic e GBNF sem duplicação.
-- Anti-loop: 3 falhas de validação = exceção Python + fallback default (nunca realimentar erro no LLM).
-- Anti-alucinação: schemas rígidos + stop_tokens + max_tokens calculado (a feature não pode "inventar"
-  campos nem se perder em justificativas).
-
-<Exemplo canônico (2026-08-31)>
-- Roadmap R81 implementado: `hefesto_llama_bridge.py` com `PydanticToGbnf` (transpilador runtime) +
-  `constrained_generate` (retry/re-inject/fallback) + TDD (test_hefesto_bridge_r81.py); FORJA passa a
-  consumir schema byte-level via bridge; gabarito.json → Pydantic → GBNF.
-
----
-
-# ═══ REGRA GLOBAL R83 — CRIVO SISTÊMICO OBRIGATÓRIO (FATOS · DADOS · MEMORIAL COMPARATIVO) — promulgado 2026-08-31 ═══
-
-**Regra**: TUDO dentro do ecossistema (LLM, feature, hook, subagent, skill, motor, pipeline — qualquer
-coisa que execute) DEVE passar pelo **crivo sistêmico** através de **fatos, dados, argumentos
-plausíveis e irrefutáveis que comprovem as capacidades do LLM/feature em teste empírico** — registrados
-em **memorial comparativo** (append-only, comparável entre rodadas/versões/modelos).
-
-<Etapas obrigatórias do crivo (feature interna de benchmark)>:
-1. **Etapa A — ANTI-ALUCINAÇÃO**: prompts com GROUND TRUTH verificável (fatos conhecidos, extração
-   estruturada com schema, verificação de não-invenção de campos/valores/arquivos). Métricas:
-   conformidade de schema (Pydantic model_validate_json), acurácia factual vs ground truth, taxa de
-   invenção (campos/valores que não existem na fonte).
-2. **Etapa B — ANTI-LOOP**: N amostras do mesmo prompt (temp 0.0 e variada). Métricas: determinismo
-   (respostas idênticas em temp 0), repetição n-gram (loop de tokens), finish_reason length vs stop
-   (bateu no muro = explosão/loop), content vazio com reasoning infinito (R57), latência anômala.
-3. **Veredito categórico por métrica (R28)**: PASSOU_CATEGORICO / NAO_PASSOU com limiares configuráveis
-   (default: alucinação <10%, loop <10%, determinismo ≥90%). Resultado que não impressiona (R40) NÃO transita.
-4. **Memorial comparativo**: append em `harness/logs/llm-crivo-memorial.jsonl` (schema com ts, alvo,
-   versão, métricas, veredito) + relatório legível; comparável entre modelos/versões para decisão (R45).
-
-<Aplicação>
-- Vale para: canonização de novo LLM (R79), troca de slot (R27), dúvida sobre capacidade de feature,
-  antes de entrar no A2A/conselho, e REGRESSÃO ao trocar prompt/modelo/tool (R28 trajectory).
-- Nada é aceito por "parece bom" ou benchmark externo sozinho — o crivo empírico local prevalece (R45).
-- Feature implementada em `scripts/llm_crivo.py` (+ testes) — parte do arsenal do Gran-Mestre (R44).
-
-<Exemplo canônico (2026-08-31)>
-- granite-4.2-3b :9088 cravado: Etapa A taxa de alucinação ~0%; Etapa B determinismo 100% (temp0),
-  stop vs length saudável; memorial registrado.
-
+# ═══ REGRA GLOBAL R81/R82 — DETALHE EM reference/R81-R82-constrained-decoding-estrangulamento.md (R92-janela: stub 3 linhas) ═══
+**R81/R82 vigente — texto integral extraído para `reference/R81-R82-constrained-decoding-estrangulamento.md` (extração 2026-09-10, janela AGENTS.md).**
+Consulte o arquivo para o detalhe completo; a regra continua em vigor integralmente.
+# ═══ REGRA GLOBAL R83 — DETALHE EM reference/R83-crivo-sistemico.md (R92-janela: stub 3 linhas) ═══
+**R83 vigente — texto integral extraído para `reference/R83-crivo-sistemico.md` (extração 2026-09-10, janela AGENTS.md).**
+Consulte o arquivo para o detalhe completo; a regra continua em vigor integralmente.
 # ═══ REGRA GLOBAL R84 — ESCOLHA AUTOMATIZADA POR AUDITORIA DO LLM IDEAL POR NÓ DO GRAFO — promulgado 2026-09-04 ═══
 
 **Regra**: a escolha do LLM que ocupa cada nó do grafo (orquestrador, ingestor, reflexo, proposer,
@@ -1243,53 +1166,9 @@ excelência e a garantia de execução precisa, sem brechas para falhas sistêmi
 
 ---
 
-# ═══ REGRA GLOBAL R86 — RAG CEREBRAL COGNITIVO (OBSIDIAN COMO MEMÓRIA DE LONGO PRAZO + 4 PROPRIEDADES) — promulgado 2026-09-05 ═══
-
-**Regra**: o vault Obsidian é o **RAG cerebral cognitivo** do ecossistema — memória de longo prazo
-com 4 propriedades ativas (self-scaffolding · self-healing · self-learning · self-ameliorative),
-aplicadas ao llama.cpp e ao opencode, sempre no quarteto R85 (.md .json .py .gbnf). Fonte
-helenizada: `tranquileiras/autofagia e helenização/rag_cerebral_cognitivo_regra_universal.md`
-(v2.0, arquitetura-validada — arquivo do usuário, referência viva, nunca movido).
-
-<As 4 propriedades (com amarração de slot e cadência)>
-- **Self-scaffolding** — nota nova cria o próprio andaime (tags+links no frontmatter, validados
-  contra taxonomia e índice; nunca link para nota inexistente). Motor: slot rápido
-  (:9093 Smol / :9086-CPU) + GBNF por tarefa + debounce 10s em fila SQLite. GBNF garante
-  sintaxe; validação pós-inferência garante semântica (R85: trilho ≠ juízo).
-- **Self-healing** — varredura semanal (systemd timer + cgroups: CPUQuota 30%, MemoryMax 2G):
-  órfãos, tags obsoletas, notas desconectadas. Correção SUGERIDA, nunca aplicada
-  (`status: revisar_healing`) — decisão final humana (R18/G4). NUNCA fundir notas
-  automaticamente (contextos distintos colidem).
-- **Self-learning** — lacunas (`#pesquisar`, `status: incompleto`, `???`) viram expansão em
-  nota-filha/bloco colapsível com metadado de origem; NUNCA sobrescreve nota humana.
-  Busca local primeiro (vault/FAISS), remota só se habilitada. Motor: :8083 (síntese).
-- **Self-ameliorative** — revisita notas antigas (>6 meses, ≤5/dia): `valido|obsoleto|
-  sugestao_taxonomia|confianca` via GBNF; obsoleto preserva insight original como contexto
-  histórico; crítica = perguntas orientadoras, NUNCA reescrita (o modelo não viveu teu
-  aprendizado posterior).
-
-<Adaptações helenizadas (onde o doc-fonte divergia do harness — R8/R43)>
-- **Qdrant MANTIDO** (:6333, skill bibliotecario): o doc rejeita Qdrant por peso, mas ele JÁ
-  existe e funciona — catálogo-primeiro proíbe reconstruir (R8). FAISS/SQLite = fallback
-  para coleções novas, não substituição.
-- **Slots por tarefa** (doc §3.3 confirmada pelo nosso crivo): scaffolding→rápidos (:9093,
-  :9086-CPU); síntese/crítica→:8083. Juízo final sempre humano/G4 — GBNF prende sintaxe,
-  nunca confere sabedoria (canônico 05/09: Gemma 4/4 conforme + vereditos errados).
-- **Grammar por requisição**, nunca `--grammar-file` global no slot (nossos slots servem
-  múltiplas tasks; R85).
-- **Anti-patterns do doc viram lei**: sem fusão/exclusão/sobrescrita automática (R18);
-  sem JSON no corpo do .md (frontmatter); sem inferência sem debounce/fila (DDoS próprio);
-  sem escrita sem Git antes de lote; sem confiança cega na semântica (schemas controlados).
-- **Métricas §8 do doc como gates R28** do RAG: scaffolding <3s/nota · links quebrados <1% ·
-  tags inválidas 0% · healer <30% CPU e <2GB · aprovação humana >80%.
-
-<Enforcement>
-- Features RAG nascem no quarteto R85 ou não ignitam; cada propriedade passa por auditoria
-  R83 antes de operar no vault real; memorial no `llm-crivo-memorial.jsonl`.
-- Trilho (GBNF) é condição necessária, nunca suficiente — veredito humano fecha o loop.
-
----
-
+# ═══ REGRA GLOBAL R86 — DETALHE EM reference/R86-rag-cerebral-cognitivo.md (R92-janela: stub 3 linhas) ═══
+**R86 vigente — texto integral extraído para `reference/R86-rag-cerebral-cognitivo.md` (extração 2026-09-10, janela AGENTS.md).**
+Consulte o arquivo para o detalhe completo; a regra continua em vigor integralmente.
 # ═══ REGRA GLOBAL R88 — REFUTAÇÃO PRÉ-EXECUÇÃO UNIVERSAL (FATOS · DADOS · IRREFUTÁVEL, INCLUSIVE CONTRA O USUÁRIO) — promulgado 2026-09-05 ═══
 
 **Regra**: NENHUMA ordem executa cega — o orquestrador refuta qualquer feature/LLM/A2A/decisão
@@ -1320,90 +1199,9 @@ executar**. Refutação não é discordância: é o A2A aplicado à ordem em si,
 
 ---
 
-# ═══ REGRA GLOBAL R87 — SCOUT COMUNITÁRIO + DOUTRINA SMALL-FIRST ("FAZER + POR -") — promulgado 2026-09-05 ═══
-
-**Regra**: o orquestrador PODE e DEVE averiguar e estudar LLMs **oficiais e não-oficiais da
-comunidade** (HuggingFace, GGUFs comunitários — unsloth, bartowski, quants independentes, MoEs
-modificadas, destilações) para **composição e upgrade contínuo da stack local**, otimizando
-sempre o saldo de hardware — com viés estrutural por **LLMs pequenos, de sub-0,1M em diante
-(estado da arte em LLMs pequenos)**. Gênio faz + por -: enxame proporcional de especialistas
-pequenos derruba o que generalista gordo não derruba (FILOSOFIA DE ENXAME).
-
-<Vetor de seleção (tudo medido, nada nominal — R84/R45)>
-- Todo candidato (oficial OU comunitário) é ranqueado por: **ctx honesto** (nativo; YaRN =
-  risco declarado) · **custo de pesos** (GB em disco/VRAM) · **kB/1k** (KV por mil tokens —
-  a métrica que decide se o ctx cabe) · **t/s CPU e GPU** (timings do servidor, single e multi).
-- Não-oficial NÃO é desqualificação: entra em `fitragem/` (quarentena) e só sai de lá por
-  crivo R83 + auditoria R84 + veredito do Conselho R75 — o mesmo portão dos oficiais.
-- Benchmark externo de modelo comunitário (likes/downloads/posts/vídeos — R80) é APOIO;
-  empírico local prevalece (R45). Divergência >20% = investigação, não canonização.
-
-<Demandas de ctx por agente (o ctx escolhe o modelo, nunca o contrário)>
-| Agente | Demanda ctx | Por quê | Ocupante/exemplo |
-|---|---|---|---|
-| ingestor | ≥1M | logs massivos sem perda, O(1) | RWKV7-0.4B (1048576) |
-| orquestrador | 262144 | síntese macro + histórico A2A | Qwen3.6-35B |
-| proposer | 131072+ | contrato/plano inteiro na janela | Llama-1B (131072) |
-| executor | 132K+ ideal | código + diff + testes sem truncar | coder-3B (32768 ⚠️ abaixo do ideal — suplente mapeado) |
-| reflexo | 128000 | loops R42 c/ GBNF | LFM-1.2B |
-| juiz | 8192 | veredito curto e categórico | VAGO (só :8083 dispensa) |
-| micro | 4096 | classificação/extração pontual | SmolLM2-360M |
-
-<Escada small-first (preencher de baixo para cima)>
-- **sub-0,1M**: micro-classificadores, regex-GBNF, FSM determinística — antes de gastar 1 token de LLM, pergunta se regra resolve.
-- **0,1–0,5B**: SmolLM2-360M, RWKV7-0.4B — filtro talâmico, ingestão, micro-tarefas (o grueso do volume).
-- **0,5–4B**: 0.8B, 1B–3B, Gemma/Phi/coder — papéis com vocação (proposer, refuter, relay).
-- **7B–14B**: síntese e crítica pesada (futuro; hoje o :8083 acumula).
-- **30B+**: orquestração/suprema corte (um só — recurso único R2).
-- Só escala de tier quando o crivo PROVA que o tier atual não passa no disjuntor do nó (R84) — nunca por "modelo maior parece melhor".
-
-<Exemplar canônico — RWKV7-0.4B (imbatível no custo-benefício)>
-- 0,91GB · ctx 1M · kB/1k ~0 (state fixo, não escala) · 86,8 t/s GPU / 14–20 CPU.
-- Há modelos melhores que ele em cada requisito isolado (t/s, raciocínio, janela) — e nenhum
-  melhor nele em **tudo ao mesmo tempo por 0,9GB**. É a prova viva do +por-: peneira grossa
-  insubstituível até prova em contrário (R78).
-
-<Estratégia de substituição por alavancagem CPU/GPU (intermediários e primário)>
-- **Intermediários primeiro**: 0,5–4B cabem inteiros na VRAM — proposer/refuter/relay migram
-  CPU→GPU quando o disjuntor de t/s do nó exigir (F4 ≥100, R65) E a guarda pós-mudança ficar
-  ≥1GB. Caminho inverso (GPU→CPU) quando a VRAM apertar, por prioridade: orquestrador >
-  ingestor > resto. Pequeno no CPU continua rápido (0.8B: 27,7; Smol: 48,4) — downgrade
-  de device raramente mata o papel.
-- **Primário (35B)**: sempre híbrido com curva ngl×t/s medida + batch junto (protocolo 05/09:
-  pontos 20→40; ótimo = joelho antes da guarda <1GB — canônico: ngl36). Full-GPU só se
-  couber com ctx operacional + casa mínima; CPU puro só se a GPU evaporar.
-- **Rito de troca**: manifesto + `--apply` + restart só do slot + smoke + memorial (R27/R84).
-  NUNCA dois moves simultâneos (isola a causa se degradar).
-- **Reserva fria**: destronado vai para `fitragem/` até o sucessor estabilizar — lixeira só
-  após veredito de descontinuidade (canônico 05/09: Phi).
-
-<Otimização estrita via quarteto (prefill · decode · batch · KV · quant)>
-- **.md** — declara por papel a métrica-rainha (decode p/ executor interativo; prefill p/
-  orquestrador de janela longa; latência p/ micro) + sampling oficial R61.
-- **.json** — firewall declara as flags ótimas do slot (batch/ubatch, KV, quant, ngl, FA):
-  todas crivadas, nenhuma default silencioso (R66/R76).
-- **.py** — harness de sweep: mede prefill+decode+VRAM por config, compara, canoniza o
-  vencedor, grava memorial. Ordem: batch+ngl (estrutura) → KV/quant (precisão, ΔPPL) →
-  FA/MTP (motor). Lei do colapso: batch maior degrada em bandwidth-bound (R76, 05/09: b8192).
-- **.gbnf** — economia de decode (output contido no schema = menos tokens; max_tokens do
-  schema = trava física) + economia de prefill (`cache_prompt` em prefixo repetido).
-
-<Afinidade de threads — CPU pinning (parametrizar, nunca impor)>
-- Afinidade vive no manifesto (`fisica_inferencia.threads/pin`); default = scheduler do SO (R72).
-- Pin (`taskset`/`numactl`/cpuset) SOMENTE quando crivo provar contenção (decode cai sob
-  carga paralela e recupera com isolamento).
-- Neste hardware (Xeon 18C/36T single-socket, sem NUMA inter-socket): pinning isola vizinhos
-  ruidosos, não cria banda nova — ganho esperado pequeno; medir antes (R62).
-- Pin diz ONDE, nunca QUANTOS a menos: `-t` fixo arbitrário continua proibido (R72).
-
-<Enforcement>
-- Scout contínuo (R80 multi-idioma, todas as línguas, MoEs comunitárias com evidência) →
-  quarentena `fitragem/` → R79/R83 → auditoria R84 → sync R27 → memorial.
-- Métricas de todo candidato (kB/1k, t/s CPU/GPU, ctx honesto) entram na tabela de saldo;
-  descoberta fresca sincroniza nos 5 pontos (R78-sync). Sem linha na tabela = sem existência operacional.
-
----
-
+# ═══ REGRA GLOBAL R87 — DETALHE EM reference/R87-scout-small-first.md (R92-janela: stub 3 linhas) ═══
+**R87 vigente — texto integral extraído para `reference/R87-scout-small-first.md` (extração 2026-09-10, janela AGENTS.md).**
+Consulte o arquivo para o detalhe completo; a regra continua em vigor integralmente.
 # ═══ REGRA GLOBAL R90 — BIBLIOTECA DE CANAIS DE APOIO COGNITIVO DO BIBLIOTECÁRIO — promulgado 2026-09-05 ═══
 
 **Regra**: o Bibliotecário mantém uma **biblioteca viva de canais de apoio cognitivo**

@@ -1,0 +1,199 @@
+Today we're going to test the
+Quen 3.50.8B model
+at full BF16 precision with its mm prog
+or vision also in BF16 in its entire
+context window which is 262,144
+tokens with everything and MTP also ABF16 as well
+as the KV cache.  The 100%
+unquantized model and seeing such a
+small model for what complex things it
+can work for, considering
+that it is not even quantized.
+The highest quality that can be achieved
+with this model is simply
+complete precision.  However, despite
+higher precision and more gigabytes of
+model, the truth is that it is still
+only 0.8 billion parameters.
+So let's see how well it works
+for us.  So, we run it
+and we see here that it's
+consuming 6.5 GB of V RAM from my
+12 GB RTX 3060 when loading it at
+full precision with all its
+context window, MTP, mm prog, etc.,
+etc., everything that this model can give us
+by itself.  And on this occasion, it
+only consumed 6.5 GB of V
+RAM, taking into account that nothing is
+quantized.  I enter the interface of the same
+name, CPP, its web interface to do the
+tests and we are going to start with the
+following, basically a landing page.
+We see here that the model with a chain of
+reasoning is still generating
+above 100 tokens
+per second within its reasoning.  This is mainly due to the
+MTP and the low billions of
+parameters, because in any case, it
+consumes quite a lot of memory
+due to being at full precision.  The
+model has correctly begun
+its reasoning chain and after
+testing a few things in it, it has
+given this as an answer in conjunction with
+the code generation it is currently
+doing.  First CSS,
+then HTML, then probably
+JavaScript, and after that we can see
+the final result.  Here it is.
+After 6173
+tokens, taking 46 seconds and generating
+133 tokens per second on my GPU,
+we got this response from here,
+which above, although apparently there
+should be things, well the truth
+is that I don't see anything.  We scrolled down a bit and
+started to see more information, more or
+less simple, but at least
+functional, except that it seems there is
+information that should be
+appearing with JavaScript and that is
+not appearing.  Therefore, this model,
+however completely precise and
+quantized it may be
+, has a real limit in
+the billions of parameters, which is very
+few.  Now let's try to make a
+functional calculator in HTML and
+see how the result is.  Here's
+the answer regarding the 4874
+tokens, and it's as follows.
+This is supposed to be a calculator, however, at
+least in my case, I don't see the point of it at all
+.  And it doesn't just make sense, it doesn't even
+work.  No matter how much
+I press one thing or another, the
+truth is that this model is not functional
+.  Even for simple
+development tasks, it can be used to
+autocomplete code, but not
+literally for programming
+on its own.  Now we're going to make a
+kind of analog clock, also in
+HTML5, to see how the result turns out.   We
+are seeing that while the model
+responds quite well,
+quite coherently, it is not the most
+intelligent.  It may be for more
+specific uses, under more
+specific environments, not a replacement for GPT chat
+or similar.  We re-visualized it and again
+something very similar that apparently
+starts to do things, however they
+never really end up working, to be honest.
+Let's do one more test in this
+fluid simulation case.
+We press enter, preview,
+and the fluid simulator has a
+certain panel, which I can't even
+select correctly, and we don't see the
+rest.  Okay, clearly it's not the
+best model for all of this.
+However, in these tests, one thing we haven't been
+doing is telling him to correct himself
+.  We can tell you exactly what
+the mistake is, or we can tell you to try,
+find, and correct it.  So for the
+four prompts we've applied, we're going
+to tell you, analyze your code and
+rewrite it, but 100%
+corrected.  I'm going to write this on
+each of the requests we've
+made, trying to see if it at least
+manages to correct it, because being a
+small model, maybe the first one doesn't
+do things right, but what if it
+manages to correct it?  If he can fix it
+easily, without us even
+telling him what the problem is, that would be
+quite interesting.  Even so, it is
+assumed that for the first prompt, the one on
+the landing page has managed to correct itself.
+Let's remember how it was before, which was
+something like this: the hero
+was simply empty, we couldn't see anything, and the rest
+was very simple, plus perhaps
+some data was missing.  Let's
+preview the new version and
+here we have exactly the same thing.   We
+went downstairs and everything was exactly the same.
+In fact, I think it was worse here on the
+form, so please
+correct it.  The truth is no, although
+at least it didn't respond with a
+very different code, changing things it
+shouldn't have, but it didn't correct it either
+.  Let's use the calculator.
+Let's remember that
+the truth made absolutely no sense, neither in terms of how it was
+arranged, nor in terms of how it
+functioned, nor anything else.  Let's
+see what he managed to do after his second correction
+.  And in this case, I do
+see that things have changed; it looks less
+bad, but it still has a long way to go, and it's still
+not
+functional anyway.  Now let's look at the clock.
+This was the original, the analog clock
+that doesn't even display correctly.
+So, now let's see how he claims to have
+corrected it.  I click to
+preview and the truth is that it doesn't
+fix anything, and in fact the
+toggle button ended up worse, so no, it really does
+n't.  Finally, the
+fluid simulation, which initially the panel couldn't
+even be used and was the
+only thing we could see.  And now let's
+look at the new version and we have
+exactly the same thing here.  We see that it is not
+a very intelligent model, to be
+honest, to
+develop and correct itself.
+However, we are seeing that as a
+language model it is quite interesting.
+It responds to context that makes sense, gives
+convincing answers, even if they are not
+correct, and generates fairly well-
+structured code and so on, it just doesn't have
+the intelligence for that.  So this
+model for specific uses, with
+specific prompts, specific environments and
+perhaps even fine tunings, can be
+quite interesting for
+specific tasks, but not 100% like a kind
+of GPT chat.  Perhaps even for
+summaries it falls a little short, not as much
+as here clearly, but for code,
+although the Quen models are
+interesting, well in its version 0.8B,
+8B.  Despite having absolutely
+nothing quantized, neither the model, nor the
+draft, nor the KVK, nor the draft's KVK
+, nor the mm prog, well no, it is not
+a model for programming, if anything, for
+auto-completing code while we are
+developing.  But more than that,
+the truth is, no.  I have here 35
+different tests that I can
+perform on any
+language model.  Tell me which language model
+you want us to test.  And anyway, I'd like to
+mention that I'll be covering all the
+current Quen models, including all the
+interesting ones,
+in future
+videos.  We're starting with the
+smallest and we're going to go from the smallest to the
+largest.

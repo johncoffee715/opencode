@@ -1,0 +1,303 @@
+El día de hoy vamos a probar el Ornit
+1.5 35BA3B, el cual es un QEN 3.5
+BA3B, pero F tuneado. Se supone que
+mejorado en todas sus capacidades, pero
+una cosa es lo que dicen, otra cosa es
+lo que realmente va a suceder. Así que
+en esta ocasión lo vamos a descargar y
+probar. Así que para ello nos vamos a
+archivos y versiones y lo voy a
+descargar por ejemplo en Q4 km, el
+modelo pesando 21.7 GB. Descargamos el
+modelo y también vamos a descargar el mm
+prog de visión del mismo. Este modelo
+parece ser que no cuenta con MTP o por
+lo menos no lo mencionan, para acelerar
+la generación de token. Sin embargo, al
+ser un mezcla de expertos, de todos
+modos, vamos a tener muy buena
+velocidad. Lo vamos a estar cargando en
+una RTX 3060 de 12 GB de V RAM, pero con
+los truquitos con como en los tutoriales
+que tenemos en el canal para pasar los
+expertos a RAM y que el modelo se siga
+ejecutando a muy buena velocidad a pesar
+de que no quepa completo en nuestra GPU.
+Vamos a preparar entonces nuestra
+carpeta para dicho modelo Ornit 1.5
+35BA3B.
+Y pues este modelo lo vamos a probar en
+esta ocasión, pero después lo vamos a
+comparar contra el QEN 3.5B
+3B y contra el Qen 3.6 también porque ya
+no solo está el 3.5 aquí. De hecho,
+según ellos nos comentan que este 1.5 es
+superior al 1.0, que a su vez es
+superior al quen 3.6 35b,
+siendo que este está basado en el 3.5. O
+bueno, no está basado, es el 3.5
+simplemente fine tuneado. Sin embargo,
+eso es lo que nos dicen ellos. Vamos a
+ver en nuestras pruebas si realmente
+aparenta ser superior. Ya estuve
+preparando en este caso el punto BAT
+para su ejecución. Tenemos ornit 1.5
+35bq,
+el mm prog para visión. Se supone que
+todas las capas del modelo en GPU, sin
+embargo, vamos a hacer un cambio por ahí
+y en esta ocasión lo vamos a cargar con
+solo la mitad de ventana de contexto,
+pues para que quepa correctamente para
+nuestras pruebas. Tenemos todos los
+ajustes recomendados para dicho modelo.
+Simplemente ahora lo que vamos a agregar
+es lo siguiente. Vamos a poner por aquí
+el flag CMOE como nuestros tutoriales de
+llama CPP para modelos grandes. Mezcla
+de expertos y con estos ajustes lo
+deberíamos de poder cargar sin ningún
+problema. Ya con el punto BAT generado y
+los archivos descargados vamos a
+proceder a intentar abrirlo, en este
+caso con nuestra GPU 100% vacía. Le doy
+doble clic para intentarlo cargar y
+vamos a ver por aquí cuánta memoria nos
+va a estar consumiendo. Nos está
+consumiendo 5.7 GB de V RAM porque lo
+demás los expertos están en RAM. Podemos
+meter más parte del modelo, más expertos
+a la GPU o aumentar la ventana de
+contexto. Eso depende de nosotros lo que
+queramos. Ya tenemos tutoriales sobre
+este tipo de cosas. Aquí vamos a probar
+la inteligencia del modelo. Así que para
+ello, primero vamos a probar qué tan
+bueno es en cuanto a velocidad. Presiono
+intro y por aquí estamos viendo que me
+está generando arriba de 30 tokens por
+segundo sin MTP ni nada similar. Si
+hacemos más optimizaciones tratando de
+utilizar al máximo nuestra GPU, pues más
+velocidad aún deberíamos de conseguir.
+Sin embargo, no está nada mal que un
+modelo 35BA3B
+nos esté generando 30 tokens por segundo
+sin necesidad de MTP en una RTX 3060
+únicamente consumiendo 5.7 GB en Q4. Muy
+bien, pero esta es la velocidad que nos
+da. ¿Qué tal la inteligencia del mismo?
+Pues aquí ya se están empezando a
+generar las respuestas de las consultas
+que comúnmente hacemos para probar la
+inteligencia del modelo, que si bien lo
+que vamos a hacer es código, el objetivo
+no es ver qué tan bueno es en código. No
+estamos haciendo uso agéntico, no
+estamos utilizando dependencias ni
+lenguajes de programación muy complejos,
+simplemente con algo de programación
+simple intentamos ver qué tan bueno es
+en inteligencia resolviendo problemas.
+Estamos haciendo código, sí, pero no es
+una comparativa o un benchmark de
+código. Es una especie de benchmark de
+inteligencia que por sí solo logre hacer
+estas tareas. Esta primera siendo la más
+sencilla en la cual va a ser una landing
+page en la que queremos ver qué tan
+bueno es siguiendo instrucciones más o
+menos complejas y conociendo cómo es que
+comúnmente en el mundo real se
+desarrollan estas cosas, ¿no? Que se
+invente algo diferente o más simple, que
+sea como una página típica que realmente
+parezca profesional. Recordemos, es un
+que está generando 30 tokens por segundo
+sin MTP ni ningún ajuste de optimización
+que dé de por sí más velocidad, lo cual
+entonces está bastante interesante que
+estemos consiguiendo estas velocidades.
+Vamos a revisar su cadena de
+razonamiento y en esta ocasión vemos que
+es bastante simple. Simplemente lo que
+intenta hacer por aquí pues es desglosar
+las cosas que va a intentar hacer y a
+partir de ello y a partir de ello se
+pone a dar la respuesta final. Luego de
+un rato ya tenemos aquí los resultados
+de las distintas pruebas y en la primera
+de ellas, en la que es una landing page,
+vamos a ver qué es lo que nos generó
+este modelo Ornit 1.5 35B a3B.
+Visualizamos la respuesta y la verdad es
+que dentro de todas las pruebas que
+hemos hecho es la que mejor resultados
+ha dado con diferencia, pero aquí a
+tener en cuenta que no es solo por ser
+ornit, sino que es el primer modelo tan
+grande que logramos cargar. Antes de
+ello, el más grande que habíamos cargado
+era uno 12B y este no es lo doble, 24B
+es mucho más que eso, es 35B, 35
+billions de parámetros, con lo cual pues
+tiene sentido que la respuesta sea mucho
+mejor. Lo interesante va a estar cuando
+lo comparemos contra modelos de tamaño
+similares, sin embargo, es cierto que sí
+es la mejor respuesta hasta el momento.
+Es algo bastante profesional que de
+hecho no se ve 100% como si fuese IA. No
+estoy diciendo que es una página
+totalmente novedosa ni nada así, pero sí
+es algo que me hubiese creído que una
+persona hizo. [resoplido] Recordemos,
+sin ninguna dependencia ni ningún
+detalle totalmente especificado. Vamos
+ahora a la siguiente prueba, que en esta
+ocasión es una calculadora. Dichas
+calculadoras que hemos hecho con otros
+modelos comúnmente salen suficientemente
+bien, aunque a veces en temas de diseño
+no son las mejores. En funcionalidad no
+hay tanto problema, pero en diseño sí.
+Vamos a ver por aquí qué es lo que nos
+generó este Ornit 1.535B.
+Y por lo menos a simple vista se ve
+bastante interesante, bastante bien
+acabada en cuanto a diseño y estilo.
+Ahora vamos a visualizar el historial y
+bastante bien, me gusta. Lo podemos
+mostrar y ocultar el historial de
+operaciones. En esta ocasión lo vamos a
+estar mostrando para probar un poco. Si
+escribimos 45 - 5 = 40 y queda el
+resultado en el historial. Si ponemos +
+5 = 45 y queda en el historial, lo que
+estoy viendo es que esto está creciendo
+indefinidamente entre 2 = 22.5.
+Aquí la multiplicación está rara, pero
+bueno. Por 2 = 45. bastante bastante
+bien. Y en este caso estamos viendo que
+ya es el tamaño total que suele tener la
+parte de historial porque ya luego de
+ello tiene scroll, de lo contrario
+seguiría aumentando indefinidamente el
+tamaño. Vamos a limpiar la pantalla.
+Esquivo igual, todo correcto. -5 igual
+pues -5 0 -5 = -5. Todo bastante bien,
+la verdad. Este modelo, la verdad es que
+sí, es bastante más inteligente que los
+modelos más pequeños que hemos probado,
+pero no sabemos si en tamaños similares
+es 100% el mejor. Vamos ahora a las dos
+pruebas más complicadas. Estas dos
+primeras demuestran algo de
+inteligencia, conocimiento de cómo se
+hacen estas cosas en el mundo y
+seguimiento de instrucciones. Pero la
+siguiente es algo en lo que debe de
+entender correctamente los cálculos y
+demás para pintar correctamente, en esta
+ocasión las manecillas y demás datos de
+un reloj analógico. Así que lo vamos a
+visualizar y en esta ocasión nunca hemos
+tenido buenos resultados en este prompt.
+Vamos a ver en este caso y la verdad es
+que ha sido de los peores que hemos
+obtenido. En otros por lo menos vemos
+algo de información, vemos tan siquiera
+la hora en formato digital. Aquí no
+estamos viendo absolutamente nada,
+aunque por lo menos el interruptor de
+claro y oscuro funciona, pero la verdad
+es que bastante sorprendente lo mal que
+lo hizo en esta ocasión. Hasta modelos
+bastante más pequeños hacen a veces
+cosas mejoras en esta prueba, pero las
+otras dos han estado bastante bien.
+Vamos a ver ahora la última, la cual es
+más compleja. Es un simulador de
+fluidos. De hecho, por aquí vemos que
+lleva 7500 tokens de cadena de
+razonamiento y que aún no termina. Sin
+embargo, tantos tokens de razonamiento
+me pudiera hacer pensar que está en una
+especie de ciclo infinito. Parecería que
+no. Voy a quedarme aquí un rato viendo
+cómo avanza la generación de la
+respuesta. Pero la verdad es que ha
+generado bastante razonamiento.
+Esperemos y que realmente tenga sentido.
+Lo que sí es que estamos viendo que
+sigue a 30 tokens por segundo luego de
+tantos tokens de respuesta, teniendo en
+cuenta que solo estamos ocupando 5.7 GB
+de V RAM de una RTX 3060 y luego de más
+de 38,000 tokens, 23 minutos 15
+segundos, a una velocidad de 27 tokens
+por segundo, tenemos la respuesta final.
+En esta ocasión, este modelo sí
+consumiendo muchos tokens, pero
+precisamente en modelos así de pequeños
+es lo que comúnmente les da buena
+inteligencia comparado con modelos
+enormes como lo pudiera ser Opus GPT 5.6
+sol o lo que sea. Vamos a ver la
+respuesta, ¿qué tal quedó? Esperando que
+al menos haya valido la pena, si no
+tanto rato, pero visualizamos entonces
+el código y esto es lo que tenemos por
+aquí. Y sinceramente, por lo menos en
+esa animación inicial, no fue lo mejor
+que hemos obtenido. Sin embargo, vamos a
+empezar a dar clic y ver qué tal
+funciona todo. Estos son los fluidos que
+según tenemos vamos a ver qué sucede
+cuando le damos en empujar. Doy clic en
+empujar y las podemos estar aventando.
+Se ve bien. Sin embargo, no sé si
+realmente es la prueba que más me ha
+gustado de esto y menos teniendo en
+cuenta el tiempo que tardó. Tardó
+muchísimo para simplemente esto, la
+verdad, bajo mi opinión, claro está.
+Vamos a ver qué tal funciona con arena.
+Y no, la verdad es que no es mi prueba
+favorita, ha habido otras que me han
+gustado más. Esto es de preferencia
+personal. Lo que sí estamos viendo con
+este modelo Ornit 1.5 35BA3B
+es que claro que da más inteligencia que
+otros modelos más pequeños que hemos
+probado, afortunadamente, y que aún
+consumiendo menos de 6 GB de V RAM y lo
+demás de RAM da buena velocidad. El
+problema aquí no fue la velocidad de
+generación de tokens, sino más bien los
+tokens que consumió para generar esta
+respuesta. De igual forma, pues
+afortunadamente la respuesta funcionó.
+Malo hubiese sido que tanto rato para
+nada. Ahí ya no puedo poner nuevos
+elementos según estoy viendo. Aumento el
+número y nuevamente puedo poner más.
+Todo bien, la verdad. Pues muy bien,
+esta es nuestra prueba con este modelo
+Ornit 1.5 que se ve mejor en
+inteligencia que los modelos más
+pequeñitos que hemos estado probando.
+Gema 412B de momento siendo el más
+inteligente hasta que llegó este Ornit
+1.535 BA3B. Ahora nos va a interesar
+compararlo contra el Quen 3.6 35 BA3B
+que es el modelo original de Quen,
+mejorando ellos mismos el quen 3.5 en
+vez de aquí mejorado por gente externa.
+Vamos a ver cuál es mejor con eso. Si
+quieres seguir viendo este tipo de
+videos, te recomiendo ver la comparativa
+con los videos anteriores, con los
+modelos anteriores. Y si quieres seguir
+viendo este tipo de videos, simplemente
+da like y suscríbete.

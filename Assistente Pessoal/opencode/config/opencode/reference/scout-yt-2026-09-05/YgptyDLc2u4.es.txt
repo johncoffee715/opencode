@@ -1,0 +1,494 @@
+El Instituto de Modelos de Fundación es
+investigación
+División de IA en MBZUAI,
+Universidad en Abu-
+Dabi, que es invisible
+se estaba desarrollando
+laboratorios en París
+y Silicon Valley.
+Acaban de publicar
+algo bastante impresionante.
+K2 Horizon es seis
+modelos abiertos:
+desde pequeñito con 0.9
+mil millones de parámetros
+hasta la mezcla
+expertos en 375
+miles de millones, y cada uno de
+Apache 2 tiene pesos y
+también datos de entrenamiento,
+puntos de control y
+código. Hoy en este
+video que probamos
+tres tamaños que usted
+Realmente puedes
+correr en uno
+procesador gráfico
+. 0.9 mil millones, ¿cómo estás?
+Como puedes ver aquí, 7
+miles de millones, y luego 32
+miles de millones. También está
+versión para 3.7 mil millones,
+de lo cual hablaré en
+un video aparte, porque
+Quiero hacerlo
+revisión detallada, porque
+Creo que esto es ideal.
+equilibrio para todos.
+Pero en cualquier caso,
+El propósito de este video no es
+Solo para presentarte
+con este laboratorio,
+que, por cierto, no es así
+ya nuevo. Son ella
+renombrado o
+de cierta manera
+renombrado
+. Además, nosotros
+nos estamos reuniendo
+instala estos tres
+modelos. Pasaremos
+dos o tres pruebas para
+para ver qué exactamente
+su propósito, ¿son?
+modelos serios,
+¿Todavía lo tienen?
+problemas. Nosotros somos eso
+Vamos a comprobarlo. Este es Fahad
+Mirza, y te felicito.
+en el canal. Recién
+Comencé a liderar
+gratis
+boletín semanal
+sobre IA, que usted
+Puedes suscribirte
+en fahadmirza.substack.com. Él
+mi terminal, ¿dónde estoy?
+Trabajo en Ubuntu y este es el mío.
+Tarjeta de video de 96 GB
+memoria de vídeo. I
+Voy a empezar
+Cargando todo
+tres modelos con abrazos
+Rostro. Si estás buscando,
+dónde alquilar una GPU por
+a buen precio,
+El enlace a Vast Compute es
+en la descripción del video. A
+Por cierto, un dato interesante:
+Lo llamaron K2, como
+una montaña que parece ser
+segundo más alto en
+mundo. Ella está en
+Pakistán. Y esto, para
+cosas, no una palabra nueva.
+Si vas a
+mi canal, solo
+búsqueda por consulta
+"K2". Gimme lanzó K2
+hace un tiempo.
+Entonces aparecieron y
+otros K2 como este y este otro
+La lista puede ser
+continuar
+infinitamente. El último
+2-3 años era mucho
+K2 diferente. En cualquier
+caso. Entonces, mientras
+modelo
+cargando,
+déjame
+mostrar rápido
+comparando estos
+modelos para que puedas
+entendieron que ellos
+ellos representan. Por lo tanto,
+mira este
+párrafo. Él dice
+te contaré toda la historia. Por lo tanto,
+comparación lado a lado
+hombro Lo primero que
+Fíjate, esto es lo que
+ventana de contexto
+está creciendo significativamente.
+Modelo para 0,9 mil millones
+limitado a 128 mil, pero
+versiones para 7 y 32 bits
+miles de millones llegan a 512
+mil en pruebas sin procesar,
+y lo son en muchos sentidos
+similar. Todos los tamaños
+Tiene su momento. Versión
+en 0,9 mil millones
+en realidad lidera en
+examen de matemáticas
+MB 2026 y de guardia
+herramientas con BFCL, que
+bastante impresionante para
+tan pequeño
+modelos. Modelo 7
+Hay miles de millones
+campeón en el banquillo de la suite y
+banco terminal. Qué
+En cuanto a la caja del banco, entonces
+Esto es desarrollo real.
+software
+provisión y
+trabajo de agente en
+terminales y el modelo
+en 32 mil millones significativamente
+por delante del diamante GPQA.
+Estos son científicos
+consideraciones de nivel
+estudios de posgrado. Entonces, 82
+contra 27. La cuestión es,
+para elegir una talla
+dependiendo de qué
+Sí, de hecho lo haces.
+0.9 mil millones—para
+periférico
+dispositivos o muy
+pequeñas tareas. 7
+miles de millones—por
+local
+programación en
+puesto de trabajo. 32
+miles de millones—cuando
+Se necesita algo serio
+poder para
+consideraciones. Entonces, esto es
+opciones
+uso para estos
+modelos. Modelos
+cargado. Ahora
+Esto es lo que voy a hacer
+hacer. lo haré
+Ejecutar estos modelos
+Sucesivamente. Lo haré.
+la misma prueba
+para programación para
+cada modelo, y nosotros
+Vamos a comprobar el resultado
+. Modelo
+servido a través de
+vllm, y ves que
+ella consume
+cerca—te lo mostraré
+y sobre estas advertencias
+puede ignorarse. Él
+modelo de primera etapa.
+Entonces, consume
+aproximadamente 65 GB
+memoria de vídeo. Y esto
+el comando vllm que necesitas
+será necesario
+usar. Por lo tanto,
+modelo de 32 mil millones
+sirvió con KV-
+cache. Permitir
+mostrarte
+consumo
+memoria de vídeo. Por lo tanto,
+consume un poco
+más de 92 GB
+memoria de vídeo. Bien,
+Ahora realizaré una prueba.
+Esta es la primera tarea con
+programación,
+simple pero complejo
+prueba donde
+no hay horarios o
+puntos de referencia, simplemente
+créalo desde cero y
+demostrar que es
+Realmente funciona.
+Veamos si puede
+Este modelo es 32
+miles de millones de parámetros
+crear un sistema autónomo
+Archivo HTML para simulación
+girando el pincho con
+kebab doner antes
+vertical de gas
+parrilla. Así que yo
+Volveré y
+Lo usaré en
+Agentes de Hermes, ¿dónde estoy ya?
+Yo uso esto con
+modelo actual.
+Bien, esto es con lo que tienes que lidiar.
+también puedes
+chocar. En este
+momento yo
+Solo uso 32
+mil. Así que yo
+necesidad
+reiniciar esto con
+contexto sobre 65
+mil fichas.
+Déjame hacerlo.
+Y ahora el modelo funciona.
+sobre esto. Esperemos,
+hasta que ella termine,
+y lo comprobaremos
+resultado. Por lo tanto,
+después de más de la mitad
+modelo de reloj
+completó el trabajo y
+Creé este archivo HTML.
+Hmm, si tan solo...
+mira esto,
+La calidad no parece
+como esperabas
+del modelo por 30
+y más. Si
+observa el progreso
+pensamientos, y yo sus
+lo miré, luego esto
+normalmente. Es decir, esto
+¿No es algo increíble?
+de clase mundial. Pero
+y no está mal. Esto es completamente
+No está mal, pero
+otra vez, no
+nada especial,
+para que pueda decir que
+Esto es mejor que, por ejemplo,
+Moneda o, bueno, ya sabes, hay
+muchos otros como tú
+ya puedes
+imaginar. En cualquier
+Bueno, ¿sabes qué? Todo
+es reconocido en
+comparable.
+Déjame
+ábrelo. Y
+Lo siento, una cosa más.
+Lo solicité específicamente
+guarda esto en un archivo. Y
+No funcionó. Entonces
+Sin embargo, esto es un problema.
+herramientas de llamada
+activado. Entonces, yo
+Simplemente... lo guardé.
+manualmente en este archivo.
+Déjame abrir
+es. Y verás,
+No pasó nada.
+Entonces tiene errores.
+Simplemente no funciona.
+. Honestamente, directamente,
+sin editar, yo
+Te mostraré todo tal como es.
+Pero este es solo el primero
+escenario. ¿Sabes qué? I
+No seré demasiado estricto.
+. Dado que este es el primero
+etapa, esta no es la final
+punto de control, pero
+Simplemente gastaré
+Multilingüe rápido
+prueba. Entonces, para
+prueba multilingüe
+Usaré este.
+rápido, ¿dónde?
+traducir la oración
+en todos estos idiomas. Y más
+un momento, yo
+Sospecho lo que pasó.
+en el primer caso:
+a pesar de que no lo es
+versión final, ellos
+también se necesita
+para trabajar en
+tratamiento
+herramientas. Modelo
+realiza esto
+prueba multilingüe, y,
+Honestamente, ¿por qué?
+para liberar en absoluto
+un punto de control que
+¿No es definitivo? Pero aquí
+y la respuesta del modelo. I
+Volvería a decir que esto
+respuesta promedio. Ejem
+, de buena calidad
+para los principales idiomas,
+como el inglés,
+Español, ruso,
+Francés, polaco,
+Checos y otros. Pero
+si miras
+idiomas con bajo
+recursos como
+Bengalí, suajili,
+Tamil, punjabi
+y muchos otros,
+incluso desde el Sur-
+Asia oriental, luego todo
+completamente colapsado:
+Esto no tiene sentido.
+una mezcla de guiones de
+intercalados
+sin traducir
+Palabras en inglés.
+Aunque no lo sea
+versión final,
+por su culpa
+liberada, ella tiene
+estar cerca de
+final. Entonces, yo
+simplemente desplazándose
+más. Así que realmente lo es.
+no le va bien
+impresión. Ahora yo
+También es interesante su curso.
+pensamientos, ¿cómo puedes?
+Mira aquí. Por lo tanto,
+modelo abierto
+dudó en su interior
+oración por oración,
+bastante notable
+lucha y
+corregirse a uno mismo en
+en tiempo real en
+lenguajes más complejos.
+Entonces, creo que
+Hay uno de verdad
+incertidumbre y esto
+bien. Una cosa que puedo hacer
+admitir que esto es lo que
+Ella no está alucinando.
+Confiado, y eso es bueno.
+Pero de nuevo, para
+modelos con 32 mil millones
+los parámetros son
+No es lo suficientemente bueno.
+Eso es todo por nuestra parte.
+Paremos. Yo solo
+Voy a comprobarlo.
+versión para 7 mil millones.
+Veamos cómo va.
+Este es un modelo 7
+, que consume
+aproximadamente 16,76 gigabytes
+memoria, y aquí
+el equipo en el que estaré
+usar.
+De nuevo, como yo
+dicho,
+instrumental
+El analizador no funciona con ninguno de los dos.
+VLLM, no con SD 9. Así que ellos
+Realmente necesito más
+Trabaja en esto. Pero,
+En fin, aquí está.
+¿Por qué usaría esto?
+Script de Python para
+generar eso
+el archivo HTML en sí con
+exactamente lo mismo
+pedido. Modelo
+está atendido.
+Consumo de VRAM con KV-
+cache. Le di
+tantos recursos,
+tanto como pude.
+Vamos a ejecutar este script
+ahora. Modelo
+devolvió la respuesta,
+y aquí está el archivo que ella
+creado. En cualquier
+En fin, vamos
+Consideremoslo
+juntos. Yo solo
+Lo arrastraré en línea recta.
+frente a ti. Aquí, estar
+afecto. Entonces, si esto
+Había un kebab doner, yo lo haría
+No me lo comí. Entonces, esto es
+modelo de 7 mil millones
+configuración para ti.
+Bueno, no muy bien.
+Así que vámonos ahora.
+Hagámoslo muy rápido
+prueba multilingüe.
+El modelo emitido
+resultado, y si usted es
+equipos de desarrollo
+de este modelo, yo lo haría
+Te aconsejé que no lo hicieras.
+mira esto
+resultado.
+Mira esto.
+No hay palabras. Estoy aquí.
+No diré nada.
+. Lo único que diré es
+que gasté mucho dinero
+dinero para este servidor
+con 96 GB de VRAM, solo para
+Obtén 32 GB
+memoria, pero esto
+Sucede. Como puedes ver, y 32
+miles de millones y 7
+miles de millones—completo
+Inútil. Intentémoslo.
+versión para 0.9 mil millones.
+Este modelo consume
+solo 2 gigabytes de VRAM
+sin caché KV.
+Ahora comprobemos con
+Caché KV. Eso es lo que
+ella consume. Bueno,
+Empecemos con
+prueba multilingüe,
+porque este archivo ya está
+finalizado. Yo solo
+Lo dejaré ir con eso.
+por la propia solicitud, que
+el resultado mismo. Y esos
+los propios idiomas. Más o menos
+La misma historia otra vez
+. Sin perder mucho tiempo
+Te mostraré uno
+Algo muy interesante.
+Mira esto. Él
+Traducción al urdu.
+No sé por qué AWS y
+todo lo demás
+Se abre paso aquí.
+Entonces mira, nosotros
+Acabo de ver en
+tiempo real, que
+productividad en
+de este modelo. Y esto no es
+simplemente básico
+preentrenado
+modelo. En tu
+blog ellos claramente
+Tenga en cuenta que el horizonte K2
+completó formación adicional,
+SFT, fusión de modelos
+, RL y especializados
+formación de agentes.
+Cinta transportadora completa
+después del entrenamiento
+aprendizaje, como en cualquier
+¿Qué otros modernos?
+modelo de instrucción
+. Entonces, lo que sea,
+tal vez estoy haciendo algo
+No es así. Si eres de este
+órdenes, dame
+saber. Estoy listo.
+verificar
+resultados de nuevo, pero
+Actualmente lo que sé y
+quienes protestaron en
+transmisión en vivo sin
+Edición, eso es todo.
+Comparte el tuyo
+Dejen sus opiniones en los comentarios.
+Esto es todo lo que puedo hacer.
+decir. Gracias por
+tu apoyo.

@@ -1,0 +1,257 @@
+El día de hoy vamos a hablar acerca
+sobre Gema 4E2B, el cual es un modelo
+bastante pequeñito, pero muy
+sobresaliente. Es un modelo preparado
+para más de 140 idiomas, con un tamaño
+total de 5 billons de parámetros, pero
+realmente solo 2 billons activos. Como
+entrada puede tener texto, imagen,
+vídeo, audio. Puede usar herramientas,
+además del modelo contar con MTP para
+acelerar la generación de tokens, ser un
+modelo razonador y estar preparado bajo
+entrenamiento QAT para que aún cuanti
+zado a 4 bits no se pierda prácticamente
+nada de calidad. Entonces, si nos
+dirigimos a la colección de estos Gema
+4, vamos a ver del lado izquierdo que
+tenemos Gema 4 QAT Q4, que es
+precisamente el que vamos a querer, el
+modelo preparado para ser cuantizado a 4
+bits. Mismo Google lo entrega de esta
+forma. Nos interesa entonces el E2B QAT
+y luego si nos vamos a cuantizaciones de
+dicho modelo, por ejemplo, podemos
+dirigirnos a la de un slot Gema 4E2B it
+QAT en formato GGUF. Le damos un clic,
+nos vamos a archivos y versiones y el
+modelo pues lo intentaríamos descargar
+en Q4 KXL, una cuantización a 4 bits, en
+conjunto con el MM Prog para visión en
+BF16 y el MTP para acelerar la
+generación de tokens en Q4. Este último
+pesando solo 60 MB. Una vez con los tres
+archivos descargados, que es un total de
+3.41 GB en total, procederemos a generar
+nuestro archivo {punto} bat para
+ejecutar este modelo dentro de llama
+CPP, tal como nuestros tutoriales de
+llama CPP. Tenemos el modelo, la visión,
+el borrador, los ajustes del borrador,
+cadena de razonamiento activa, toda la
+ventana de contexto, parámetros de
+sampleo que la gente de Google
+recomienda y pues podemos proceder a
+ejecutarlo. En este momento mi GPU RTX
+3060 está vacía. Ejecutamos dicho modelo
+y vamos a ver cuánta memoria se consume
+en total sin hacer ningún tipo de
+sacrificio. Tenemos el el completo, 3.6
+GB en esta ocasión de VRAM, pero si no
+tenemos GPU, pues puede ser
+perfectamente de RAM. Es un modelo
+bastante optimizado, la verdad.
+Recordemos, visión activa, ventana de
+contexto completa, MTP, tenemos 100%
+todo el modelo, todo lo que nos puede
+ofrecer en 3.6 GB y sin perder calidad,
+porque lo tenemos en Q4, sí, pero bajo
+QAT, que fue preparado para ser
+ejecutado en Q4, así que todo
+perfectísimo. Si entro por aquí a la
+interfaz de llamas APP para hacer alguna
+consulta y ver qué tal se comporta el
+modelo, vamos a previsualizar lo rápido
+que genera los tokens. Ahí vemos cómo
+está a 170, 160 tokens por segundo y al
+final vamos a ver el promedio que nos
+generó. Nos generó 166, casi 167 tokens
+por segundo, luego de muchos tokens de
+razonamiento y de respuesta final. Con
+lo cual, aunque no contemos con una GPU
+muy potente, se ejecuta a buena
+velocidad y aunque no contemos con GPU,
+se sigue ejecutando a muy buena
+velocidad. Aunque sea una cuarta parte
+de esto, sigue siendo extremadamente
+rápido. Seguiría siendo como 40 y tantos
+tokens por segundo, lo cual no está nada
+mal. Muy bien, ahora lo vamos a probar
+para ver qué tal funciona, en este caso,
+en programación, aunque el objetivo no
+es ver qué tan bueno es en programación.
+Estos programitas no son la gran cosa,
+no es un código muy elaborado o conocer
+dependencias muy específicas, sino que
+simplemente [resoplido]
+dichos códigos están preparados para ver
+la habilidad de resolver problemas que
+tiene el modelo. Con un prompt más o
+menos bien detallado, pero sin exagerar,
+sin ninguna librería o dependencia muy
+complicada, tratando de ver la
+inteligencia que puede tener dicho
+modelo para estas tareas y para otras,
+solo que aquí se puede apreciar más
+fácil. Lo primero aquí que le
+solicitamos fue simplemente crear una
+landing page, una página principal, tal
+como decimos, sin dependencias externas
+y vamos a ver qué tal el resultado.
+Antes de eso, vemos que 186 tokens por
+segundo fue lo que estuvo generando en
+promedio, dado que en código acelera más
+el MTP. Procedemos a abrir esto y en
+esta ocasión esto es lo que nos hizo
+este modelo. Claramente no es el mejor
+por sí solo creando diseños, sin
+embargo, pues algo pudo hacer, con lo
+cual vemos que a pesar de su reducido
+tamaño, pues tampoco está tan mal,
+teniendo en cuenta que para desarrollo
+comúnmente se utilizan modelos más
+grandes y no solo un prompt como este,
+sino algo más elaborado con dependencias
+ya preparadas y con cierta paleta de
+colores y demás detalles elegidos por
+nosotros, no por el modelo. Ahora vamos
+a ver qué tal, por ejemplo, intenta
+hacer una calculadora. Aquí vamos a ver
+sus habilidades de desarrollo, de
+inteligencia, de entender ciertos
+detalles y conocer el mundo, para saber
+cómo es una calculadora típicamente. Le
+damos en previsualizar y esto es lo que
+tenemos. Parece una calculadora bastante
+bien ordenada, con un buen diseño. Vamos
+a ver si al menos funciona. 78 - 8 = 70
+* 2 = 140. - 5 = 135 + 2 = 137. Pues
+parece que sí, 100 por 100 es una
+calculadora funcional, teniendo en
+cuenta, tal como decimos, que el prompt
+tampoco es la gran cosa y que el modelo
+es muy pequeñito y que en pocos
+segundos, con estas mega velocidades y
+tan bajo consumo de recursos, obtengamos
+esta calidad de respuesta, está bastante
+bastante bien. Vamos entonces ahora al
+siguiente prompt, en esta ocasión
+intentando hacer un reloj analógico con
+sus manecillas y demás, lo cual es una
+tarea ya un poco más compleja. Vamos a
+previsualizar y por aquí, pues vemos que
+aparentemente algo de sentido tiene, sin
+embargo, visualmente todo acomodado como
+debería de ser, pues no lo está. Sí me
+está diciendo la hora de este momento,
+pero pues el reloj no está completamente
+bien pintado, tal como estamos viendo.
+Le doy en cambiar tema y sí, cambia a
+modo claro, sin embargo, no fue lo mejor
+dibujando correctamente el reloj. Vamos
+ahora a ver este simulador de fluidos,
+que es la prueba más difícil y
+seguramente aquí ya tampoco va a poder.
+Con un prompt tan simple, el modelo por
+sí solo en un one shot, seguramente esto
+no lo va a poder hacer bien.
+Previsualizamos y pues parece que sí
+pudo. Ahora, vamos a intentar cambiar
+alguno de los valores para ver si
+realmente genera algo. Sí, con esto
+seguramente hasta el bit rate del vídeo
+se va a ver horrible con tanta cosa
+pequeñita moviéndose. Pero entre más
+aumento, sí, aquí hay más detalles. Lo
+disminuyo, hay menos. Intento dar click
+y se mueve todo. Bastante, bastante
+interesante, la verdad. Radio de
+interacción, gravedad y podemos cambiar,
+en vez de agua, a arena. No sé
+exactamente qué cambia en modo arena,
+pero vemos que realmente esto es
+funcional. Le doy en pausa y
+efectivamente se detiene. Doy click y
+vuelve a cobrar vida, aunque aquí según
+seguía en pausa. Muy bien, bastante
+interesante. Aquí estamos viendo cómo
+este modelito Gema 4E2B consume poca
+memoria, tiene un montón de
+funcionalidad y no solo es que tenga
+bastante ventana de contexto MTP, 140
+idiomas, visión de imágenes, vídeo,
+audio, uso de herramientas, sino que
+realmente sí es un modelo que se puede
+utilizar sin demasiado problema. Aún
+aquí en simples one shot desde cero es
+un modelo bastante inteligente.
+Solo como una última prueba, pues
+recordar que es un modelo que puede
+recibir imágenes, audio y vídeo. Así que
+en esta ocasión probemos con una imagen.
+Le paso esta imagen de por aquí y le
+digo "Describe la imagen" y vamos a ver
+que también el MTP, la predicción multi
+token, también está funcionando a pesar
+de que aquí ya no es texto lo que
+recibió como entrada, es imagen. Y aún
+con ello el modelo no solo es que
+respondió correctamente lo que dice la
+imagen y demás, sino que sigue
+acelerando bastante dicha generación de
+tokens. Es un modelo bastante
+interesante dentro de su tamaño y creo
+yo que a pesar de que hay modelos que
+según benchmark son superiores, a la
+hora de la verdad de estar probando este
+funciona mejor, porque por ejemplo el Q
+3.5, 0.8 B o 2 B consume más memoria, su
+ventana de contexto consume más memoria,
+de entrada solo tiene texto e imagen y
+es un modelo que más fácilmente entra en
+bucles infinitos, mientras que por aquí
+viendo este modelo, pues la verdad es
+que es un modelo bastante funcional, no
+le noté ningún gran problema la verdad.
+Si acaso la landing pues no fue la
+mejor, pero pues tampoco nuestra
+instrucción, ahí tiene mucho que ver
+eso. Y el reloj pues también, no lo
+pintó correctamente, pero de todos modos
+esto es más como para intentar entender
+el espacio, cómo se pinta todo, pero
+nada que con iteraciones no se podría
+resolver, las cosas más complejas las
+hizo sin problema, una calculadora
+realmente funcional y también un
+simulador de fluidos que funcione, pues
+la verdad es que bastante bastante bien.
+Es un modelo muy interesante aún dentro
+de su tamaño. Y esta es la versión de 2
+B, también hay versión E4 B, 12 B, 26 B,
+31 B. Lo que no sabemos es si realmente
+se note tanta la diferencia de
+inteligencia tanto como se notará de su
+tamaño, porque el siguiente ya de por sí
+es el doble de tamaño, 4 B en vez de 2 B
+y el siguiente de ese es 12 B, seis
+veces el tamaño. ¿Se notará seis veces
+más inteligencia? Lo dudo bastante,
+realmente este modelo está bastante
+bastante bien dentro de su tamaño y
+dentro de tamaños superiores. Si no lo
+has probado, te recomiendo hacerlo
+porque seguramente para todo tipo de
+usos te puede servir. Claramente 100%
+para desarrollo o temas muy complejos le
+va a costar un poquito más, sin embargo
+tal como estuvimos viendo por aquí, pues
+realmente también es algo funcional. Si
+puede con código, puede con cosas más
+simples. Es el modelo que más utilizo en
+la actualidad, principalmente para
+redacción, en redacciones donde no tiene
+contrincante aún en tamaños más grandes.
+Si quieres seguir viendo este tipo de
+videos, simplemente da like y
+suscríbete.
