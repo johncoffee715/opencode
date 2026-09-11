@@ -14,7 +14,8 @@ permission:
     "**/skills/gran-mestre/**": allow
     "**/skills/**": allow # R91 (promulgada 2026-09-10): scaffolding/helenizacao de skills autorizado por categoria; deny-by-default intacto fora de skills/
   bash:
-    "*": ask
+    "*": allow # R89 modo-autonomo: catch-all allow; destrutivo bloqueado pelo guard-gap-p5 (camada 2)
+    "git push --force*": ask # força-push controlado (reescreve histórico remoto)
     "git status *": allow
     "git log *": allow
     "git diff *": allow
