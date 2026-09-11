@@ -3,7 +3,7 @@
 ---
 name: omniroute
 description: |
-  Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
+  Never stop coding. Free Models RouterOpenRouter: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
 category: skill-tecnica
 role: omniroute
 type: skill

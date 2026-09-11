@@ -1,8 +1,8 @@
 ---
 name: modo-autonomo
 description: Modo de execução autônoma do orquestrador — quando ATIVO, age sem intervenção do usuário (gates auto-aprovados, retry e escalação automáticos), pausando SÓ por conclusão, intervenção do usuário, circuit-breaker ou operação irreversível.
-version: 1.0.0
-triggers: ["modo autônomo", "modo autonomo", "autonomous mode", "sem intervenção", "sem intervencao"]
+version: 2.0.0
+triggers: ["modo autônomo", "modo autonomo", "autonomous mode", "sem intervenção", "sem intervencao", "dev loop", "cloud-direct"]
 rule: R89
 ---
 
@@ -98,3 +98,21 @@ Desligar = estado volta a HITL total, sem resíduo (flag `false` + linha de log)
    variantes (cada reemissão = prompt novo): aguarda a aprovação existente, registra
    o padrão como `prompt-resistente` no decision-log e segue o pipeline no resto.
 5. **Prova por padrão**: 3 execuções do mesmo template sem prompt = padrão estabilizado.
+
+## 9. Dev Loop Cloud sem interrupções (forja Hefesto-cloud 2026-09-11)
+
+> Quando ON + `cloud-direct`, o loop **não pede nada no meio**. Só para no extremo (§3 + §10).
+
+1. **Roteamento cloud-total**: features/execução vão SEMPRE p/ categoria cloud (`omniroute`/LLM cloud atual). Slots locais (`:8083-:9093`) em bypass até health 5/5 fora do caminho crítico. `local-orchestrator/orchestrator` é DISJUNTOR ABSOLUTO p/ feature (R93).
+2. **Hefesto-cloud**: forja/execução pesada via Hefesto com motor cloud (janela grande R20/R23). Transporte local morto 1× = sem retry cego (R6/R89): cai p/ cloud e segue.
+3. **Gates auto-carimbados**: G1-G3 viram `[Authorize] auto — modo autônomo (cloud)` + `[RunID]` + `[Budget]` no CONTEXT e decision-log. R88 continua: refuta antes, veredito vira ação imediata (sustenta→não executa+registra; cai→executa).
+4. **Ciclo por task**: `planeja → executa (cloud) → testa (evidência fresca R29) → passou? done : corrige (packet ajustado, ciclo ≤1+2 R18) → 3× sem convergir? escala camada → parqueia como failed e SEGUE p/ próxima`. Pipeline só termina sem pendências executáveis.
+5. **Proibido no meio**: pergunta de permissão, gate humano, re-confirmação de ordem expressa, "aprovação por cansaço" (R40).
+
+## 10. Long-loop horas/dias + auto-amadurecimento (parada só no extremo)
+
+1. **Checkpoint por volta**: `task_id/status/result/decisions/files_changed/tests/errors/next_action` em CONTEXT + decision-log. Interromper/continuar sem perder estado.
+2. **Anti-stall**: heartbeat ~1min (R7); 300s sem progresso ou 3º ciclo acumulado = CB (R18): compensações primeiro, `failed` no log, pipeline segue nas demais; ABORT TOTAL só com rollback + gate humano.
+3. **Estado em disco, não em VRAM/janela**: fragmentos enfileirados, rolling summary + ponteiros (R22). Janela do GM preservada: só gates/resumos (R70).
+4. **Paradas extremas (únicas)**: conclusão com evidência · intervenção explícita sua · CB OPEN sistêmico que impeça/retarde · operação irreversível (deny §4, pede humano sempre).
+5. **Observabilidade**: cada volta carimba `modo: autonomo ON (cloud)` nos relatórios.

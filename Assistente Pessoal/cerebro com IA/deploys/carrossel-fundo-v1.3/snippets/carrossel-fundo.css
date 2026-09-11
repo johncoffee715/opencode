@@ -1,0 +1,13 @@
+/* carrossel-fundo.css — camada de preferencia do usuario (v1.3, 2026-09-10).
+   O fundo.css (autoral AnuPpuccin) continua sendo a tinta; ESTE arquivo so ajusta
+   o ENQUADRAMENTO por cima dele, com !important para vencer qualquer regra:
+   - contain: imagem INTEIRA, sem corte e sem distorcao, centralizada;
+   - barras laterais/superiores na cor do tema (letterbox), nao preto puro.
+   Para voltar ao crop (cover), desligue este snippet e mantenha so o `fundo`. */
+
+.anp-background-image-toggle:not(.anp-colorful-frame) .app-container {
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: var(--background-primary) !important;
+}

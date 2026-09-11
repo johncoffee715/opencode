@@ -1,0 +1,33 @@
+{
+  "feature": "gari",
+  "version": "1.0.0",
+  "descricao": "Firewall do Gari — só limpa após veredito zero pendências; salva/armazena pérolas quant/qualit na biblioteca; proibido apagar vault/Qdrant/manifesto/start-stack.",
+  "trigger": {
+    "pattern": "posso reiniciar ou (ainda )?existe(m)? (alguma )?pend[êe]ncia(s)?",
+    "referencia_direta": "R99",
+    "nota": "pergunta direta do user — referência direta ao requisito Gari"
+  },
+  "allow": {
+    "tools": ["read", "grep", "glob", "bash(read-only)", "tool-calling", "edit", "write"],
+    "paths": ["/mnt/dados/Assistente Pessoal/cerebro com IA/**", "/tmp/opencode/**", "/home/johncoffee/.config/opencode/skills/gari/**"],
+    "apis": [],
+    "formats": ["md", "json", "txt"],
+    "sampling": {
+      "temp": 0.0,
+      "top_k": 1,
+      "top_p": 1.0,
+      "max_tokens": 256
+    }
+  },
+  "deny": {
+    "tools": [],
+    "paths": ["/etc/**", "/usr/**", "**/.env", "**/*.key", "**/*.pem", "/mnt/dados/Assistente Pessoal/modelos LLM/**"],
+    "behaviors": [
+      "limpar antes de salvar",
+      "apagar vault/Qdrant/manifesto/start-stack.sh/opencode.jsonc",
+      "mascarar pendência como zero",
+      "inventar pérola sem evidência",
+      "score sem evidência"
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
   "feature": "bibliotecario",
-  "version": "1.0.0",
-  "descricao": "Firewall do Bibliotecário — recupera contexto exato do Vault; proibido inventar paths, metadados ou trechos; acesso restrito ao Vault + APIs locais.",
+  "version": "2.0.0",
+  "descricao": "Firewall do GERENTE do Vault (R94): organiza/cataloga/pesquisa/orienta/avalia intra-vault; proibido sair do vault, apagar definitivo, mutar sem log ou mascarar placebo vetorial.",
   "allow": {
-    "tools": ["read", "grep", "glob", "bash(read-only)", "tool-calling"],
-    "paths": ["/mnt/dados/Assistente Pessoal/cerebro com IA/**", "/tmp/opencode/**"],
+    "tools": ["read", "grep", "glob", "bash(read-only)", "tool-calling", "edit", "write"],
+    "paths": ["/mnt/dados/Assistente Pessoal/cerebro com IA/**", "/tmp/opencode/**", "/home/johncoffee/.config/opencode/skills/bibliotecario/**"],
     "apis": ["http://127.0.0.1:9084/v1/**", "http://localhost:6333/**"],
     "formats": ["md", "json", "txt"],
     "sampling": {
@@ -16,7 +16,7 @@
     }
   },
   "deny": {
-    "tools": ["edit", "write"],
+    "tools": [],
     "paths": ["/etc/**", "/usr/**", "**/.env", "**/*.key", "**/*.pem", "/mnt/dados/Assistente Pessoal/modelos LLM/**"],
     "behaviors": [
       "inventar path",
@@ -24,7 +24,12 @@
       "inventar trecho de nota",
       "alucinar mapeamento de caminho",
       "raciocínio profundo de engenharia",
-      "score default alto sem evidência"
+      "score default alto sem evidência",
+      "delete permanente (descarte vai p/ quarentena + motivo)",
+      "mutacao no vault sem log JSONL reversivel",
+      "vetor fajuto sem flag vetor_placebo explicita",
+      "sair do vault por qualquer motivo",
+      "tocar segredos/credenciais"
     ]
   }
 }

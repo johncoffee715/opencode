@@ -1,7 +1,7 @@
 ---
 name: omniroute
 description: >-
-  Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
+  Never stop coding. Free Models RouterOpenRouter: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
 category: skill-tecnica
 model: local-thalamus/ingestor
 version: 1.0.0
@@ -15,12 +15,12 @@ r77_triple: true
 Helenizado de [`https://github.com/diegosouzapw/OmniRoute`](https://github.com/diegosouzapw/OmniRoute) — essência destilada para harness nativo (R77 tríplice, R84 GBNF travado, R75 categoria).
 
 ## Propósito
-Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
+Never stop coding. Free Models RouterOpenRouter: one endpoint, 290+ providers (90+ free), 500+ models. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A. (absorvido de diegosouzapw/OmniRoute)
 
 ## Padrões absorvidos
 - roteamento: gateway, roteamento, fallback
 - Origem: https://github.com/diegosouzapw/OmniRoute
-- Domínio: gateway OmniRoute
+- Domínio: Free Models RouterOpenRoute
 
 ## Como usar (Gran-Mestre)
 1. Detectar necessidade que casa com `omniroute` (tags: gateway, roteamento).

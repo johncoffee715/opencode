@@ -144,23 +144,77 @@
           "tool_call": true
         }
       }
+    },
+    "local-qwen3-embedding-0.6b": {
+      "api": "openai",
+      "name": "embedder tempo-real :9094 (bibliotecario query) :9094 — role:qwen3-embedding-0.6b-cpu",
+      "options": {
+        "baseURL": "http://127.0.0.1:9094/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "qwen3-embedding-0.6b-cpu": {
+          "name": "role:qwen3-embedding-0.6b-cpu",
+          "limit": {
+            "context": 2048,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
+    },
+    "local-qwen3-embedding-0.6b-qwen3-embedding-0.6b-gpu": {
+      "api": "openai",
+      "name": "embedder lote :9097 (bibliotecario backfill) :9097 — role:qwen3-embedding-0.6b-gpu",
+      "options": {
+        "baseURL": "http://127.0.0.1:9097/v1",
+        "apiKey": "llamacpp"
+      },
+      "models": {
+        "qwen3-embedding-0.6b-gpu": {
+          "name": "role:qwen3-embedding-0.6b-gpu",
+          "limit": {
+            "context": 2048,
+            "output": 8192
+          },
+          "tool_call": true
+        }
+      }
     }
   },
   "model": "local-orchestrator/orchestrator",
   "small_model": "local-thalamus/ingestor",
   "instructions": [
-    "/mnt/dados/Assistente Pessoal/opencode/config/opencode/AGENTS.md"
+    "/mnt/dados/Assistente Pessoal/cerebro com IA/regras/nucleo-irredutivel.md"
   ],
   "hooks": {
     "session.start": [
       "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/kronjob-talamus-filter.py",
       "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/sdd/sdd-talamus-filter.py",
       "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/sync-llm-stack.py",
-      "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/stack-health-check.py"
+      "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/stack-health-check.py",
+      "python3 /mnt/dados/Assistente Pessoal/opencode/config/opencode/hooks/inject-regras.py"
     ]
   },
   "permission": {
-    "*": "allow",
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "task": "allow",
+    "todowrite": "allow",
+    "question": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*auth.json": "deny"
+    },
     "bash": {
       "*": "allow",
       "sudo *": "ask",
@@ -171,14 +225,6 @@
       "reboot *": "ask",
       "git push *": "ask",
       "git push --force*": "deny"
-    },
-    "read": {
-      "*": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny",
-      "*.pem": "deny",
-      "*.key": "deny",
-      "*auth.json": "deny"
     },
     "external_directory": {
       "/mnt/dados/**": "allow",
@@ -202,7 +248,8 @@
     "log-summarizer": {},
     "needle-pytest-filter": {},
     "roteador-hibrido": {},
-    "unlazy": {}
+    "unlazy": {},
+    "gari": {}
   },
   "agents": [
     "gran-mestre",

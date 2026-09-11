@@ -1,6 +1,8 @@
 {
   "enabledCssSnippets": [
+    "carrossel-fundo",
     "fundo"
   ],
-  "accentColor": ""
+  "accentColor": "",
+  "baseFontSizeAction": true
 }

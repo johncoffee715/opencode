@@ -1,0 +1,354 @@
+Kind: captions
+Language: pt
+aqui do canal, eu mostrei para vocês o
+desempenho do Quen 3.6 com 35 bilhões de
+parâmetros, rodando aqui no meu kitzinho
+que é um Zion 2683
+V4 com 64 GB de memória RAM DDR4. Eu
+mostrei o desempenho ali do Quen e ele
+fez ali cerca de oito tokens por
+segundo. Teve um prompt que eu fiz que
+ele bateu quase nove tokens por segundo.
+Claro, levando em consideração que a
+gente tá rodando ali no processador, que
+é aí umzinho que tem os seus 10 anos de
+idade. Ele foi lançado em 2016, a gente
+já tá em 2026. Então assim, é um
+processador bem antigo. Claro, ele
+consegue fazer essa quantidade de tokens
+porque esse quen ele é moe, né? Ela é
+mix of experts. Ele calcula apenas 3
+bilhões de parâmetros por vez. É, mas no
+vídeo de hoje, modelo que a gente vai
+testar aqui hoje é o GMA 4 com 26
+bilhões de parâmetros. E ao invés de
+calcular 3 bilhões de parâmetros por
+vez, ele calcula 4 bilhões de parâmetros
+por vez. Então ele tem a quantidade
+maior ali de parâmetros ativos e ele
+também é Qat. É uma técnica que as
+BigTechs estão usando agora para fazer a
+quantização do modelo, mantendo ali um
+pouco mais de qualidade. E segundo eles
+dizem, a gente também tem ali uma uma
+melhoria de performance ali. Eu vou
+carregar ele aqui. A gente já pode ver
+que ele a gente tem uma diferença aqui
+de tamanho. É o Quen 3.6 com 36 bilhões
+de parâmetros. A gente tem 20 GB ali. E
+enquanto o GMA 4 com 26 bilhões de
+parâmetros, a gente tem 14 GB. A gente
+tem uma diferença ali de 6 GB. E eu vou
+testar aqui um pouquinho com vocês. Eu
+vou fazer o mesmo teste que eu fiz com o
+Quen. Eu comparei alguns modelos
+pequenos aqui. Eu comparei, eu comparei
+o Gema 3 com 1 bilhão de parâmetros, o
+Gema e o Gema 3 com 4 bilhões de
+parâmetros com o Quen que tem os seus 35
+bilhões de parâmetros, né? Então assim,
+é um pouco de covardia aí nessa
+comparação. Vou carregar ele aqui. Ele
+já tá configurado. Ele tá utilizando
+todas as trads aqui. Ele eu vou deixar a
+configuração padrão do número de
+experts. A quantização do cash dele tá
+em Q4. E tô utilizando também o o Flash
+Attention. Deixa esperar aqui carregar o
+modelo e eu já vou começar testando ele
+com o Oi. Ah, eu vou mostrar aqui para
+vocês também como é que tá o uso de
+memória RAM, que já tá com quase 25 GB
+sendo utilizado. E eu vou começar aqui
+com Prompt Clássico. Vou remover o tink
+aqui porque no Queen 3.6 eu não utilizei
+o Tinking. E aqui com o Oi, a gente já
+pode perceber que ele já fez ali os seus
+9.20. 20 tokens.
+Cara, assim, eu testei isso aqui sem
+estar gravando com o OBS. Ele fez 10.7.
+Deixa eu testar aqui novamente para ver
+se ele consegue a meter. Ele não
+consegue a meter. Eu vou pausar a
+gravação aqui e vou testar aqui para ver
+se eu ganho esses dois tokens de volta.
+Então, como eu suspeitava aqui, ele eu
+perdi. Aí, cara, eu pausei aqui e fiz o
+prompt e ganhei aqui uns, deixa eu ver
+aqui, cara. Acho que eu ganhei um token.
+É, eu ganhei, eu ganhei, acho um token e
+meio por aí, vai. Um token e meio.
+Então, a gente já pode ver aqui que a
+gravação pelo OBS já tá consumindo token
+aqui pra gente, né? Então, nos próximos
+promptes é só a gente adicionar o token.
+Aí eu acho que é interessante mostrar
+aqui, gravar para vocês a velocidade de
+de resposta, porque ele a gente tem e em
+tempo real ali a experiência de tá
+conversando com o modelo. Por exemplo, e
+se a gente for comparar a conversa com
+uma pessoa no WhatsApp, a pessoa que
+você conversar no WhatsApp, por exemplo,
+é, eu acho quase impossível ela
+responder em menos de meio segundo, como
+ocorreu aqui com com Gema 4, né? E e
+muita pouca gente escreve tão rápido
+assim. Então, em termos de comparação
+ali, conversando com a pessoa, você vai
+ter uma uma performance superior, né?
+Claro que não serve eh 10 tokens por
+segundo, não vai servir ali, por
+exemplo, para você utilizar como um
+agente, né? Para você utilizar ali no
+Herms Agente, por exemplo, ou então no
+OpenCloud. Extremamente complicado, né?
+Como o tempo é dinheiro, você vai perder
+muito tempo aí. E também consome
+energia, né? Claro, você não tá pagando
+o API, mas você vai tá pagando aí a
+energia e o computador vai ter que
+ficar, sei lá, dos dias ligado direto
+para o Hermes agente conseguir fazer
+alguma coisa. Fora as outras
+complicações também de contexto e e
+qualidade do que o modelo local vai
+perder em relação ao modelo que você tem
+ali por meio de APIs. Mas para
+conversar, fazer uma uma pergunta aqui,
+né?
+Então eu acho que até vou fazer um vídeo
+sobre isso, né? Em caso de um apocalipse
+zumbi, você precisar saber de alguma
+coisa e você não ter você não tiver
+acesso à internet, você pode utilizar
+ali o modelo local e fazer ali o quê?
+Matar sua curiosidade ali, fazer a sua
+pergunta. É como eu digo, né? ter um
+modelo local, é como se você tivesse um
+resumo de toda a internet ali rodando no
+seu computador. Isso é assim
+extraordinário,
+porque basicamente o modelo é um super
+banco de dados super inteligente, um
+banco de dados que tem muita informação
+e ele é inteligente o suficiente para
+compreender o que você tá perguntando a
+ele e achar ali e organizar o que o
+conhecimento dele de uma forma que você
+consiga entender ali, consiga consiga
+ler tranquilamente. Eu vou prosseguir
+aqui com os testes. Próxima pergunta que
+eu vou fazer é pedir para ele contar uma
+piada. Aqui eu tô pedindo ele para para
+mim contar uma piada. Lembrando que no
+Quen a gente teve ali um desempenho por
+volta dos [roncando]
+oito tokens por segundo, quase nove. Que
+o zero disse para o oito. Belo cinto,
+hein? Caramba, cara. Eu sou extremamente
+burro. Eu não entendi essa aqui, eu
+acho.
+Cara, como eu sou extremamente burro, eu
+não eu não entendi essa piada aqui. É
+porque o oito parece um zero com cinto.
+Era era essa piada,
+filha da
+&gt;&gt; Piada bem diferente, não é aquela
+clássica, nem a do cientista, nem a do
+espantário. Então aqui já surpreende.
+Ele já tem um um arcabolso maior aí de
+piadas com seus 26 bilhões de
+parâmetros. A próxima pergunta que a
+gente fez lá naquele vídeo foi pedir
+para ele traduzir uma frase em inglês
+para o português do Brasil. Primeiro
+aqui eu vou testar com a mesma mesma
+frase que eu fiz lá com o Quen e depois
+eu vou passar uma frase, uma frase maior
+para ele fazer a tradução. A gente
+percebeu ali no a diferença do Quen pro
+Gema 3 foi que o Quen com os 33 bilhões
+de parâmetros foi muito mais assertivo
+do que o gema com 1 bilhão de parâmetros
+ou o de 4 bilhões de parâmetros. Aqui a
+gente pode ver que o Gema não tá sendo
+tão assertivo assim quanto o Quen Timada
+traduziu muito bem ali, mas ele foi
+menos assertivo ali do que o Quen. Vale
+ressaltar isso. Vou passar uma uma frase
+aqui um pouco mais complicada para ele.
+Aqui estão algumas opções de tradução
+para essa frase. Vamos lá. Ele tá
+escrevendo bastante coisa aqui e você vê
+aí que ele não ele não tá demorando
+muito para se assim, se você lê na
+velocidade que ele escreve, eh, meio que
+não importa muito o tempo total que ele
+vai demorar ali na resposta. Aqui ele já
+caiu um pouquinho a mais. Eu acho que o
+acho que ele tá seguindo ali o mesmo
+desempenho do do Quem 3.6, tá? Ele falou
+aqui, ele tá traduzindo até trecho por
+trecho aqui, né? E o que pode significar
+dependendo do contexto. Ele passou três
+opções de tradução para essa essa frase.
+Basicamente é a mesma coisa, né? Muda
+aqui algumas anuancias aqui, mas o
+sentido mesmo sentido, eu acho meio
+desnecessário aqui mostrar essas pesar
+embora assim, o sentido vai ser o mesmo
+na frase. Mas enfim, interessante aqui
+que ele tá sendo bastante didático. Para
+quem tá aprendendo inglês, pode ser bem
+interessante aí pedir traduções para o
+Gema 4 com 26 bilhões de parâmetros.
+Claro que você vai, eu acho que você vai
+precisar ter ali, como esse modelo ele
+tem 14 GB, ele tem quase 15 GB, acho que
+fica meio ruim se você tiver ali 16 GB,
+né? Fica muito pouco. Acho que você já
+tiver ali uns 36 GB de memória RAM, você
+consegue rodar tranquilamente aí o gema
+com 26 bilhões de parâmetros. Claro, a
+versão MOI, né? Engraçado que não tem
+MOI aqui. Enfim, e o Gema tem, mas
+enfim. Eh, eu vou, a outra pergunta que
+a gente fez naquele vídeo foi sobre
+pedindo para ele explicar esse
+logo aqui do Windows 95. Aqui eu tô
+fazendo para ele a mesma pergunta que eu
+fiz no vídeo anterior. A qual sistema
+operacional pertence o logo de wallper?
+Eu não percebi na hora, mas meio que eu
+já tô dando uma dica para ele da origem
+desse desse logo aqui, né? Quando eu
+falo a qual sistema operacional, eu já
+tô denunciando que é um logo de um
+sistema operacional. Então esse prompt
+aqui que eu tô mandando junto com a
+imagem já dá uma ajuda aí para ele
+observar. Mas eu a embora eu acho que
+ele acertaria de qualquer forma, já que
+é um logo e muito conhecido aí é um logo
+muito antigo e muito famoso, porque o
+Windows 95 foi aí uma revolução dos
+sistemas operacionais. E
+ok, cara, aqui ele já ele não acertou,
+hein? Esse logo pertence ao sistema
+operacional Windows da Microsoft, mas
+esse é mais especificamente
+esse estilo de logo flutuante com a
+janela transformando. Efeito clássico do
+Windows, muito associado à estética do
+sistema operacional como Windows XP ou
+versões inspiradas no design assim, tá?
+Ele não acertou aqui. Foi um pouco
+decepcionante, hein? O Quen ele acertou
+em cheio. Eu vou tentar deixar um print
+aqui da resposta do Quen, porque ele
+acertou em cheio. Não só o Quen, como o
+Gema 3 com 4 bilhões de parâmetros foi
+capaz de acertar o sistema operacional,
+né, o Windows 95. E o Gema 4 com 6
+bilhões de parâmetros não conseguiu.
+Assim, é um pouco decepcionante essa
+resposta aqui do do GMA 4. Foi bem,
+estou um pouco decepcionado aqui em
+comparações. Eu vou deixar um gráfico,
+no final do vídeo, eu vou deixar um
+gráfico comparando a performance do Gema
+4 com 6 bilhões de parâmetros com o Quen
+3.6 com 35 bilhões de parâmetros. E aqui
+eu posso dizer que pelo menos para
+processar a imagem ele foi ali cerca de
+quatro vezes mais rápido do que o Quen.
+Vale ressaltar isso. E ele também tá
+fazendo um pouquinho a mais de tokens
+aqui. É, ele tá fazendo um pouquinho de
+tokens a mais do que o Quenten 3.6.
+E agora eu vou fazer alguns testes que
+eu não fiz lá com o Q3. Digamos que você
+esteja aí em um apocalipse zumbi e você
+precisa saber qual a forma mais eficaz
+de se matar um zumbi. Então eu vou fazer
+essa pergunta aqui para ele e vamos ver
+aí o que se ele vai ser útil, né, nessa
+situação hipotética. Eu fiz aqui uma
+pergunta para ele. Eu optei por não
+deixar matar um zumbi, né? Já que pode
+cair aí numa numa regrinha dele que
+bloqueia esse tipo de coisa, esse tipo
+de resposta. A gente sabe que esses
+modelos são e extremamente capados assim
+para para esse tipo de resposta aí, né?
+Que contém violência, esse tipo de
+coisa. O tema de ficção, a eficácia
+depende de qual tipo de zumbi estamos
+falando. Combate à distância.
+Preservação de energia e segurança.
+Vamos ver quantos tokens ele tá
+conseguindo manter aí. Ele tá
+conseguindo manter uma quantidade
+interessante de tokens. Assim, eu não
+precisaria esperar ele terminar, né? Se
+eu assim, se eu fizer a pergunta e for
+lendo, eu nem vou perceber a demora dele
+para escrever, já que ele tá escrevendo
+assim relativamente rápido.
+[limpando a garganta] Primeira dica dele
+é manter combate à distância, armas de
+logo de longo alcance, como rifle, de
+precisão, arco, flecha, são ideias. Tem
+aquela personagem do The Walking Dead
+que usa usa espadas, né? Mas ela ali é
+uma samurai e não é a realidade da
+maioria das pessoas. Então acho que esse
+primeiro dica dele aqui é bem óbvia. OK.
+É uma boa dica essa primeira dica.
+Combate com armas de impacto,
+perfuração, eliminação de pontos vitais.
+Se o confronto for inevitável e próximo,
+você não pode usar armas de corte, como
+facas ou machados, de forma descuidada,
+pois eles podem travar no crânio ou
+exigir movimento que te exponham. O
+objetivo é sempre a destruição do
+sistema nervoso central. Ele tá
+sugerindo aqui no combate mano a mano,
+né, com armas de impacto. Ele tá
+sugerindo aqui martelo de metal, p de
+cabra e a vantagem é mais rápido se quer
+menos esforço físico que tentar cortar o
+osso endurecido. Terceira dica que ele
+tá dando aqui é estratégia de evasão e
+furtividade.
+A melhor defesa, a forma mais eficaz de
+combater um zumbi é não lutar contra
+ele. Zumbis. Zumbis geralmente não
+sentem dor, não cansam e não param de
+perseguir uma pessoa até até que algo os
+pare. Estratégia: [limpando a garganta]
+uso de barulho para distração, uso de
+roupas reforçadas e o domínio de rotas
+de fogas elevadas. Ah, isso aqui é
+bastante parecido ali com o que a gente
+tem naquela naquele jogo, né, The Last
+of Us, né? Bem parecido. Resumo das
+regras de ouro. Pga furtividade, longo
+alcance, combate de perforação e impacto
+se for encorralado. Aqui ele manteve uma
+performance interessante ali, já que a
+gente tá fazendo, já que a gente está
+falando de um processador. É bem difícil
+um apocalipse zumbi acontecer, mas você
+já sabe que se acontecer é um motivo aí
+que você tem para manter o Gema 4 na sua
+máquina. Então é, esse é o vídeo de
+hoje. Obrigado por ter assistido até
+aqui. Se inscreve no canal e deixa o
+like no vídeo. Obrigado e até até mais.
+[música]
+เฮ
+[música]
+&gt;&gt; [música]

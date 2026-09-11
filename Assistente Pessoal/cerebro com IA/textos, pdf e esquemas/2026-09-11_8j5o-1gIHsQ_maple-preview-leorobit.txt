@@ -1,0 +1,213 @@
+Kind: captions
+Language: pt
+Então, esse aqui é o Jeep Groove. Ele
+lançou o Maple Preview. Ainda não é a
+versão oficial, né? Uma versão de
+preview. Aí pessoal, eh, ele tem 20
+bilhões de parâmetros e mas ele calcula
+apenas somente 1 bilhão de parâmetros
+por vez, que dá ele aí uma melhor
+performance rodando em hardware modesto.
+Ele tá dizendo aqui que faz 218 tokens
+no Mac Mini 4 e o tamanho dele ali é de
+5 GB e 300 M. Aqui ele mostra um
+gráfico, eh, verticalmente ele tem a
+qualidade e horizontalmente ele tem a
+velocidade. Então o Mumple preview tá
+aqui e o GPT OS, por exemplo, tá aqui.
+Ah, o Quen 3.6 tá aqui. Em comparação
+com esses aqui, ele tem muito mais
+velocidade e uma qualidade ali bem
+parecida com esses modelos aqui. É, é
+interessante lembrar que o GPT OS já é
+bem antigo aí. Eu acho que já faz quase
+um ano que foi lançado, mas tudo bem,
+ele ele tinha uma boa qualidade quando
+ele foi lançado. Aqui ele tem um link
+pro Hug Face, onde eles publicaram o
+modelo deles, né, para qualquer pessoa
+poder baixar. Eles são disponibilizados
+nessas quatro opções aqui de
+quantização. Alteraram também ali o
+motor de inferência, que é o lama CPP.
+Então, se você tentar rodar esse modelo
+aqui no lama CPP ou então no RMO que usa
+o lama CPP normal no backend ali, você
+não vai conseguir rodar esse modelo.
+Você só consegue rodar na versão
+customizada que eles disponibilizaram no
+GitHub. A última atualização aqui foi há
+três semanas e para você poder ali
+utilizar esse lama CPP, você vai ter que
+baixar e compilar. E aqui eles mostram
+um exemplo de utilização como web, que
+eu já mostrei aqui no canal, que é aí
+uma interface web pra gente poder
+conectar a um motor de inferência, como
+o Lama CPP, por exemplo, com OLAM Studio
+também funciona. Sugiro que vocês leiam
+aí para para poder executar aqui numa
+interface. Aqui no vídeo eu vou testar
+no terminal mesmo. Então aqui eu já
+estou no meu terminal retrô, como vocês
+podem perceber. Eu criei aqui esse
+script aqui bem simples. Eu vou até
+mostrar para vocês. Ah, run que aí um
+simples case onde eu tenho as opções de
+bankm para bcar este modelo. Pra gente
+ver ali a performance. E é e é
+interessante porque é um teste
+padronizado e a opção de chat pra gente
+poder conversar aí com ele, tá certo?
+Então eu vou primeiro aqui rodar o
+Bankmk paraa gente ver como tá
+performance dele. Deixa eu ver se eu Ah,
+não, ficou quebrado. A tabela que ele
+fez aqui ficou quebrada, mas acho que
+vai dar para entender.
+&gt;&gt; Liso, liso, liso, filho. Liso, liso. É
+uma coisa que eu preciso salientar aqui
+no no vídeo é que como eu gravo com o
+OBS, eu reparo que o OBS ele rouba mais
+ou menos quatro a cinco tokens, tá?
+Porque quando eu rodo aqui sem gravar
+com OBS, ele faz aí uns 42 tokens por
+segundo. Aqui ele fez apenas 30, quase
+39 tokens. E essa aqui é a velocidade de
+processamento de prompt. Ele processa
+bem rápido aí a cerca de 252 tokens por
+segundo. Isso aqui é excelente para você
+aí que quer passar um texto grande para
+ele. Infelizmente o contexto dele não é
+muito grande, né? Apenas 131.000 tokens.
+Conversar aqui um pouco com ele pra
+gente ver qualidade que ele vai
+apresentar aqui pra gente. Aqui ele tá
+informando, ó, que eu tenho 32 trads no
+total, mas ele tá utilizando apenas 16.
+pelo que eu testei aqui, eh, 16 trads, é
+onde o meu processador pelo menos
+apresenta aí a melhor performance aqui,
+rodando modelos. O contexto ele tá,
+caramba, ele tá utilizando todo o
+contexto aqui, pelo que eu entendi. E eu
+vou começar aqui falar com ele. Nesse
+caso aqui, eu vou falar com ele em
+inglês aqui, tá? Pra gente ter a ideia
+ali, ele responde instantaneamente, como
+vocês podem ver, claro, né? Ele tá
+fazendo ali quase seus 40 toques por
+segundo e ele processa a entrada muito
+rápido. Então sim, ele é praticamente
+instantâneo aqui a resposta dele. Vou
+começar aqui fazer os omts clássicos
+aqui do canal. Eu achei muito
+interessante que eu pedi para ele antes
+aqui de começar o vídeo e ele fez uma
+boa piada que eu não que eu não
+conhecia. Ah, porque cientistas não
+acreditam em átomos porque eles inventam
+tudo. É mais ou menos essa tradução
+desse texto aqui. Essa é uma piada
+clássica para modelos locais com poucos
+com poucos parâmetros. Eu pedi outra
+piada aqui para ele. Eu tentei pegar uma
+neblina ontem, estava tão densa que eu
+não poderia, que eu não conseguia ver.
+Enfim, eu não entendi nada aqui dessa
+piada. Vou pedir outra piada aqui para
+ele. Quero ver se ele vai contar aquela
+que eu que eu gostei. OK. Eu pedi pro
+chatt me explicar aqui essa piada. Ele
+tá dizendo aqui como se chama uma um
+espaguete fake? Ele diz aqui um impasta
+que é um trocadilho ali com impostor,
+né? imposta, que seria inglês para
+impostor, só que é impasta porque remete
+a massa. Enfim, eh, pra gente que é
+brasileiro não tem graça, tá contando
+piada de americano. Enfim, eu vou parar
+aqui com esses testes bobos e vou aí eh
+testar algo mais elaborado aqui com ele,
+tá? Agora eu vou tentar testar ele com
+um prompt em português aqui de algo mais
+elaborado, né? Eu tô pedindo aqui para
+ele explicar o que é computação
+quântica. sem utilizar ali termos
+técnicos. Eu utilizei esse prompt aqui
+também com warit. Tem vídeo aqui no
+canal. Warnit se saiu muito bem
+respondendo aqui. E ele fez ali cerca de
+oito tokens por segundo aqui no no Zon.
+Ainda tá pensando. Vamos lá. Começou a
+responder aqui. Tá bem mais rápido. Acho
+que tá assim umas quatro vezes mais
+rápido ali do que o do que oit. Vou ler
+aqui a resposta que ele fez pra gente.
+Imagine que você está jogando um jogo
+onde precisa acertar um número entre 1 e
+10. No computador normal, você tenta
+cada número um por um. Se você errar,
+você muda de jogo e tenta o próximo.
+Como escolher uma pista no campo e
+depois caminhando na direção certa.
+&gt;&gt; Aqui eu acho que ele se enrolou bastante
+aqui, né? Ele não, essa última frase
+aqui não, não tá muito bem, né? Só que
+só funciona bem em situações muito
+específicas. Eh, acho que ficou meio
+confusa aqui a explicação dele. Ele, sei
+lá, ele não viajou totalmente na
+maionese, mas a qualidade do texto que
+ele fez aqui, comparação com Ornit, a
+qualidade da resposta do Ornit 1.5 foi
+muito melhor aqui do que a qualidade do
+MAPLE preview na explicação aqui de
+computação quântica, na minha opinião. E
+ele se enrolou um pouco aqui no no
+português, né? Ele, sei lá, eu não sei
+explicar. Eu vou tentar baixar este
+modelo aqui que tem uma conização
+melhor. Deixa eu ver se eu consigo, né?
+Tem de copiar isso aqui, cara. Cadê
+aqui? Descopiar isso aqui.
+&gt;&gt; Pessoal, eu perdi parte aqui da gravação
+do que eu fiz aqui, mas resumindo para
+vocês, eu baixei a aquela versão lá,
+aquela quantização melhor do que a Q4. E
+o resultado dele, cara, eh, assim, ele
+começou a pensar em português, que é
+interessante, né? Com a quantização Q4,
+ele apenas pensava em inglês, mas a
+qualidade da resposta dele continuou bem
+ruim.
+Tá, quando eu fiz a pergunta em inglês,
+ele respondeu bem melhor. Eu até passei
+pro chat GPT para avaliar essa resposta
+aqui dele. O chat GPT falou que foi
+razoável, mas assim ainda tá muito a
+quem da resposta do Ornit. Outro teste
+que eu vou fazer aqui é pedir para ele
+traduzir essa frase aqui bem simples,
+tell me jok e modelos pequenos eh
+conseguem traduzir muito bem. Deixa eu
+ver aqui qual ele vai conseguir.
+Conta-me uma piada ou diga-me uma piada.
+OK. A tradução tá OK. Peguei aqui uma
+frase um pouquinho maior, né, que eu
+errei o S. Explique aqui. Ele traduziu
+muito bem. Explique computador quântico,
+como se eu fosse uma criança de 10 anos.
+Para você que não quer qualidade, mas
+quer velocidade, talvez seja uma boa
+opção. Claro que você vai ter aí o
+trabalho extra de baixar o lama CPP lá
+no GitHub da Deep Grove, é compilar o
+lama CPP deles, depois baixar esse
+modelo, ele não é tão grande assim.
+Então esse aqui é o vídeo de hoje. Se
+você assistiu até aqui, dá o like no
+vídeo e se inscreve no canal. Muito
+obrigado e até até a próxima.
+&gt;&gt; [música]
+[música]

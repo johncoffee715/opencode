@@ -1,0 +1,4 @@
+root ::= trigger verdict
+trigger ::= "modo-autonomo " ("ON" | "OFF") " " scope
+scope ::= [a-z0-9\-]+
+verdict ::= "PASSOU_CATEGORICO" | "NAO_PASSOU_CATEGORICO"

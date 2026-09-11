@@ -150,6 +150,50 @@
         "capacidades": "schema JSON exato mesmo em 1-bit; menor 35B-classe (9.36GB)",
         "possibilidades": "fallback de emergencia se RAM < 10GB"
       }
+    },
+    "Qwen3.6-35B-A3B-UD-IQ2_XXS": {
+      "status": "QUARENTENA-CRIVADO",
+      "data": "2026-09-10",
+      "tamanho_gb": 10.02,
+      "origem": "unsloth/Qwen3.6-35B-A3B-GGUF",
+      "classe": "35B-A3B IQ2",
+      "crivo": {
+        "schema": 1.0,
+        "poison": 0.0,
+        "t4": 0.7,
+        "t8": 0.3,
+        "t1": 0.4,
+        "t10": 0.2,
+        "tps_cpu": "6.5-17.5"
+      },
+      "veredito": "2.8/6; IQ2>>IQ1 mas abaixo do IQ3; sweet-spot parcial",
+      "r78": {
+        "debilidade": "poison-fail; T4-diff errada; T8/T10 fabricacao",
+        "capacidades": "schema exato; 10GB",
+        "possibilidades": "fallback RAM<11GB"
+      }
+    },
+    "Qwen3.5-35B-A3B-UD-IQ2_XXS": {
+      "status": "QUARENTENA-CRIVADO",
+      "data": "2026-09-10",
+      "tamanho_gb": 9.93,
+      "origem": "unsloth/Qwen3.5-35B-A3B-GGUF",
+      "classe": "35B-A3B IQ2",
+      "crivo": {
+        "schema": 1.0,
+        "t1": 1.0,
+        "poison": 0.0,
+        "t4": 0.2,
+        "t8": 0.3,
+        "t10": 0.2,
+        "tps_cpu": "5.9-17.7"
+      },
+      "veredito": "2.9/6 FINAL; melhor IQ2 mas tese sweet-spot REFUTADA (2.9 vs 6.0 do IQ3)",
+      "r78": {
+        "debilidade": "poison-fail; T4 truncado; T8/T10 fabricacao",
+        "capacidades": "schema+T1 perfeitos; 3.15GB menos RAM que IQ3",
+        "possibilidades": "GM de emergencia se RAM<10GB"
+      }
     }
   }
 }

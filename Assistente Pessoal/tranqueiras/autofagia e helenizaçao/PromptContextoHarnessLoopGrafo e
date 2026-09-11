@@ -351,3 +351,9 @@ modelos densos menores por uma MoE leve como
 OLMoE-1B-7B ou JetMoE-8B para unificar chamadas rápidas.
 
 Fusão Local (Mergekit MoE): Explorar a montagem de um MoE customizado unificando os pesos dos modelos menores que você já utiliza.(nao conheço)
+
+
+
+
+
+

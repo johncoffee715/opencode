@@ -500,6 +500,96 @@
         "capacidades": "MoE barato p/ experimentos warm",
         "possibilidades": "GPU se VRAM liberar ~8GB"
       }
+    },
+    {
+      "model_id": "Qwen3-Embedding-0.6B-Q8_0",
+      "slot_port": 9094,
+      "device": "CPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "qwen3",
+        "layers": 28,
+        "embedding_length": 1024,
+        "contexto_nativo": 32768,
+        "arch_detail": "Qwen3-Embedding-0.6B Q8_0 610M, pooling last, 1024-d MRL"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "Q8_0",
+        "pesos_gb": 0.61,
+        "pesos_bytes": 610000000,
+        "ctx_ativo": 2048,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 14.0,
+        "kv_total_gb_at_ctx": 0.028,
+        "tps_decode_empirical": 14702,
+        "tps_decode_nota": "CPU 0.52s b1 / 14.7k b32 (bench 2026-09-11, c2048 b256/ub256)",
+        "temp": 0.0,
+        "ngl": 0,
+        "threads": "auto",
+        "flash_attn": false,
+        "mtp": "N/A",
+        "device": "CPU",
+        "nota": "CANONICO CPU tempo-real (bibliotecario query b=1, 0 VRAM)"
+      },
+      "vocacao_grafo": "embedder tempo-real :9094 (bibliotecario query)",
+      "derivado": {
+        "file": "Qwen3-Embedding-0.6B-Q8_0.gguf",
+        "slug": "qwen3-embedding-0.6b-cpu",
+        "category": "embedder",
+        "papel": "embedder-cpu",
+        "ctx_ativo_efetivo": 2048,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "Throughput limitado vs GPU (14k vs 91k)",
+        "capacidades": "Query tempo-real 0.52s, 0 VRAM, Apache-2.0, PT 32k",
+        "possibilidades": "Fallback GPU se CPU cair"
+      }
+    },
+    {
+      "model_id": "Qwen3-Embedding-0.6B-Q8_0-GPU",
+      "slot_port": 9097,
+      "device": "GPU",
+      "topologia_arquitetura": {
+        "tipo_fundacao": "qwen3",
+        "layers": 28,
+        "embedding_length": 1024,
+        "contexto_nativo": 32768,
+        "arch_detail": "Qwen3-Embedding-0.6B Q8_0 610M, pooling last, 1024-d MRL"
+      },
+      "fisica_inferencia": {
+        "quantizacao": "Q8_0",
+        "pesos_gb": 0.61,
+        "pesos_bytes": 610000000,
+        "ctx_ativo": 2048,
+        "cache_k": "q4_0",
+        "cache_v": "q4_0",
+        "kv_per_token_kb": 14.0,
+        "kv_total_gb_at_ctx": 0.028,
+        "tps_decode_empirical": 90982,
+        "tps_decode_nota": "GPU 0.12s b1 / 91k b32 (bench 2026-09-11, c2048 b256/ub256, +1047M VRAM)",
+        "temp": 0.0,
+        "ngl": 99,
+        "threads": "GPU Vulkan0",
+        "flash_attn": true,
+        "mtp": "N/A",
+        "device": "GPU",
+        "nota": "CANONICO GPU burst (bibliotecario backfill b16/32, 6.1x CPU)"
+      },
+      "vocacao_grafo": "embedder lote :9097 (bibliotecario backfill)",
+      "derivado": {
+        "file": "Qwen3-Embedding-0.6B-Q8_0.gguf",
+        "slug": "qwen3-embedding-0.6b-gpu",
+        "category": "embedder",
+        "papel": "embedder-gpu",
+        "ctx_ativo_efetivo": 2048,
+        "generator_version": "1.0.0"
+      },
+      "metrica_avaliativa_r78": {
+        "debilidade": "+1G VRAM, custo para manter quente",
+        "capacidades": "Lote 91k tok/s, 0.12s b1, ideal backfill",
+        "possibilidades": "Desligar quando VRAM apertar (kill :9097 libera 1G)"
+      }
     }
   ],
   "sync_state": {

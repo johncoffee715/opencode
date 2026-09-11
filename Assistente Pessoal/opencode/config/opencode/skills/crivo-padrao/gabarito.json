@@ -1,0 +1,7 @@
+{
+  "skill": "crivo-padrao",
+  "versao": "1.0.0",
+  "allow": ["chat/completions com template", "/completion cru COM justificativa registrada", "validacao T6 contra schema-probe.gbnf", "leitura de headers GGUF (KV/pesos)", "append em decision-log + model_registry"],
+  "deny": ["placar sem prefill+decode", "T6 sem grammar", "veredito sem tabela multi-perspectiva", "comparar CPU vs GPU sem flag de device", "rebaixar candidato por velocidade sem disjuntor R65/R84", "apagar GGUF sem veredito registrado"],
+  "invariantes": ["mesma bateria p/ todos (R97)", "temperatura fixa por probe (T6=0.0, demais 0.6)", "n_predict fixo por probe", "timings brutos preservados"]
+}

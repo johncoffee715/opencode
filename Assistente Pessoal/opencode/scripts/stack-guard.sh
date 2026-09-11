@@ -46,7 +46,7 @@ restart_slot() {
 }
 
 while true; do
-  for p in 8083 9084 9086 9088 9090 9092 9093 9095; do
+  for p in 8083 9084 9086 9088 9090 9092 9093 9094 9095 9097; do
     if slot_up "$p"; then rm -f "$ROOT/state/watcher/.guard-fails-$p"
     else restart_slot "$p"; fi
   done

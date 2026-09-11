@@ -1,7 +1,4 @@
----
-## 6. SKILLS HELENIZADOS INSTALADOS — PROVENIÊNCIA EXPLÍCITA NOS SKILL.md
-
-| Skill local | Origem absorvida |
+para aplicaçao universal use hefesto no modo MIX, Dev Loop e use todo arsenal do registro de acordo com as necessidades que voce identificar para executar de forma universal sempre decompilação, autofagia, helenizaçao e forja com excelencia em busca de features (hook, plugins, skills, subagents e agents, mcp, lsp, tools)de formar critetriosa, sistematica e categorica:
 |---|---|
 | browser-use | https://github.com/browser-use/browser-use |
 | firecrawl | https://github.com/firecrawl/firecrawl |
@@ -33,9 +30,6 @@
 | unsloth-zoo | https://github.com/unslothai/unsloth-zoo |
 | security-review | https://github.com/anthropics/skills *(via catálogo oficial)* |
 
----
-
-## 7. TABELA MESTRA DEDUPLICADA (~70 fontes únicas)
 
 anthropics/skills · affaan-m/ecc · netresearch/context7-skill · darrenhinde/openagentscontrol · ayghri/i-have-adhd · chuspeeism/dashi-ppt-skill · xai-org/grok-build · vercel-labs/skills (= vercel-labs/agent-skills, provável rename) · chidiwilliams/buzz · multica-ai/andrej-karpathy-skills · deepseek-ai/deepspec · corebunch/instatic · nexu-io/open-design · ruvnet/ruflo · knockoutez/wigolo · different-ai/openwork · ggml-org/llama.cpp · langchain-ai/deepagents · mvanhorn/last30days-skill · pbakaus/impeccable · elberrd/cc-harness-iai · github/spec-kit · a2aproject/A2A · bmad-code-org/BMAD-METHOD · crewaiinc/crewai · Fission-AI/OpenSpec · google/adk-python · hysnsec/awesome-policy-as-code · inngest/inngest · intuit/identity-authz-apl · langchain-ai/langgraph · langfuse/langfuse · modelcontextprotocol/servers · openai/openai-agents-python · open-telemetry/semantic-conventions-genai · pgvector/pgvector · postgres/postgres · redis-developer/langgraph-redis · redis/redis · tech-leads-club/agent-skills · temporal-community/temporal-agent-harness · temporalio/temporal · TestSprite/testsprite-cli · browser-use/browser-use · firecrawl/firecrawl · thedotmack/claude-mem · diegosouzapw/OmniRoute · stablyai/orca · ruvnet/RuView · oblien/openship · tirth8205/code-review-graph · alvinunreal/oh-my-opencode-slim · earendil-works/pi · mattpocock/skills · koala73/worldmonitor · bojieli/ai-agent-book · onovoprogramador/onp-spec-driven · getsentry/sentry-mcp · jamubc/gemini-mcp-tool · JustVugg/colibri · grishahq/recursive-llm · PrimeIntellect-ai/prime-agent · dokku/dokku · coderabbitai/awesome-coderabbit · microsoft/github-copilot-for-azure · Shubhamsaboo/awesome-llm-apps · experientiallabs/world-model-optimizer · tryigit/cleveres-ai · ratel-ai/ratel · Ratel/Context-Engineering · AMAP-ML/LongHorizon-Harness · unslothai/unsloth-zoo
 

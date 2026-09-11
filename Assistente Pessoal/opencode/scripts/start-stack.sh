@@ -98,10 +98,20 @@ launch 9093 "SmolLM2-360M-Instruct-Q8_0.gguf" \
   -c 4096 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
 
+# CPU 9094 · embedder · Qwen3-Embedding-0.6B-Q8_0 (embedding, pooling last)
+launch 9094 "filtragem/Qwen3-Embedding-0.6B-Q8_0.gguf" \
+  -c 2048 -np 1 --flash-attn on -b 512 -ngl 0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.0 --embedding --pooling last
+
 # CPU 9095 · descoberta · Qwen1.5-MoE-A2.7B-Q3_K_M
 launch 9095 "Qwen1.5-MoE-A2.7B-Q3_K_M.gguf" \
   -c 8192 -np 1 --flash-attn on -b 512 -ngl 0 \
   --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.6
+
+# GPU 9097 · embedder · Qwen3-Embedding-0.6B-Q8_0-GPU (embedding, pooling last)
+launch 9097 "filtragem/Qwen3-Embedding-0.6B-Q8_0.gguf" \
+  -c 2048 -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 --jinja --temp 0.0 --embedding --pooling last
 
 # ── CPU · F0 TRIAGEM L0 · Needle 2 (Cactus) · 28MB RAM · confidence-gated ──
 NEEDLE="$ROOT/tools/needle2/needle"
@@ -120,10 +130,16 @@ if [ -x "$NEEDLE_FORJA" ] && [ -f "$FORJA_TOOLS" ] && ! pgrep -f "needle --serve
   echo "[9091] lançando needle2 forja (validate_schema/write_artifact/upsert_vault/emit_manifest)"
 fi
 
+# ── BIBLIOTECARIO WATCHER (R94 gerente, 92 dirs, inotify Payload real) ──
+if ! pgrep -f "bibliotecario/tooling/watcher.py" >/dev/null 2>&1; then
+  (setsid nohup python3 "$HOME/.config/opencode/skills/bibliotecario/tooling/watcher.py" > /tmp/opencode/bibliotecario-watcher.log 2>&1 < /dev/null &)
+  echo "[watcher] lançando bibliotecario watcher"
+fi
+
 echo "--- health check ---"
 sleep 2
 ok=0; total=0
-for p in 8083 9084 9086 9088 9090 9092 9093; do
+for p in 8083 9084 9086 9088 9090 9092 9093 9094 9095 9097; do
   total=$((total+1))
   for i in $(seq 1 45); do
     if [ "$p" = "8097" ] || [ "$p" = "9091" ]; then

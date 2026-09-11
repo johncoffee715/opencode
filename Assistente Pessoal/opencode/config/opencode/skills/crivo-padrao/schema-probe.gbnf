@@ -1,0 +1,2 @@
+root ::= "{" ws "\"status\"" ws ":" ws "\"ok\"" ws "," ws "\"nota\"" ws ":" ws "9.5" ws "}"
+ws ::= [ \t\n]*

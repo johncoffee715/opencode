@@ -6,8 +6,8 @@ tags: "orquestracao, meta-orquestrador, pipeline, gates, delegação, task-packe
 origin: "helenizado: 'Orquestrador de IA de Forma Profissional' (sha256 1ab3e9c9…aab) × MIX 47 fontes 2026-08-26 (27 verificáveis + 20 síntese declarada — lista: skills/gran-mestre/reference/MIX-research-2026-08-26.md) × constituição AGENTS.md (R1–R79) × lições v7/v8 × anti-lixo gate (scripts/antilixo_gate.py) × R80 pesquisa multi-idioma × substituição :9088 granite-4.2-3b (2026-08-31) × Hefesto v9.1 2026-09-04: Orquestrador Qwen3.6-35B-A3B-UD-IQ3_XXS 12.30GiB :8083 (ex-Ornith AD-IQ3) + Linha de Defesa 6 camadas (kv_guard/watchdog/gate/result/meta + skill linha-de-defesa quadriplice) + LFM :9086 317t/s exploração"
 metadata:
   category: orchestration
-  version: 9.1.0
-  date: 2026-09-04
+  version: 9.2.0
+  date: 2026-09-11
   author: Gran-Mestre (Hefesto forja v9.1)
   source_file: "tranqueiras/autofagia e helenizaçao/Orquestrador de IA de Forma Profissional.md"
   source_sha256: 1ab3e9c984ec06e7d45e7084c8b364ea28057be1d854dd118a676159053a8aab
@@ -247,3 +247,27 @@ catálogo (R8) + inventário R52 — nenhum subagent hardcoded.
 - Multi-agente por modinha; tool sprawl (>10 tools/subagent); eval com mock onde vale ferramenta REAL;
   aprovação burocrática sem evidência nem bugs (fraude R28/R53); auto-mutação da doutrina no meio do
   pipeline; subsistema que não prova valor medido (auditoria R34/R51 — degradar).
+
+## Quarteto v9.2 (Modo Autônomo Blindado — R85/R88, 2026-09-11)
+
+A própria skill agora cumpre o quarteto R85 que manda para todos (era tríade, faltava .gbnf):
+
+- `conceito.md` — ontologia dos 5 GAPs fechados (R88).
+- `gabarito.json` — firewall allow/deny (fonte única; valores reais em `default`).
+- `mecanica.py` — motor determinístico (zero LLM): allowlist diagnóstico, quorum de refutação,
+  memória de ação, single-writer. Smoke: `python3 mecanica.py`.
+- `schema.gbnf` — gramática do veredito de quorum (fallback; fonte = gabarito).
+
+GAPs fechados (evidência): (1) anti-intervenção — `df/free/du/ps/rocm-smi/lscpu/cat /proc/*`
+na allowlist read-only (sessão 2026-09-11); (2) quorum de refutação — R40 "sem teto" × R18
+"3 rodadas" resolvido via early-termination (Aegean 2512.20184); (3) memória de ação com replay
+(MOBIMEM 2512.15784); (4) single-writer/estado versionado (IntelliCode 2512.18669);
+(5) auto-quarteto — completa o .gbnf que faltava.
+
+## R100 — Consulta automática ao Bibliotecário (2026-09-11)
+
+Expressão idiomática, menção cultural, referência desconhecida ou termo não dominado — do usuário
+OU de A2A — durante qualquer ação cognitiva ⇒ invocar o Bibliotecário (R94) para examinar a
+biblioteca (`cerebro com IA/` + canais R90 + `benchmarks/` R97) e otimizar o nó via os 4 selfs
+(R90: `[S-ca]` scaffolding · `[H-e]` healing · `[L-e]` learning · `[A-m]` ameliorative).
+Nunca fabricar referência (fraude R28); nunca sair do vault (R94).

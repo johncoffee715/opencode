@@ -1,0 +1,12 @@
+# Gran-Mestre v9.2 — schema.gbnf (barreira física no amostrador)
+# Veredito estruturado do quorum de refutação (GAP-2).
+# Fonte única: gabarito.json → Pydantic → JSON Schema → GBNF em runtime (R81).
+# Este arquivo é o fallback/legado; a fonte de verdade é o gabarito.json.
+
+root ::= "{" ws "\"verdict\"" ws ":" ws verdict ws "," ws "\"rounds\"" ws ":" ws integer ws "," ws "\"quorum_ratio\"" ws ":" ws number ws "," ws "\"action\"" ws ":" ws action ws "}"
+
+verdict ::= "\"PASSOU_CATEGORICO\"" | "\"NAO_PASSOU\"" | "\"PENDENTE\""
+action ::= "\"EARLY_TERMINATION\"" | "\"ESCALAR\"" | "\"CONTINUAR\""
+integer ::= [0-9]+
+number ::= [0-9]+ "." [0-9]+
+ws ::= [ \t\n]*

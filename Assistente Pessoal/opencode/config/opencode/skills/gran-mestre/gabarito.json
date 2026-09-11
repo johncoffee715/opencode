@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Gran-Mestre v9.2 Quarteto — Gabarito (firewall)",
+  "description": "Contrato allow/deny do Modo Autônomo Blindado. Fonte única: transpila para Pydantic/GBNF (R77/R81). Valores reais em 'default' de cada propriedade.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "version",
+    "bash_allowlist",
+    "bash_deny",
+    "refutation_quorum",
+    "action_memory",
+    "single_writer"
+  ],
+  "properties": {
+    "artifact": {
+      "type": "string",
+      "const": "gran-mestre-v92-quarteto"
+    },
+    "version": {
+      "type": "string",
+      "const": "9.2.0"
+    },
+    "bash_allowlist": {
+      "type": "object",
+      "description": "Comandos read-only de diagnóstico (anti-intervenção no modo autônomo — GAP-1)",
+      "additionalProperties": false,
+      "required": ["diagnostic_readonly"],
+      "properties": {
+        "diagnostic_readonly": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 7,
+          "default": ["df", "free", "du", "ps", "rocm-smi", "lscpu", "cat /proc/"]
+        }
+      }
+    },
+    "bash_deny": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["destructive"],
+      "properties": {
+        "destructive": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["rm -rf", "git clean", "checkout --", "truncate", "dd", "shell -c"]
+        }
+      }
+    },
+    "refutation_quorum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_rounds", "quorum_threshold", "early_termination"],
+      "properties": {
+        "max_rounds": { "type": "integer", "default": 3 },
+        "quorum_threshold": { "type": "number", "minimum": 0.5, "maximum": 1.0, "default": 0.5 },
+        "early_termination": { "type": "boolean", "default": true }
+      }
+    },
+    "action_memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "replay", "max_entries"],
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "replay": { "type": "boolean", "default": true },
+        "max_entries": { "type": "integer", "minimum": 10, "maximum": 1000, "default": 100 }
+      }
+    },
+    "single_writer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "versioned_state"],
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "versioned_state": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}

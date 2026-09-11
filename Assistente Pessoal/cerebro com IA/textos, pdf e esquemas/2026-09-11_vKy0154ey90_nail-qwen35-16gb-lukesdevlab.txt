@@ -1,0 +1,427 @@
+Kind: captions
+Language: en
+Hey, welcome to Luke's Dev Lab. It's
+great to have you here. So, in this
+video, we're going to be looking at Nail
+Quen 3.635B
+A3B. So, in the previous video, we
+looked at Teal, which was based on
+ONRIF, and now we're looking at Nail
+from Peculiar Ragdoll, which is based on
+just the Quen base model. So, you can
+see here, these are Ensloft's MTP GGF
+quants of Quen 3.6 35b3B with our
+improved chat template and force
+appended system prompt baked in. So I'll
+have this page linked down below if you
+want to read more information about
+this. And in this video we're going to
+be looking at the Q4K XL. So our usual
+test suite here performance where we'll
+measure the prefill and the decode
+memory where we'll test the model's
+ability to find data in a large context.
+Reasoning for reasoning OpenAI human
+eval which is 164 Python challenges
+canban will be our front-end web
+development test. SAM physics and
+dungeon crawler will be our algorithmic
+and mathematical capability testing. And
+then finally, we ramp up the difficulty
+with MCP connecting to Blender to have
+the model create an asset and then Godo
+for it to create a 3D game. And then
+over to my system specs. So I'm using an
+RTX 2000 ADA with 16 gigs of VRAM. And
+then I've got 32 gigs of DDR4 RAM to
+overflow into. I do have an RTX 5090
+here, but the RTX 5090 is just used to
+speed up some of my tests. And all my
+configs and targeting is for 16 gig
+GPUs. And you can find my configs linked
+on my website in the description and
+they are configured for 16 gig GPUs.
+So let's kick things off with our
+benchmarks first. So we're going to
+start off with performance. So I've got
+the model loaded in at about 128k
+context. We're going to look at the
+prefill first, which is the speed at
+which the model can ingest tokens. So
+starting off at a very short prefill,
+I'm getting 176 tokens uncashed, 5,000
+cached. Coming up to a large prefill,
+I'm getting 238 tokens a second
+non-cashed and 206,000 tokens a second
+cached. And then coming down to our
+decode, which is our token generation
+speed. So I'm getting not too far off 50
+tokens a second on this model. And
+again, this is configured for that RTX
+2000 with 16 gigs of VRAM and then
+overflowing into that DDR4 system RAM.
+So good speeds here for sure. We
+probably could even push the
+quantization to five or six if you
+wanted to. Moving on over to the memory
+benchmarks. This is where we fill up the
+context of the model. Insert pieces of
+data and ask it to find it. Those depths
+of the context where we put data are
+either at zero, 25, 50, 75, or 100%
+depth. Get the model to find the data
+three times over for consistency. And
+this is telling us that 15 out of 15
+runs the model's found it. So at every
+depth, three out of three times the
+model's found the data. And if we come
+and look at our outputs here, it's a bit
+of a mixed bag in cleanliness. So this
+one is nice and clean, very human
+readable. This one is very minimal,
+straight to the point. But then
+something like this, you can see we've
+got quite a lot of output here, quite a
+lot of padding around it where the key
+is there. It's being repeated a lot. So
+it has been found. You can see a lot of
+messy long outputs here coming all the
+way down. We've got a nice clean one
+here at 75% depth. Another one there at
+75. And then down at 100. So the
+outputs, while it did find the key every
+time, they are a little bit messy, but
+it's still 100% pass rate, so it's good.
+Onto my reasoning benchmark now. So the
+model scored 36 out of 48 with a 75%
+pass rate here, so it's not too bad, but
+you can see it's fallen down in the hard
+questions a bit. So if we come down to
+the actual numbers here, so eight out of
+12 correct in hard, four out of 12
+correct in expert, which is expert like
+there's no model that's got all of these
+correct. So this is to be expected hard,
+it's not too bad of a result. It's
+probably in line for a model, I would
+say. So it's not too bad. And then
+finally, moving on to our OpenAI human
+eval. So this is 164 handwritten Python
+challenges. This page will be linked
+down below if you like to come and have
+a read or try this for yourself. So
+looking at the results here, this one is
+possibly benchmaxed at this point
+because the test is old and I will
+update this one soon. But got a 95% pass
+rate and of the questions answered, 97%
+and that's because it's answered almost
+every question, which is a really good
+indicator the model's not overinking
+with only four questions unanswered. So
+it's a good result on this one, but take
+these results with a pinch of salt. All
+right, so let's move into our coding
+challenges now. Starting with our
+cananban, our front-end web development
+test. So, initially the model came back
+and it had an error in the console when
+I tried to run the application and this
+was at 44.5%
+of context used. So, not too bad. So, I
+gave this error straight into the model
+and let it work away at fixing this. So,
+after I gave this issue to the model, it
+went back and worked and fixed it almost
+immediately. But then I had these
+issues. So only another 1% of context
+use and I said I could only see a card
+adding if I refresh the label text is
+not showing on the creation modal card
+archive and restore only if refreshing.
+So basically nothing would really update
+unless I refreshed. So the model went
+away and worked through these list of
+issues but it's probably all in the same
+issue really. You can see it's updating
+the set state here. So it's just a state
+management issue essentially. So it
+didn't take too long to work through the
+files and update this set state. So the
+model came back again at 57.7% of our
+context use. And at this point I just I
+couldn't add a label to a card. So the
+bug or feature tag. So prompted that.
+The model worked away at this. It then
+came back at 62% context used and I said
+I still can't press the tag button on
+the card and it does nothing. There's no
+errors in the console even. So it worked
+away again. And this is finally where we
+are now. So, we're at 66.9%
+context used and the model had delivered
+what I thought was acceptable. So, if we
+come over to our browser, I have tested
+everything here already. So, all the
+features are working. So, we can move
+the cards around. We get a nice done
+state when they move to the done column.
+You get like a preview of where the
+cards going to go. So you can see see
+there you can move the columns around
+and they move in real time like this
+with a like faded outline of it which I
+think is really really nice considering
+how terrible moving columns can quite
+often be on this test. This is probably
+one of the best if not the best
+implementations I've seen of moving the
+columns around. I really really like
+this. So, in the end, the model did get
+there after not too much context. And I
+think what it's delivered is a very good
+result. So, we'll move on over to our
+sand physics now. And this came back in
+a zero shot. I did not have to say
+anything to the model after the initial
+prompt. We're at 24.7%
+of our context used. And this is what we
+have. So, I think it's done a pretty
+decent job other than the water's not
+perfect.
+It's a bit splashy. I don't know how to
+describe it, but yeah, the water's not
+perfect here, but it's not
+Yeah, I don't know what's going on
+there. It's like passing through
+somehow.
+So, yeah, the water's definitely not
+perfect at the moment on this one. But I
+think another prompt you could probably
+get it there, but it's not too bad what
+the model's done here. So, moving on to
+our dungeon crawler now, or dungeon of
+the shrouded deep as the models called
+it. So, this one was a oneshot. The
+model came back at 12.8% 8% context
+used. And the only problem was the
+dungeon wasn't fully connected. So
+sometimes the user would spawn in a room
+that they couldn't escape. So I prompted
+it again and we ended up at 17.5%
+context used. And here we have our
+dungeon crawler which is now functioning
+very nicely. So it's done a pretty good
+job on this one. The ray casting is
+good.
+The dungeon generation is nice. Although
+I still see an unconnected room here and
+I would not want to be spawning in this
+one here. But generally, it's been
+pretty good. I've not seen the user
+spawn in one of these disconnected
+rooms, so maybe there's something. Ah,
+there we go. Okay, so generation's not
+perfect, but for the majority of the
+time, yeah, it's pretty good. It's a
+decent result from the model. So, moving
+into the MCP portion of the video now.
+So, the difficulty is going to ramp up
+for the model. We're starting with
+Blender where we ask it to create a
+lantern asset. So, here is the asset
+that it's created.
+Looks a little bit ropey if I am going
+to be honest, but we haven't seen what
+it looks like rendered yet. So, we'll
+wait. So, we ended up here at 81.3% of
+context used. No compactions, so not a
+terrible amount of context usage. So, it
+initially delivered at 60% of context
+used, but when it did deliver, there
+were no screenshots. a common theme with
+a lot of models. They just don't deliver
+the screenshots into the project
+directory. So I asked where the
+screenshots were and then it got to 70%
+of context used and Blender became
+unresponsive and then crashed. So I'm
+not sure what the model was doing at
+that point. So I reopened Blender,
+prompted the model to continue and then
+essentially what would happen is I would
+tell it to take the screenshot and it
+would take the next screenshot and as
+soon as it had taken the screenshot,
+Blender would crash again and then I
+would start Blender up and then we would
+repeat this process using a few percent
+each time where it would take a
+screenshot, crash the program, then I'd
+reopen it and then it would take the
+next screenshot after a few% of context
+use crash the program. So this was how I
+had to get the four screenshots
+delivered. The program crashed four
+times. So, we are here at our 81.3%
+context used. The program had crashed
+multiple times, so it was pretty painful
+to get these screenshots done. And then,
+if we go into our folder and look at our
+wonderful screenshots to see if it was
+all worth it. And this is our starful
+lantern. So, there's a nice close-up
+shot that's been asked of the model.
+Very nice. Can't even see the light
+inside. And here are some external
+screen shots. So, pretty low resolution
+screenshots, too. So, here's another
+shot of our lovely lantern. So, yeah, I
+don't know what else to say about this
+one. What do you guys think of this
+lantern? Let's see how it does in God.
+So, into our final and most difficult
+challenge of the video. So, this is
+Godo, where we get the model to create a
+3D platformer with moving platforms,
+collectible items, and a finished skull.
+So, we got two compactions here, and
+we're up to 62.9% context used. So, it
+wasn't a great start on this one. So the
+model initially got confused about MCP
+and then crashed Godo. So I at that
+point was thinking after what we saw in
+Blender as well, I was thinking, "Yeah,
+this model's probably not going to do
+Godo." But to my surprise, when I
+reopened the program, told it to
+continue, it actually started making
+progress. So it got to 70% of context
+used, no compactions yet, and the
+problem was the player could jump
+infinitely. The respawn would have you
+respawn and then die immediately. The
+floor was like ice. You would like if
+you wanted to stop moving, you would
+just continue like sliding across the
+floor. And then the platforms weren't
+moving. There were no moving platforms.
+So quite a few things to fix. So I
+prompted the model and then it compacted
+and it kept going. And the issue was
+always the same was that the movement
+was really erratic and the player was
+sliding around like they were on ice.
+And this was every prompt I gave it was
+to fix this and it would never get it
+right. it would maybe the player would
+move a bit slower but it would still
+feel like you're on ice and then the
+next time they'd move like super fast.
+So this was kind of the back and forth
+we had until we got to our double
+compaction and 62.9% context used. So if
+we launch the game, it's decent, I would
+say. It won't release mouse control.
+That is annoying. Okay, I'm going to
+have to zoom in on this window in
+editing. So here we are. The movement is
+strange. So I'm pressing W right now to
+go straight forwards.
+And it is working, but like when I turn,
+it's like it
+Yeah, it's it's like I'm pressing W now
+and I'm not moving entirely forwards.
+I'm moving off to the side. So, the
+movement is really unpredictable when
+you click when you click when you
+collect the keys, they
+they don't uh disappear or anything like
+this. And I'm sure I only collected this
+one, but it says I've got two out of
+three.
+So yeah, movement is really difficult.
+So, and it is like moving on ice still.
+I could not get the model to like stop
+this behavior. So, I'm going to try and
+get to the end. Yeah, I've got three out
+of three keys. And I definitely did not
+get all the keys. So, I'm going to try
+and get to the end. I will skip in
+editing and save you the pain.
+And there it is. The game is finished.
+So yeah, the resulting GDO in this one
+was okay, but it just couldn't overcome
+the issues about players erratic
+movement and sort of sliding on ice. So
+yeah, it definitely got hung up on this.
+All right, so that will bring us to the
+end of this video on nail quen. So let's
+have a quick summary of the results. So
+I will upload this to my website. So if
+you go to lukedevlab.com.
+So we've got 48.4 four on the decode
+speed, 200k cached on the prefill for
+performance, and then just over 200 on
+uncashed. Memory benchmark, it was
+excellent across the board. Reasoning,
+it starts to fall down as it gets to the
+more difficult challenges, but that's to
+be expected for ane model. I would say
+human eval,
+but this is definitely has the potential
+to be benchmaxed as in in the training
+data. And then coming down to our tests,
+our agentic test. So canban, we ended up
+at 66.9% context used and the result was
+really nice for canban actually. I was
+quite impressed with the UI in the end
+for that one. Sam physics quarter of our
+context used. Dungeon crawler 17.5.
+These results were not too bad. Sam
+physics wasn't perfect, but dungeon
+crawler was pretty good in the end. Not
+perfect dungeon generation though. And
+then our blender lantern I would say was
+pretty naff to be honest. So 81.3% of
+our context used to get to that. I'm not
+sure if more context would have made it
+better though. And then God moving
+platforms. I've given this one a fail
+because it just couldn't get it right
+with the player movement. It was very
+difficult to play. I was on the fence
+about putting the lantern as a fail, but
+it developed something. It had some
+semblance of a lantern, so I couldn't
+really give it a fail on that one. But
+back to the good moving platform. So we
+had one compaction, 62.9% context, and
+as we saw it, it just couldn't overcome
+the issue with the erratic player
+movement. So, final thoughts from me
+will be on the front-end web development
+side. I thought the model was actually
+pretty good. So, if you're doing
+front-end web development, it could be
+worth giving this one a try. But as we
+move on to things like sand and dungeon,
+it started to slip a bit. It showed that
+it wasn't perfect in these results. And
+then as we ramped up the difficulty into
+our MCP challenges with Blender and
+GDAU, it really wasn't doing too great.
+I would say if you're looking at between
+nail and teal coder, I would go for teal
+coder over this one. So, what do you
+guys think of this model? Have you tried
+it? Has it been good in your use cases?
+I'd be interested to hear in the
+comments below if it has been decent for
+you. So, thank you for watching to the
+end. I do really appreciate it. And a
+huge thank you to my supporters here on
+YouTube and Patreon. Give the video a
+thumbs up if you enjoyed it and
+subscribe if you want to see more
+content like this. Bye.

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated": "2026-09-10T00:01:40.747596Z",
+  "last_updated": "2026-09-11T16:58:15.891128Z",
   "description": "Manifesto de modelos LLM para o Grafo Híbrido v2 — regenerado por sync-llm-stack.py a partir de modelos LLM/manifesto_llm.json.",
   "cortex_sensorial": {
     "model": "rwkv7-g1d-0.4b-instruct",
@@ -87,6 +87,26 @@
       "cortex_sensorial": "rwkv7-g1d-0.4b-instruct:9084",
       "safe_input_size": 8192,
       "ctx_allocated": 8192,
+      "status": "online"
+    },
+    "qwen3-embedding-0.6b-cpu": {
+      "slot": "9094",
+      "category": "embedder",
+      "high_precision": true,
+      "input_hygiene_required": true,
+      "cortex_sensorial": "rwkv7-g1d-0.4b-instruct:9084",
+      "safe_input_size": 2048,
+      "ctx_allocated": 2048,
+      "status": "online"
+    },
+    "qwen3-embedding-0.6b-gpu": {
+      "slot": "9097",
+      "category": "embedder",
+      "high_precision": true,
+      "input_hygiene_required": true,
+      "cortex_sensorial": "rwkv7-g1d-0.4b-instruct:9084",
+      "safe_input_size": 2048,
+      "ctx_allocated": 2048,
       "status": "online"
     }
   },

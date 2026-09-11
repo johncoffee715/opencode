@@ -319,6 +319,8 @@ def categoria(voc):
         return "refutacao"
     if "relay" in voc:
         return "relay"
+    if "embedder" in voc:
+        return "embedder"
     if "descoberta" in voc:
         return "descoberta"
     return "descoberta"
@@ -588,6 +590,20 @@ def build_start_section(rows):
                 lines.append(f'# CPU {r["slot"]} · {r["cat"]} · {r["mid"]} (RWKV — state fixo, ctx não escala)')
                 lines.append(f'launch {r["slot"]} "{r["file"]}" \\')
                 lines.append(f"  -c {r['ctx']} -np 1 -ngl 0")
+        elif r["cat"] == "embedder":
+            # EMBEDDER (Qwen3-Embedding) — pooling last, embedding only
+            if r["gpu"]:
+                tq = f" --temp {r['temp']}" if r["temp"] is not None else ""
+                lines.append(f'# GPU {r["slot"]} · {r["cat"]} · {r["mid"]} (embedding, pooling last)')
+                lines.append(f'launch {r["slot"]} "{r["file"]}" \\')
+                lines.append(f"  -c {r['ctx']} -np 1 --flash-attn on -b 512 -ngl 999 -dev Vulkan0 \\")
+                lines.append(f"  --cache-type-k q4_0 --cache-type-v q4_0 --jinja{tq} --embedding --pooling last")
+            else:
+                tq = f" --temp {r['temp']}" if r["temp"] is not None else ""
+                lines.append(f'# CPU {r["slot"]} · {r["cat"]} · {r["mid"]} (embedding, pooling last)')
+                lines.append(f'launch {r["slot"]} "{r["file"]}" \\')
+                lines.append(f"  -c {r['ctx']} -np 1 --flash-attn on -b 512 -ngl 0 \\")
+                lines.append(f"  --cache-type-k q4_0 --cache-type-v q4_0 --jinja{tq} --embedding --pooling last")
         elif r["gpu"]:
             # GPU comum (não-8083, não-RWKV) — Flash Attention ON (economiza buffers de attention na VRAM)
             t = f" --temp {r['temp']}" if r["temp"] is not None else ""

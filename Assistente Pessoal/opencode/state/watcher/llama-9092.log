@@ -1,13 +1,12 @@
-0.00.024.667 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
-0.00.025.808 W srv  llama_server: -----------------
-0.00.025.811 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
-0.00.025.811 W srv  llama_server: this can be a security risk (cross-origin attacks)
-0.00.025.812 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
-0.00.025.812 W srv  llama_server: -----------------
-0.00.027.092 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/smollm2-1.7b-instruct-q4_k_m.gguf'
-0.15.328.080 W llama_context: n_ctx_seq (32768) > n_ctx_train (8192) -- possible training context overflow
-0.15.760.676 W srv    load_model: the slot context (32768) exceeds the training context of the model (8192) - capping
-0.15.999.225 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
-0.16.001.832 I srv  llama_server: model loaded
-0.16.001.839 I srv  llama_server: listening on http://127.0.0.1:9092
-98.42.800.960 I srv    operator(): operator(): cleaning up before exit...
+0.00.025.702 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.026.908 W srv  llama_server: -----------------
+0.00.026.911 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.026.911 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.026.911 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.026.912 W srv  llama_server: -----------------
+0.00.028.187 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/smollm2-1.7b-instruct-q4_k_m.gguf'
+0.18.048.169 W llama_context: n_ctx_seq (32768) > n_ctx_train (8192) -- possible training context overflow
+0.18.498.473 W srv    load_model: the slot context (32768) exceeds the training context of the model (8192) - capping
+0.18.733.268 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.18.735.919 I srv  llama_server: model loaded
+0.18.735.927 I srv  llama_server: listening on http://127.0.0.1:9092

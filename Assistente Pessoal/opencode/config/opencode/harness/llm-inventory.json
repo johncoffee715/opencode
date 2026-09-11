@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-09-10T00:01:40.746301Z",
+  "last_updated": "2026-09-11T16:58:15.889740Z",
   "governance": {
     "rule": "R52 — Inventário Global de LLMs Locais (Regra Global Guardrail)",
     "source_of_truth": "config/opencode/AGENTS.md §R52",
@@ -275,6 +275,36 @@
       "temp": 0.6,
       "category": "descoberta",
       "sector": "CPU-threads",
+      "status": "online"
+    },
+    {
+      "id": "qwen3-embedding-0.6b-cpu",
+      "slot": "9094",
+      "file": "filtragem/Qwen3-Embedding-0.6B-Q8_0.gguf",
+      "params": "0.6B",
+      "quant": "Q8_0",
+      "arch": "Qwen3-Embedding-0.6B Q8_0 610M, pooling last, 1024-d MRL",
+      "n_ctx_train": 32768,
+      "ctx_allocated": 2048,
+      "kb_per_tok": 14.0,
+      "temp": 0.0,
+      "category": "embedder",
+      "sector": "CPU-threads",
+      "status": "online"
+    },
+    {
+      "id": "qwen3-embedding-0.6b-gpu",
+      "slot": "9097",
+      "file": "filtragem/Qwen3-Embedding-0.6B-Q8_0.gguf",
+      "params": "0.6B",
+      "quant": "Q8_0",
+      "arch": "Qwen3-Embedding-0.6B Q8_0 610M, pooling last, 1024-d MRL",
+      "n_ctx_train": 32768,
+      "ctx_allocated": 2048,
+      "kb_per_tok": 14.0,
+      "temp": 0.0,
+      "category": "embedder",
+      "sector": "GPU-MI50-Vulkan",
       "status": "online"
     }
   ],

@@ -1,27 +1,12 @@
-0.00.024.937 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
-0.00.027.161 W srv  llama_server: -----------------
-0.00.027.164 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
-0.00.027.165 W srv  llama_server: this can be a security risk (cross-origin attacks)
-0.00.027.165 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
-0.00.027.165 W srv  llama_server: -----------------
-0.00.028.877 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/filtragem/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf'
-0.03.035.483 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 0, abort
-0.03.262.999 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
-0.16.460.649 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
-0.16.467.064 I srv  llama_server: model loaded
-0.16.467.073 I srv  llama_server: listening on http://127.0.0.1:9095
-0.18.175.628 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
-0.18.175.946 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
-0.20.962.348 I slot print_timing: id  0 | task 0 | prompt eval time =     288.62 ms /    28 tokens (   10.31 ms per token,    97.01 tokens per second)
-0.20.962.354 I slot print_timing: id  0 | task 0 |        eval time =    2497.71 ms /    25 tokens (   99.91 ms per token,    10.01 tokens per second)
-0.20.962.355 I slot print_timing: id  0 | task 0 |       total time =    2786.33 ms /    53 tokens
-0.20.962.363 I slot print_timing: id  0 | task 0 |    graphs reused =         24
-0.20.962.414 I slot      release: id  0 | task 0 | stop processing: n_tokens = 52, truncated = 0
-0.20.964.225 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.571 (> 0.100 thold), f_keep = 0.308
-0.20.964.460 I slot launch_slot_: id  0 | task 26 | processing task, is_child = 0
-0.23.570.307 I slot print_timing: id  0 | task 26 | prompt eval time =     159.31 ms /    12 tokens (   13.28 ms per token,    75.33 tokens per second)
-0.23.570.313 I slot print_timing: id  0 | task 26 |        eval time =    2446.51 ms /    28 tokens (   87.38 ms per token,    11.44 tokens per second)
-0.23.570.313 I slot print_timing: id  0 | task 26 |       total time =    2605.82 ms /    40 tokens
-0.23.570.315 I slot print_timing: id  0 | task 26 |    graphs reused =         50
-0.23.570.339 I slot      release: id  0 | task 26 | stop processing: n_tokens = 55, truncated = 0
-0.23.611.808 I srv    operator(): operator(): cleaning up before exit...
+0.00.026.331 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.027.365 W srv  llama_server: -----------------
+0.00.027.369 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.027.369 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.027.370 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.027.370 W srv  llama_server: -----------------
+0.00.028.611 I srv    load_model: loading model '/mnt/dados/Assistente Pessoal/modelos LLM/Qwen1.5-MoE-A2.7B-Q3_K_M.gguf'
+0.00.714.865 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.55.216.816 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.55.219.498 I srv  llama_server: model loaded
+0.55.219.504 I srv  llama_server: listening on http://127.0.0.1:9095
+7.30.899.685 I srv    operator(): operator(): cleaning up before exit...

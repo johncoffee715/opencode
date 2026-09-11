@@ -1,0 +1,4 @@
+root ::= output
+output ::= "{" ws "\"trigger\"" ws ":" ws string ws "," ws "\"referencia_direta\"" ws ":" ws "\"R99\"" ws "," ws "\"verdict\"" ws ":" ws "\"Pode reiniciar — zero pendências.\"" ws "," ws "\"saved\"" ws ":" ws "[" ws (string ("," ws string)*)? ws "]" ws "," ws "\"cleaned\"" ws ":" ws "[" ws (string ("," ws string)*)? ws "]" ws "}"
+string ::= "\"" ([^"]*) "\""
+ws ::= [ \t\n\r]*

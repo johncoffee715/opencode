@@ -1,0 +1,18 @@
+{
+  "task_id": "task-20260911160129",
+  "run_id": "run-20260911160129",
+  "objective": "Pesquisar na internet em m\u00faltiplos idiomas (EN, PT, ES, ZH, JA, KO, RU, DE, FR) sobre agentes de IA, padr\u00f5es de orquestra\u00e7\u00e3o, meta-orquestradores, e o conceito de Gran-Mestre. Usar agent-reach skill para roteamento multi-plataforma.",
+  "tools_allowlist": [
+    "agent-reach",
+    "webfetch",
+    "read",
+    "glob",
+    "bash-readonly"
+  ],
+  "acceptance_criteria": [
+    "Lista de fontes com URL, t\u00edtulo, idioma, trecho relevante (m\u00e1x 200 chars cada) e classifica\u00e7\u00e3o de relev\u00e2ncia para conflito com Gran-Mestre atual"
+  ],
+  "budget_tokens": 8000,
+  "state_ativo": true,
+  "timestamp": "2026-09-11T16:01:29.332624"
+}
