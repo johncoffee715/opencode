@@ -51,3 +51,6 @@ Assistente Pessoal/cerebro com IA/textos, pdf e esquemas/**/*.pdf
 **/*.psd
 cerebro com IA/textos, pdf e esquemas/**/*.rar
 cerebro com IA/textos, pdf e esquemas/**/*.7z
+
+**/*.so.*
+Assistente Pessoal/opencode/bin/
