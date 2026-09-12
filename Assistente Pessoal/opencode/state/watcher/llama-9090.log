@@ -8,3 +8,24 @@
 0.21.695.995 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
 0.21.701.931 I srv  llama_server: model loaded
 0.21.701.938 I srv  llama_server: listening on http://127.0.0.1:9090
+2334.57.095.431 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+2334.57.095.679 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+2335.03.767.269 I slot print_timing: id  0 | task 0 | prompt eval time =    5065.35 ms /   179 tokens (   28.30 ms per token,    35.34 tokens per second)
+2335.03.767.281 I slot print_timing: id  0 | task 0 |        eval time =    1606.20 ms /    19 tokens (   84.54 ms per token,    11.83 tokens per second)
+2335.03.767.282 I slot print_timing: id  0 | task 0 |       total time =    6671.55 ms /   198 tokens
+2335.03.767.286 I slot print_timing: id  0 | task 0 |    graphs reused =         18
+2335.03.768.473 I slot      release: id  0 | task 0 | stop processing: n_tokens = 197, truncated = 0
+2407.09.729.796 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.474 (> 0.100 thold), f_keep = 0.827
+2407.09.730.278 I slot launch_slot_: id  0 | task 20 | processing task, is_child = 0
+2407.11.811.265 I slot print_timing: id  0 | task 20 | prompt eval time =     561.06 ms /   181 tokens (    3.10 ms per token,   322.61 tokens per second)
+2407.11.811.281 I slot print_timing: id  0 | task 20 |        eval time =    1519.90 ms /    18 tokens (   84.44 ms per token,    11.84 tokens per second)
+2407.11.811.282 I slot print_timing: id  0 | task 20 |       total time =    2080.95 ms /   199 tokens
+2407.11.811.285 I slot print_timing: id  0 | task 20 |    graphs reused =         34
+2407.11.812.534 I slot      release: id  0 | task 20 | stop processing: n_tokens = 361, truncated = 0
+2407.11.832.088 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.484 (> 0.100 thold), f_keep = 0.928
+2407.11.832.140 I slot launch_slot_: id  0 | task 39 | processing task, is_child = 0
+2407.13.898.428 I slot print_timing: id  0 | task 39 | prompt eval time =     615.94 ms /   357 tokens (    1.73 ms per token,   579.61 tokens per second)
+2407.13.898.443 I slot print_timing: id  0 | task 39 |        eval time =    1450.32 ms /    17 tokens (   85.31 ms per token,    11.72 tokens per second)
+2407.13.898.445 I slot print_timing: id  0 | task 39 |       total time =    2066.25 ms /   374 tokens
+2407.13.898.447 I slot print_timing: id  0 | task 39 |    graphs reused =         49
+2407.13.899.294 I slot      release: id  0 | task 39 | stop processing: n_tokens = 708, truncated = 0

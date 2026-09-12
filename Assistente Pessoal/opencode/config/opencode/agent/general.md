@@ -1,7 +1,7 @@
 ---
 description: "OVERRIDE do built-in 'general': General Tasks do runtime NÃO saturam mais o orquestrador — roteadas ao role:proposer (:9088, Hemisfério Esquerdo/Executor F4). Uso genérico: tasks multi-step, pesquisa+execução, implementação supervisionada, qualquer General Task que antigamente caía no default local-orchestrator/orchestrator (:8083)."
 mode: subagent
-model: local-forge/proposer
+model: nvidia/deepseek-ai/deepseek-v4-pro-0813
 temperature: 0.3
 tools:
   write: true

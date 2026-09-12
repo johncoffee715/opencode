@@ -134,3 +134,18 @@
 1590.38.777.060 I slot print_timing: id  0 | task 82 | prompt processing, n_tokens =  18944, progress = 0.16, t = 277.59 s / 68.24 tokens per second
 1590.40.209.687 W srv          stop: cancel task, id_task = 82
 1590.51.484.508 I slot      release: id  0 | task 82 | stop processing: n_tokens = 19456, truncated = 0
+1987.11.068.542 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.182 (> 0.100 thold), f_keep = 0.000
+1987.11.165.813 I slot launch_slot_: id  0 | task 122 | processing task, is_child = 0
+1987.15.076.845 I slot print_timing: id  0 | task 122 | prompt eval time =    3552.86 ms /    11 tokens (  322.99 ms per token,     3.10 tokens per second)
+1987.15.076.852 I slot print_timing: id  0 | task 122 |        eval time =     358.12 ms /    10 tokens (   35.81 ms per token,    27.92 tokens per second)
+1987.15.076.853 I slot print_timing: id  0 | task 122 |       total time =    3910.98 ms /    21 tokens
+1987.15.076.908 I slot print_timing: id  0 | task 122 |    graphs reused =          9
+1987.15.077.071 I slot      release: id  0 | task 122 | stop processing: n_tokens = 20, truncated = 0
+2102.56.410.171 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 120678526514
+2102.56.412.111 I slot launch_slot_: id  0 | task 134 | processing task, is_child = 0
+2103.00.559.412 I slot print_timing: id  0 | task 134 | n_decoded =    100, tg =  26.02 t/s, tg_3s =  26.02 t/s
+2103.01.328.980 I slot print_timing: id  0 | task 134 | prompt eval time =     303.40 ms /    78 tokens (    3.89 ms per token,   257.08 tokens per second)
+2103.01.328.986 I slot print_timing: id  0 | task 134 |        eval time =    4613.44 ms /   120 tokens (   38.45 ms per token,    26.01 tokens per second)
+2103.01.328.988 I slot print_timing: id  0 | task 134 |       total time =    4916.84 ms /   198 tokens
+2103.01.328.989 I slot print_timing: id  0 | task 134 |    graphs reused =        127
+2103.01.329.544 I slot      release: id  0 | task 134 | stop processing: n_tokens = 197, truncated = 0

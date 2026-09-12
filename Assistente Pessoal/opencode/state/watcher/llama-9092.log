@@ -10,3 +10,11 @@
 0.18.733.268 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
 0.18.735.919 I srv  llama_server: model loaded
 0.18.735.927 I srv  llama_server: listening on http://127.0.0.1:9092
+2103.01.345.550 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+2103.01.345.805 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+2103.11.216.111 I slot print_timing: id  0 | task 0 | n_decoded =    100, tg =  17.69 t/s, tg_3s =  17.69 t/s
+2103.12.375.943 I slot print_timing: id  0 | task 0 | prompt eval time =    4216.56 ms /    36 tokens (  117.13 ms per token,     8.54 tokens per second)
+2103.12.375.950 I slot print_timing: id  0 | task 0 |        eval time =    6813.48 ms /   120 tokens (   56.78 ms per token,    17.61 tokens per second)
+2103.12.375.951 I slot print_timing: id  0 | task 0 |       total time =   11030.04 ms /   156 tokens
+2103.12.375.955 I slot print_timing: id  0 | task 0 |    graphs reused =        119
+2103.12.376.364 I slot      release: id  0 | task 0 | stop processing: n_tokens = 155, truncated = 0
